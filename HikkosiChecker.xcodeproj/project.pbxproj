@@ -7,13 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F29177E219AC4EF001A3C9A /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29177D219AC4EF001A3C9A /* AddListViewController.swift */; };
+		1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */; };
+		1F291782219B0501001A3C9A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291781219B0501001A3C9A /* TableViewCell.swift */; };
+		1F291784219B09D2001A3C9A /* DeleteMoveoutListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */; };
+		1F291786219BBC99001A3C9A /* DeletableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291785219BBC99001A3C9A /* DeletableList.swift */; };
+		1F7318CA21A20DC900851BD4 /* HexColorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7318C921A20DC900851BD4 /* HexColorClass.swift */; };
+		1F7318CC21A2AF9F00851BD4 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7318CB21A2AF9F00851BD4 /* PointView.swift */; };
+		1F73190821A3934100851BD4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73190721A3934100851BD4 /* NotesTableViewController.swift */; };
+		1F79797A218FE051004E56EA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F797979218FE051004E56EA /* EditViewController.swift */; };
+		1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797B21907A61004E56EA /* MyTableViewCell.swift */; };
+		1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797D21907EF4004E56EA /* CustomButton.swift */; };
+		1F805A78218C68FC008EE6FB /* MoveOutNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F805A77218C68FC008EE6FB /* MoveOutNotesViewController.swift */; };
 		1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17421218BFEF9004316F3 /* AppDelegate.swift */; };
-		1FA17424218BFEF9004316F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17423218BFEF9004316F3 /* ViewController.swift */; };
+		1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17423218BFEF9004316F3 /* AddressesViewController.swift */; };
 		1FA17427218BFEF9004316F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA17425218BFEF9004316F3 /* Main.storyboard */; };
 		1FA17429218BFEFD004316F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA17428218BFEFD004316F3 /* Assets.xcassets */; };
 		1FA1742C218BFEFD004316F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1742A218BFEFD004316F3 /* LaunchScreen.storyboard */; };
 		1FA17437218BFEFD004316F3 /* HikkosiCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17436218BFEFD004316F3 /* HikkosiCheckerTests.swift */; };
 		1FA17442218BFEFD004316F3 /* HikkosiCheckerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17441218BFEFD004316F3 /* HikkosiCheckerUITests.swift */; };
+		1FA17450218C00B9004316F3 /* MoveoutTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */; };
+		1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */; };
+		49954432FF5FD14DAB0CAD76 /* Pods_HikkosiCheckerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BCD3E79D1DD8AAF28BB36E /* Pods_HikkosiCheckerTests.framework */; };
+		7DE4FC35687BA45B2844F06B /* Pods_HikkosiCheckerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E982829313C9D5E6B66CBC7 /* Pods_HikkosiCheckerUITests.framework */; };
+		EAF907F579C7108917C14983 /* Pods_HikkosiChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF4B4AC8376E276AB5904D3 /* Pods_HikkosiChecker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +51,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05BCD3E79D1DD8AAF28BB36E /* Pods_HikkosiCheckerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikkosiCheckerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1701ACCB9A5860206B941EBE /* Pods-HikkosiChecker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiChecker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker.debug.xcconfig"; sourceTree = "<group>"; };
+		1E982829313C9D5E6B66CBC7 /* Pods_HikkosiCheckerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikkosiCheckerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F29177D219AC4EF001A3C9A /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
+		1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationViewController.swift; sourceTree = "<group>"; };
+		1F291781219B0501001A3C9A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMoveoutListViewController.swift; sourceTree = "<group>"; };
+		1F291785219BBC99001A3C9A /* DeletableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableList.swift; sourceTree = "<group>"; };
+		1F7318C921A20DC900851BD4 /* HexColorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorClass.swift; sourceTree = "<group>"; };
+		1F7318CB21A2AF9F00851BD4 /* PointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
+		1F73190721A3934100851BD4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		1F797979218FE051004E56EA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		1F79797B21907A61004E56EA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		1F79797D21907EF4004E56EA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1F805A77218C68FC008EE6FB /* MoveOutNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveOutNotesViewController.swift; sourceTree = "<group>"; };
 		1FA1741E218BFEF9004316F3 /* HikkosiChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikkosiChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA17421218BFEF9004316F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1FA17423218BFEF9004316F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FA17423218BFEF9004316F3 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
 		1FA17426218BFEF9004316F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FA17428218BFEFD004316F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FA1742B218BFEFD004316F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +79,14 @@
 		1FA1743D218BFEFD004316F3 /* HikkosiCheckerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HikkosiCheckerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA17441218BFEFD004316F3 /* HikkosiCheckerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikkosiCheckerUITests.swift; sourceTree = "<group>"; };
 		1FA17443218BFEFE004316F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveoutTasksViewController.swift; sourceTree = "<group>"; };
+		1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveinTasksViewController.swift; sourceTree = "<group>"; };
+		481F1104A599504341C68C0C /* Pods-HikkosiChecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiChecker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker.release.xcconfig"; sourceTree = "<group>"; };
+		62B943436A9A1975085D11E2 /* Pods-HikkosiCheckerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerTests/Pods-HikkosiCheckerTests.release.xcconfig"; sourceTree = "<group>"; };
+		87E6DFAF21E21D63BFD17980 /* Pods-HikkosiCheckerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerTests/Pods-HikkosiCheckerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B5041B57DAB160A9B21D04C3 /* Pods-HikkosiCheckerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerUITests/Pods-HikkosiCheckerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CBF4B4AC8376E276AB5904D3 /* Pods_HikkosiChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikkosiChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4F7BB0BAEB7CCA5ABFB62F2 /* Pods-HikkosiCheckerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerUITests/Pods-HikkosiCheckerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF907F579C7108917C14983 /* Pods_HikkosiChecker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49954432FF5FD14DAB0CAD76 /* Pods_HikkosiCheckerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE4FC35687BA45B2844F06B /* Pods_HikkosiCheckerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +124,8 @@
 				1FA17435218BFEFD004316F3 /* HikkosiCheckerTests */,
 				1FA17440218BFEFD004316F3 /* HikkosiCheckerUITests */,
 				1FA1741F218BFEF9004316F3 /* Products */,
+				AD373575E53BB3BFB3CFCDC9 /* Pods */,
+				4513BB50B72C3243DED90AA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +143,22 @@
 			isa = PBXGroup;
 			children = (
 				1FA17421218BFEF9004316F3 /* AppDelegate.swift */,
-				1FA17423218BFEF9004316F3 /* ViewController.swift */,
+				1FA17423218BFEF9004316F3 /* AddressesViewController.swift */,
 				1FA17425218BFEF9004316F3 /* Main.storyboard */,
+				1F73190721A3934100851BD4 /* NotesTableViewController.swift */,
+				1F291781219B0501001A3C9A /* TableViewCell.swift */,
+				1F29177D219AC4EF001A3C9A /* AddListViewController.swift */,
+				1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */,
+				1F805A77218C68FC008EE6FB /* MoveOutNotesViewController.swift */,
+				1F7318CB21A2AF9F00851BD4 /* PointView.swift */,
+				1F7318C921A20DC900851BD4 /* HexColorClass.swift */,
+				1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */,
+				1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */,
+				1F79797B21907A61004E56EA /* MyTableViewCell.swift */,
+				1F797979218FE051004E56EA /* EditViewController.swift */,
+				1F291785219BBC99001A3C9A /* DeletableList.swift */,
+				1F79797D21907EF4004E56EA /* CustomButton.swift */,
+				1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */,
 				1FA17428218BFEFD004316F3 /* Assets.xcassets */,
 				1FA1742A218BFEFD004316F3 /* LaunchScreen.storyboard */,
 				1FA1742D218BFEFD004316F3 /* Info.plist */,
@@ -125,6 +184,29 @@
 			path = HikkosiCheckerUITests;
 			sourceTree = "<group>";
 		};
+		4513BB50B72C3243DED90AA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBF4B4AC8376E276AB5904D3 /* Pods_HikkosiChecker.framework */,
+				05BCD3E79D1DD8AAF28BB36E /* Pods_HikkosiCheckerTests.framework */,
+				1E982829313C9D5E6B66CBC7 /* Pods_HikkosiCheckerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD373575E53BB3BFB3CFCDC9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1701ACCB9A5860206B941EBE /* Pods-HikkosiChecker.debug.xcconfig */,
+				481F1104A599504341C68C0C /* Pods-HikkosiChecker.release.xcconfig */,
+				87E6DFAF21E21D63BFD17980 /* Pods-HikkosiCheckerTests.debug.xcconfig */,
+				62B943436A9A1975085D11E2 /* Pods-HikkosiCheckerTests.release.xcconfig */,
+				F4F7BB0BAEB7CCA5ABFB62F2 /* Pods-HikkosiCheckerUITests.debug.xcconfig */,
+				B5041B57DAB160A9B21D04C3 /* Pods-HikkosiCheckerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FA17446218BFEFE004316F3 /* Build configuration list for PBXNativeTarget "HikkosiChecker" */;
 			buildPhases = (
+				1456FEF702FD6837C929C8E1 /* [CP] Check Pods Manifest.lock */,
 				1FA1741A218BFEF9004316F3 /* Sources */,
 				1FA1741B218BFEF9004316F3 /* Frameworks */,
 				1FA1741C218BFEF9004316F3 /* Resources */,
+				F74981D76C3CB0DBBCE7EB87 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FA17449218BFEFE004316F3 /* Build configuration list for PBXNativeTarget "HikkosiCheckerTests" */;
 			buildPhases = (
+				8AA903D18D992519F58C19A7 /* [CP] Check Pods Manifest.lock */,
 				1FA1742E218BFEFD004316F3 /* Sources */,
 				1FA1742F218BFEFD004316F3 /* Frameworks */,
 				1FA17430218BFEFD004316F3 /* Resources */,
@@ -167,6 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FA1744C218BFEFE004316F3 /* Build configuration list for PBXNativeTarget "HikkosiCheckerUITests" */;
 			buildPhases = (
+				50BB589820E082489F8A8776 /* [CP] Check Pods Manifest.lock */,
 				1FA17439218BFEFD004316F3 /* Sources */,
 				1FA1743A218BFEFD004316F3 /* Frameworks */,
 				1FA1743B218BFEFD004316F3 /* Resources */,
@@ -251,13 +337,120 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1456FEF702FD6837C929C8E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HikkosiChecker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50BB589820E082489F8A8776 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HikkosiCheckerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AA903D18D992519F58C19A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HikkosiCheckerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F74981D76C3CB0DBBCE7EB87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1FA1741A218BFEF9004316F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA17424218BFEF9004316F3 /* ViewController.swift in Sources */,
+				1F7318CC21A2AF9F00851BD4 /* PointView.swift in Sources */,
+				1F805A78218C68FC008EE6FB /* MoveOutNotesViewController.swift in Sources */,
+				1F291784219B09D2001A3C9A /* DeleteMoveoutListViewController.swift in Sources */,
+				1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */,
+				1F291786219BBC99001A3C9A /* DeletableList.swift in Sources */,
+				1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */,
+				1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */,
+				1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */,
+				1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */,
+				1F73190821A3934100851BD4 /* NotesTableViewController.swift in Sources */,
+				1F7318CA21A20DC900851BD4 /* HexColorClass.swift in Sources */,
+				1F291782219B0501001A3C9A /* TableViewCell.swift in Sources */,
 				1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */,
+				1F29177E219AC4EF001A3C9A /* AddListViewController.swift in Sources */,
+				1FA17450218C00B9004316F3 /* MoveoutTasksViewController.swift in Sources */,
+				1F79797A218FE051004E56EA /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +623,7 @@
 		};
 		1FA17447218BFEFE004316F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1701ACCB9A5860206B941EBE /* Pods-HikkosiChecker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +642,7 @@
 		};
 		1FA17448218BFEFE004316F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 481F1104A599504341C68C0C /* Pods-HikkosiChecker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +661,7 @@
 		};
 		1FA1744A218BFEFE004316F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87E6DFAF21E21D63BFD17980 /* Pods-HikkosiCheckerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +683,7 @@
 		};
 		1FA1744B218BFEFE004316F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B943436A9A1975085D11E2 /* Pods-HikkosiCheckerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +705,7 @@
 		};
 		1FA1744D218BFEFE004316F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4F7BB0BAEB7CCA5ABFB62F2 /* Pods-HikkosiCheckerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +726,7 @@
 		};
 		1FA1744E218BFEFE004316F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5041B57DAB160A9B21D04C3 /* Pods-HikkosiCheckerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
