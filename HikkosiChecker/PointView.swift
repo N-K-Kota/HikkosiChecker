@@ -29,8 +29,6 @@ class PointView:UIView{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("layout")
-        print(pointLabel.text)
         pointLabel.frame = CGRect(x: 20, y: 20, width: self.frame.width-40, height: self.frame.height)
         pointLabel.layer.borderColor = UIColor(hex: "#877168", alpha: 1).cgColor
         pointLabel.numberOfLines = 0
