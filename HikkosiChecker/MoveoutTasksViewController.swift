@@ -9,33 +9,7 @@
 import UIKit
 import RealmSwift
 
-class UncheckedObj:Object{
-    var sectionobjList:List<Sectionobj> = List<Sectionobj>()
-    func returnSectionobjsCount()->Int{
-        var n = 0
-        for i in sectionobjList{
-            if(i.taskList.count != 0){
-                n += 1
-            }
-     }
-        return n
-    }
-}
-class CheckedObj:Object{
-    var sectionobjList:List<Sectionobj> = List<Sectionobj>()
-    @objc dynamic var watchable:Bool = false
-}
-class Sectionobj:Object{
-    var taskList = List<Task>()
-    @objc dynamic var title:String = ""
-}
-class Task:Object{
-    @objc dynamic var task:String  = ""
-    @objc dynamic var point:String = ""
-    @objc dynamic var requirement:String = ""
-    @objc dynamic var memo:String? = nil
-    @objc dynamic var canRemove:Bool = false
-}
+
 struct DefultData{
     let task:String
     let point:String
@@ -167,8 +141,7 @@ struct DoneCell{
 /* MyDelegate: class{
     func action(tag:Int)
     }*/
-var checkedObj:CheckedObj?
-var uncheckedObj:UncheckedObj?
+
 class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     /*func action(tag:Int) {
         selectedBtn = tag
@@ -293,6 +266,9 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             uncheckedObj!.sectionobjList[path.section-5].taskList.append(task)
             checkedObj!.sectionobjList[path.section-5].taskList.remove(at: path.row)
         }
+        progressive!.ratio = RatioDatasource.returnRatio(uncheckedTaskCount:uncheckedObj!.taskCount(),checkedTaskCount:checkedObj!.taskCount())
+        print(progressive!.ratio)
+        progressive!.save()
         tableView.reloadData()
     }
     @objc func clickAction(_ sender: UIButton) {
@@ -303,6 +279,11 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             checkedObj!.sectionobjList[path.section].taskList.append(task)
              uncheckedObj!.sectionobjList[path.section].taskList.remove(at: path.row)  //アンチェックドリストから削除
         }
+        progressive!.ratio = RatioDatasource.returnRatio(uncheckedTaskCount: uncheckedObj!.taskCount(),checkedTaskCount: checkedObj!.taskCount())
+        print(uncheckedObj!.taskCount())
+        print(checkedObj!.taskCount())
+        print(progressive!.ratio)
+        progressive!.save()
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
         let defview =  mycell.backgroundView
@@ -371,6 +352,9 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     
     let realm = try! Realm()
     var selectedTask:Task?
+    @IBAction func toTopAction(_ sender: UIBarButtonItem) {
+        
+    }
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {

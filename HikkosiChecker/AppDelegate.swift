@@ -124,16 +124,15 @@ Au光
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        var config = Realm.Configuration(schemaVersion: 1, migrationBlock: {
+        var config = Realm.Configuration(schemaVersion: 2, migrationBlock: {
             migration,oldSchemaVersion in
-            if(oldSchemaVersion<1){
+            if(oldSchemaVersion<2){
             }
         })
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         let realm = try! Realm()
-        UserDefaults.standard.removeObject(forKey: "Flag")
         if(UserDefaults.standard.object(forKey: "Flag") != nil){
             checkedObj = realm.objects(CheckedObj.self).first!
             uncheckedObj = realm.objects(UncheckedObj.self).first!

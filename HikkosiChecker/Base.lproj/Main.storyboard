@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n4u-bX-Zha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6r-SM-qyo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -445,13 +445,153 @@
                     <view key="view" contentMode="scaleToFill" id="hO2-qm-WyS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ttp-Cc-Bcr">
+                                <rect key="frame" x="120.5" y="237" width="134" height="78"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hit-q0-yn5">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0At-rA-bMU">
+                                        <rect key="frame" x="0.0" y="20.5" width="134" height="57.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="system" size="49"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="14" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="qEQ-Px-5TL"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-e0-q1R">
+                                <rect key="frame" x="87.5" y="364" width="200" height="116.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作業の達成度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgt-oc-wXB">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivh-Gr-dE7">
+                                        <rect key="frame" x="0.0" y="29.5" width="200" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="Ujn-Mb-BDH">
+                                        <rect key="frame" x="0.0" y="59" width="200" height="2.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="cQg-ln-WM0"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="0.92363975249999997" green="0.70087071420000002" blue="0.1171258755" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </progressView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="fDH-vt-xxG">
+                                        <rect key="frame" x="0.0" y="69.5" width="81" height="47"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ivh-Gr-dE7" secondAttribute="trailing" id="MEj-LM-kab"/>
+                                    <constraint firstItem="ivh-Gr-dE7" firstAttribute="leading" secondItem="jIK-e0-q1R" secondAttribute="leading" id="QD7-WG-YOI"/>
+                                    <constraint firstAttribute="width" constant="200" id="qj3-cK-JNW"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Iat-a5-Gro">
+                                <rect key="frame" x="87.5" y="79" width="200" height="121.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="予定日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-Ru-k2F">
+                                        <rect key="frame" x="0.0" y="0.0" width="82.5" height="32.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrb-oA-gpE">
+                                        <rect key="frame" x="0.0" y="34.5" width="187.5" height="87"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <font key="NSFont" size="66" name=".SFNSDisplay"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="10" paragraphSpacing="19" paragraphSpacingBefore="13" firstLineHeadIndent="26" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ZDS-tb-fmY"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="peW-Ay-Soe">
+                                <rect key="frame" x="157.5" y="520.5" width="60" height="86"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-QK-UYp">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="26"/>
+                                        <color key="backgroundColor" red="0.92363975249999997" green="0.70087071420000002" blue="0.1171258755" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="リストへ">
+                                                    <attributes>
+                                                        <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="15" name=".HiraKakuInterface-W3"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <segue destination="n4u-bX-Zha" kind="presentation" id="lqk-c4-hJZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFu-MJ-Jab">
+                                        <rect key="frame" x="0.0" y="56" width="60" height="30"/>
+                                        <color key="backgroundColor" red="0.92363975249999997" green="0.70087071420000002" blue="0.1171258755" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="設定">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="8gS-t6-Ste"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Iat-a5-Gro" firstAttribute="top" secondItem="js3-Zc-Gme" secondAttribute="top" constant="59" id="7Ut-Yb-N1Z"/>
+                            <constraint firstItem="Iat-a5-Gro" firstAttribute="centerX" secondItem="hO2-qm-WyS" secondAttribute="centerX" id="CEs-Lk-kXL"/>
+                            <constraint firstItem="peW-Ay-Soe" firstAttribute="centerX" secondItem="hO2-qm-WyS" secondAttribute="centerX" id="DMA-Fr-qAe"/>
+                            <constraint firstItem="peW-Ay-Soe" firstAttribute="top" secondItem="jIK-e0-q1R" secondAttribute="bottom" constant="40" id="KuD-BU-qKO"/>
+                            <constraint firstItem="ttp-Cc-Bcr" firstAttribute="top" secondItem="Iat-a5-Gro" secondAttribute="bottom" constant="36.5" id="TKb-Xi-Xzn"/>
+                            <constraint firstItem="jIK-e0-q1R" firstAttribute="centerX" secondItem="hO2-qm-WyS" secondAttribute="centerX" id="XAa-d2-g5O"/>
+                            <constraint firstItem="ttp-Cc-Bcr" firstAttribute="centerX" secondItem="hO2-qm-WyS" secondAttribute="centerX" id="mVy-hi-pT5"/>
+                            <constraint firstItem="jIK-e0-q1R" firstAttribute="top" secondItem="ttp-Cc-Bcr" secondAttribute="bottom" constant="49" id="rxZ-Ix-VJ7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="js3-Zc-Gme"/>
                     </view>
+                    <connections>
+                        <outlet property="leftDateLabel" destination="0At-rA-bMU" id="MJW-em-azE"/>
+                        <outlet property="listButton" destination="uT7-QK-UYp" id="E6V-co-ehz"/>
+                        <outlet property="perProgressLabel" destination="ivh-Gr-dE7" id="vc2-qr-aZi"/>
+                        <outlet property="plannedDateLabel" destination="mrb-oA-gpE" id="0YH-vx-aU6"/>
+                        <outlet property="progImageView" destination="fDH-vt-xxG" id="STh-Kz-1WY"/>
+                        <outlet property="progressView" destination="Ujn-Mb-BDH" id="EsM-48-SxT"/>
+                        <outlet property="settingButton" destination="wFu-MJ-Jab" id="uvw-s4-lTh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3S-rD-mrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3089" y="228"/>
+            <point key="canvasLocation" x="-3542" y="-174"/>
         </scene>
         <!--Moveout Tasks View Controller-->
         <scene sceneID="Q29-99-ksQ">
@@ -497,6 +637,11 @@
                         <viewLayoutGuide key="safeArea" id="biE-Ah-7ZV"/>
                     </view>
                     <navigationItem key="navigationItem" id="ciy-Vb-E3n">
+                        <barButtonItem key="leftBarButtonItem" title="Topへ" id="0F6-mh-ObR">
+                            <connections>
+                                <action selector="toTopAction:" destination="AKq-eb-7b3" id="mdG-gc-UWh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="編集" id="m2n-V4-zcr">
                             <connections>
                                 <segue destination="wLL-Xi-30Y" kind="presentation" id="b32-lV-4SB"/>
@@ -511,11 +656,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GuV-DE-oAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="-1331"/>
+            <point key="canvasLocation" x="4" y="-1325"/>
         </scene>
     </scenes>
     <resources>
         <image name="backgroundImage" width="640" height="960"/>
+        <image name="car" width="81" height="47"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
