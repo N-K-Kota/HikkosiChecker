@@ -14,9 +14,11 @@ class NotesTableViewController: UITableViewController {
     var requirements = NSMutableAttributedString()
     override func viewDidLoad() {
         super.viewDidLoad()
-           let pointStr = task!.point.components(separatedBy: "\n")
-        let attrB1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 5))]
+        
+        
         let attrB2:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 4))]
+        let pointStr = task!.point.components(separatedBy: "\n")
+        let attrB1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 5))]
         let attr = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 1)]
         for i in pointStr{
             if(String(i.prefix(2)) == "B1"){ //装飾文字の作成

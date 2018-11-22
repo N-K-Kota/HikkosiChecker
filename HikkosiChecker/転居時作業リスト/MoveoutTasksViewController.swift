@@ -267,7 +267,6 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             checkedObj!.sectionobjList[path.section-5].taskList.remove(at: path.row)
         }
         progressive!.ratio = RatioDatasource.returnRatio(uncheckedTaskCount:uncheckedObj!.taskCount(),checkedTaskCount:checkedObj!.taskCount())
-        print(progressive!.ratio)
         progressive!.save()
         tableView.reloadData()
     }
@@ -280,9 +279,6 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
              uncheckedObj!.sectionobjList[path.section].taskList.remove(at: path.row)  //アンチェックドリストから削除
         }
         progressive!.ratio = RatioDatasource.returnRatio(uncheckedTaskCount: uncheckedObj!.taskCount(),checkedTaskCount: checkedObj!.taskCount())
-        print(uncheckedObj!.taskCount())
-        print(checkedObj!.taskCount())
-        print(progressive!.ratio)
         progressive!.save()
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
@@ -336,10 +332,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "tonext"){
-            let svc = segue.destination as! MoveOutNotesViewController
-            svc.task = selectedTask
-        }else if(segue.identifier == "totable"){
+        if(segue.identifier == "totable"){
             let svc = segue.destination as! NotesTableViewController
             svc.task = selectedTask
         }

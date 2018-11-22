@@ -21,7 +21,6 @@
 		1F79797A218FE051004E56EA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F797979218FE051004E56EA /* EditViewController.swift */; };
 		1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797B21907A61004E56EA /* MyTableViewCell.swift */; };
 		1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797D21907EF4004E56EA /* CustomButton.swift */; };
-		1F805A78218C68FC008EE6FB /* MoveOutNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F805A77218C68FC008EE6FB /* MoveOutNotesViewController.swift */; };
 		1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17421218BFEF9004316F3 /* AppDelegate.swift */; };
 		1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17423218BFEF9004316F3 /* AddressesViewController.swift */; };
 		1FA17427218BFEF9004316F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA17425218BFEF9004316F3 /* Main.storyboard */; };
@@ -71,7 +70,6 @@
 		1F797979218FE051004E56EA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		1F79797B21907A61004E56EA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		1F79797D21907EF4004E56EA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		1F805A77218C68FC008EE6FB /* MoveOutNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveOutNotesViewController.swift; sourceTree = "<group>"; };
 		1FA1741E218BFEF9004316F3 /* HikkosiChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikkosiChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA17421218BFEF9004316F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FA17423218BFEF9004316F3 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +121,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F52629421A6B7520067BC45 /* 転居時作業リスト */ = {
+			isa = PBXGroup;
+			children = (
+				1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */,
+				1F73190721A3934100851BD4 /* NotesTableViewController.swift */,
+				1F797979218FE051004E56EA /* EditViewController.swift */,
+				1F29177D219AC4EF001A3C9A /* AddListViewController.swift */,
+				1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */,
+			);
+			path = "転居時作業リスト";
+			sourceTree = "<group>";
+		};
+		1F52629521A6B78F0067BC45 /* MyClasses */ = {
+			isa = PBXGroup;
+			children = (
+				1F52629021A67D070067BC45 /* Progressive.swift */,
+				1F7318CB21A2AF9F00851BD4 /* PointView.swift */,
+				1F79797B21907A61004E56EA /* MyTableViewCell.swift */,
+				1F79797D21907EF4004E56EA /* CustomButton.swift */,
+				1F52629221A69F0A0067BC45 /* TaskClasses.swift */,
+				1F291785219BBC99001A3C9A /* DeletableList.swift */,
+				1F7318C921A20DC900851BD4 /* HexColorClass.swift */,
+			);
+			path = MyClasses;
+			sourceTree = "<group>";
+		};
+		1F52629621A6B7F50067BC45 /* TopPage */ = {
+			isa = PBXGroup;
+			children = (
+				1F52628E21A586FC0067BC45 /* TopPageViewController.swift */,
+			);
+			path = TopPage;
+			sourceTree = "<group>";
+		};
+		1F52629721A6B8430067BC45 /* 住所変更 */ = {
+			isa = PBXGroup;
+			children = (
+				1FA17423218BFEF9004316F3 /* AddressesViewController.swift */,
+			);
+			path = "住所変更";
+			sourceTree = "<group>";
+		};
+		1F52629821A6B85C0067BC45 /* 転入時作業リスト */ = {
+			isa = PBXGroup;
+			children = (
+				1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */,
+			);
+			path = "転入時作業リスト";
+			sourceTree = "<group>";
+		};
 		1FA17415218BFEF9004316F3 = {
 			isa = PBXGroup;
 			children = (
@@ -148,26 +196,15 @@
 		1FA17420218BFEF9004316F3 /* HikkosiChecker */ = {
 			isa = PBXGroup;
 			children = (
+				1F52629821A6B85C0067BC45 /* 転入時作業リスト */,
+				1F52629721A6B8430067BC45 /* 住所変更 */,
+				1F52629621A6B7F50067BC45 /* TopPage */,
+				1F52629521A6B78F0067BC45 /* MyClasses */,
+				1F52629421A6B7520067BC45 /* 転居時作業リスト */,
 				1FA17421218BFEF9004316F3 /* AppDelegate.swift */,
-				1FA17423218BFEF9004316F3 /* AddressesViewController.swift */,
 				1FA17425218BFEF9004316F3 /* Main.storyboard */,
-				1F52628E21A586FC0067BC45 /* TopPageViewController.swift */,
-				1F52629021A67D070067BC45 /* Progressive.swift */,
-				1F73190721A3934100851BD4 /* NotesTableViewController.swift */,
-				1F52629221A69F0A0067BC45 /* TaskClasses.swift */,
 				1F291781219B0501001A3C9A /* TableViewCell.swift */,
-				1F29177D219AC4EF001A3C9A /* AddListViewController.swift */,
 				1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */,
-				1F805A77218C68FC008EE6FB /* MoveOutNotesViewController.swift */,
-				1F7318CB21A2AF9F00851BD4 /* PointView.swift */,
-				1F7318C921A20DC900851BD4 /* HexColorClass.swift */,
-				1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */,
-				1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */,
-				1F79797B21907A61004E56EA /* MyTableViewCell.swift */,
-				1F797979218FE051004E56EA /* EditViewController.swift */,
-				1F291785219BBC99001A3C9A /* DeletableList.swift */,
-				1F79797D21907EF4004E56EA /* CustomButton.swift */,
-				1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */,
 				1FA17428218BFEFD004316F3 /* Assets.xcassets */,
 				1FA1742A218BFEFD004316F3 /* LaunchScreen.storyboard */,
 				1FA1742D218BFEFD004316F3 /* Info.plist */,
@@ -445,7 +482,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7318CC21A2AF9F00851BD4 /* PointView.swift in Sources */,
-				1F805A78218C68FC008EE6FB /* MoveOutNotesViewController.swift in Sources */,
 				1F291784219B09D2001A3C9A /* DeleteMoveoutListViewController.swift in Sources */,
 				1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */,
 				1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */,
