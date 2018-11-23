@@ -10,137 +10,6 @@ import UIKit
 import RealmSwift
 
 
-struct DefultData{
-    let task:String
-    let point:String
-    let requirement:String
-    let memo:String
-}
-
-/*struct DefOutTasks{
-    var Sectionobjs:Array<Section>
-    func returnTitles()->Array<String>{
-        var t = Array<String>()
-        for i in sections{
-            guard let ts = i.tasks else{
-                return t
-            }
-            for v in ts{
-                t.append(v.title)
-            }
-        }
-        return t
-    }
-    
-}
-struct AllTasks{
-    var sections:Array<Section>
-    init(tasks:Array<Section> =  [Section(sectionTitle: "1ヶ月前まで", tasks: nil),
-                                   Section(sectionTitle: "１週間前まで", tasks: nil),
-                                   Section(sectionTitle: "当日まで", tasks: nil),
-                                   Section(sectionTitle: "その他", tasks: nil)]){
-        self.sections  = tasks
-    }
-}
-
-struct UncheckedObj{
-    var sections:Array<Section>
-    func returnSectionTitles()->Array<String>{
-        var t = Array<String>()
-        for i in sections{
-            t.append(i.sectionTitle)
-        }
-        return t
-    }
-    /*func returnTag(section:Int,row:Int)->Int{
-        var i = 0
-        var num = 0
-        while(i<section){
-            num += sections[i].tasks!.count
-            i += 1
-        }
-        num += row
-        return num
-    }*/
-    func returnTask(tag:Int)->Task?{
-        for v in sections{
-            for i in v.tasks!{
-                if(i.tag == tag){
-                    return i
-                }
-            }
-        }
-        return nil
-    }
-    mutating func removefromTag(tag:Int){
-        var s = 0
-        var r = 0
-        label: for i in sections{
-            r = 0
-            for v in i.tasks!{
-                if(v.tag == tag){
-                    break label
-                }
-                r += 1
-            }
-            s += 1
-        }
-        print("\(s):\(r)")
-        self.sections[s].tasks!.remove(at: r)
-    }
-}
-struct Task{
-    let title:String
-    let point:String
-    let requirement:String
-    var :usermemo String?
-    let tag:Int
-}
-struct Section{
-    let sectionTitle:String
-    var tasks:Array<Task>?
-}
-
-class UserOutTasks{
-    var userTasks:Array<UserTask>?
-    init(_ tasks:Array<UserTask>?){
-        userTasks = tasks
-    }
-    var structTasks:Array<Task>?{
-        guard userTasks != nil else{
-            return nil
-        }
-        var t = Array<Task>()
-        for i in userTasks!{
-            let f = Task(title: i.title, point: i.point, requirement: i.requirement, usermemo: i.usermemo,tag:i.tag)
-            t.append(f)
-        }
-      return t
-    }
-}
-
-class UserTask{
-    let title:String
-    let point:String
-    let requirement:String
-    var usermemo:String?
-    let tag:Int
-    init(_ title:String = "",_ tag:Int,_ point:String = "",_ requirement:String = "",_ usermemo:String? = nil){
-        self.title = title
-        self.point = point
-        self.requirement = requirement
-        self.usermemo = usermemo
-        self.tag = tag
-    
-  }
-}
-struct DoneCell{
-    
-}
- */
-/* MyDelegate: class{
-    func action(tag:Int)
-    }*/
 
 class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     /*func action(tag:Int) {
@@ -254,11 +123,12 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             }
             cell.accessoryType = .none
             cell.layer.cornerRadius = 15
+            cell.backgroundColor = UIColor(hex: "BFF4FF", alpha: 0.7)
         }
         return cell
     }
     
-    @objc func clickCheckedbtn(_ sender:UIButton){
+    @objc func clickCheckedbtn(_ sender:UIButton){       //チェックされたリストをクリックした時のアクション
         let sender = sender as! CustomButton
         let path = sender.index
         let task = checkedObj!.sectionobjList[path.section-5].taskList[path.row]
@@ -270,7 +140,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         progressive!.save()
         tableView.reloadData()
     }
-    @objc func clickAction(_ sender: UIButton) {
+    @objc func clickAction(_ sender: UIButton) {   //リストをクリックした時のアクション
         let sender = sender as! CustomButton
         let path = sender.index
         let task = uncheckedObj!.sectionobjList[path.section].taskList[path.row]  //チェックされたTaskを取り出す
@@ -346,7 +216,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     let realm = try! Realm()
     var selectedTask:Task?
     @IBAction func toTopAction(_ sender: UIBarButtonItem) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var tableView: UITableView!
