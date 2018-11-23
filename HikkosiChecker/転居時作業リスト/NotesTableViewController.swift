@@ -10,17 +10,17 @@ import UIKit
 
 class NotesTableViewController: UITableViewController {
     var task:Task?
-    var points = NSMutableAttributedString()
-    var requirements = NSMutableAttributedString()
+    var points = NSMutableAttributedString()   //チェックポイント欄の文章が入る
+    var requirements = NSMutableAttributedString()  //必要なもの欄の文章が入る
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        let attrB2:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 4))]
-        let pointStr = task!.point.components(separatedBy: "\n")
-        let attrB1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 5))]
-        let attr = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 1)]
-        for i in pointStr{
+        let attrB2:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 4))]  //太字,中くらいの大きさの文字
+        let attrB1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 5))]  //太字、一番大きな文字
+        let attr = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 1)] //普通の文字
+        let pointStr = task!.point.components(separatedBy: "\n") //改行ごとに分けて装飾する
+        for i in pointStr{   //チェックポイント欄の文章を装飾する
             if(String(i.prefix(2)) == "B1"){ //装飾文字の作成
                 points.append(NSAttributedString(string:String(i.suffix(i.count-2)), attributes:attrB1))
                 points.append(NSAttributedString(string: "\n"))
@@ -32,7 +32,7 @@ class NotesTableViewController: UITableViewController {
              points.append(NSAttributedString(string: "\n"))
         }
         let requireStr = task!.requirement.components(separatedBy: "\n")
-        for i in requireStr{
+        for i in requireStr{         //必要なもの欄の文章を装飾する
             if(String(i.prefix(2)) == "B1"){ //装飾文字の作成
                 requirements.append(NSAttributedString(string:String(i.suffix(i.count-2)), attributes:attrB1))
             }else if(String(i.prefix(2)) == "B2"){
@@ -76,7 +76,7 @@ class NotesTableViewController: UITableViewController {
             shadow.shadowOffset = CGSize(width:1, height:1)
             shadow.shadowBlurRadius = 4
             shadow.shadowColor = UIColor(hex: "073D6A", alpha: 1)
-            let point = NSAttributedString(string: "☆ポイント", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hex: "0A60AA", alpha: 1),NSAttributedString.Key.shadow:shadow])
+            let point = NSAttributedString(string: "☆チェックポイント", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hex: "0A60AA", alpha: 1),NSAttributedString.Key.shadow:shadow])
             titleLabel.attributedText = point
         }else if(section == 1){
             let shadow = NSShadow()
@@ -90,21 +90,7 @@ class NotesTableViewController: UITableViewController {
         //titleLabel.textColor = .blue
         return headerView
     }
-    func makefont()->NSMutableAttributedString{
-        let boldAttribute:[NSAttributedString.Key:Any] = [.strokeWidth:5,.strokeColor:UIColor.brown]
-        let pointAtr = task!.point.components(separatedBy: "BR")
-        let mutableStr = NSMutableAttributedString()
-        for i in pointAtr{
-            if(i.prefix(1) == "B"){
-                let st = i.suffix(i.count-1)
-                let boldstr = NSAttributedString(string: String(st), attributes:boldAttribute)
-                mutableStr.append(boldstr)
-            }else{
-                mutableStr.append(NSAttributedString(string: i))
-            }
-        }
-        return mutableStr
-    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notescell", for: indexPath)
         cell.textLabel?.numberOfLines = 0
@@ -120,13 +106,13 @@ class NotesTableViewController: UITableViewController {
 
         return cell
     }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    /*override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0){
-            return "☆ポイント"
+            return "☆チェックポイント"
         }else{
             return "必要なもの"
         }
-    }
+    }*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

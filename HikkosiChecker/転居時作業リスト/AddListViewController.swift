@@ -10,14 +10,14 @@ import UIKit
 import RealmSwift
 class AddListViewController: UIViewController,UITextFieldDelegate {
     let realm = try! Realm()
-    var reloadFunc = {()->Void in }
-    @IBAction func donebtn(_ sender: UIButton) {
-            if(textField.text != nil && textField.text != ""){
+    var reloadFunc = {()->Void in }  //編集ページからクロージャをもらってリロードする
+    @IBAction func donebtn(_ sender: UIButton) {  //完了ボタンを押された時の処理
+            if(textField.text != nil && textField.text != ""){ //テキストが空の時はリストへ追加されないように
             let newTask = Task()
             newTask.canRemove = true
             newTask.task = textField.text!
             try! realm.write{
-            uncheckedObj!.sectionobjList.last!.taskList.append(newTask)
+            uncheckedObj!.sectionobjList.last!.taskList.append(newTask)  //セクションの最後は必ず追加されたリストが入る
             }
             reloadFunc()
         }

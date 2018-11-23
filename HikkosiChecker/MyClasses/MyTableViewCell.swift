@@ -11,15 +11,13 @@ import UIKit
 class MyTableViewCell: UITableViewCell {
     var indexPath:IndexPath?
     var label = UILabel()
-    var width = 30
-    var height = 30
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         label.frame = CGRect(x: 40, y: 0, width: self.frame.width - 60, height: self.frame.height)
         self.addSubview(label)
     }
-    override func prepareForReuse() {
+    override func prepareForReuse() {  //再利用時の描画をリセット
         super.prepareForReuse()
         label.text = ""
         self.textLabel?.text = ""

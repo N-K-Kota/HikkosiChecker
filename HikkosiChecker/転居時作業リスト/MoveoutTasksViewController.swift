@@ -19,7 +19,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         if(checkedObj!.watchable){
+         if(checkedObj!.watchable){                        //チェックされたリストの表示、非表示で場合わけ
             if(section < 4){
                return uncheckedObj!.sectionobjList[section].taskList.count
             }else if(section > 4){
@@ -36,7 +36,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         return 0
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { //セクションにリストがないときはタイトルを空に
         if(section<4){
             if(uncheckedObj!.sectionobjList[section].taskList.count > 0){
             return uncheckedObj!.sectionobjList[section].title
@@ -53,7 +53,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             return ""
         }
     }
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {//アクセサリをクリックしたら詳細ページへとぶ
         if(indexPath.section < 4){
             self.selectedTask = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row]
         }else if(indexPath.section > 4){
@@ -61,27 +61,8 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         self.performSegue(withIdentifier: "totable", sender: nil)
     }
-    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        /*if(section < 4){
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
-            headerView.backgroundColor = UIColor(white: 0.9, alpha: 0)
-            headerView.tintColor = UIColor.black
-            return headerView
-        }else if(section > 4){
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
-        headerView.backgroundColor = UIColor(white: 0.6, alpha: 0.5)
-        return headerView
-        }else if(section == 4){
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0))
-            return headerView
-        }
-        return nil*/
-        if(section > 4){
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0))
-            return headerView
-        }
-        return nil
-    }*/
+    
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerview = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         footerview.backgroundColor = UIColor.clear
@@ -93,7 +74,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             let btn = CustomButton()
             btn.setImage(UIImage(named: "spacerect"), for: .normal)
             btn.index = indexPath
-            btn.frame = CGRect(x:0,y:(cell.frame.height-30)/2,width: 30,height: 30)
+            btn.frame = CGRect(x:0,y:(cell.frame.height-btn.height)/2,width: btn.width,height: btn.height)
             btn.addTarget(self, action: #selector(clickAction(_:)), for: .touchUpInside)
             cell.accessoryType = .detailButton
             cell.tintColor = UIColor.blue
@@ -105,7 +86,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             let btn = CustomButton()
             btn.setImage(UIImage(named: "checkFrame"), for: .normal)
             btn.index = indexPath
-            btn.frame = CGRect(x: 0, y: (cell.frame.height-30)/2, width: 30, height: 30)
+            btn.frame = CGRect(x: 0, y: (cell.frame.height-btn.height)/2, width: btn.width, height: btn.height)
             btn.addTarget(self, action: #selector(clickCheckedbtn(_:)), for: .touchUpInside)
             btn.alpha = 0.5
             cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
@@ -153,7 +134,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
         let defview =  mycell.backgroundView
-       UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [.beginFromCurrentState], animations: {
+       UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
                 sender.setImage(UIImage(named:"orangeCar"), for: .normal)
                 sender.imageView!.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
@@ -183,10 +164,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
                        mycell.backgroundView =  defview
         })
     }
-    /*func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return allTasks!.returnSectionTitles()
-    }*/
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //チェックされたリストの表示、非表示を切り替えるセルを押された時のアクション
         if(indexPath.section == 4){
             try! realm.write{
                 checkedObj!.watchable = !checkedObj!.watchable
@@ -215,7 +193,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     
     let realm = try! Realm()
     var selectedTask:Task?
-    @IBAction func toTopAction(_ sender: UIBarButtonItem) {
+    @IBAction func toTopAction(_ sender: UIBarButtonItem) {  //TopPageへ戻るボタン
         self.dismiss(animated: true, completion: nil)
     }
     

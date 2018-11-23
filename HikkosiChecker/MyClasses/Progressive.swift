@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class Progressive{
+class Progressive{              //progressViewのデータ格納と、UserDeaultsからの保存、読み込みするクラス
     var ratio:Float = 0.0
     let key = "Ratio"
     init(_ ratio:Float){
