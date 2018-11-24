@@ -106,13 +106,6 @@ class NotesTableViewController: UITableViewController {
 
         return cell
     }
-    /*override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 0){
-            return "☆チェックポイント"
-        }else{
-            return "必要なもの"
-        }
-    }*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

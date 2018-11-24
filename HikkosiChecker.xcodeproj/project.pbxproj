@@ -15,11 +15,13 @@
 		1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52628E21A586FC0067BC45 /* TopPageViewController.swift */; };
 		1F52629121A67D070067BC45 /* Progressive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629021A67D070067BC45 /* Progressive.swift */; };
 		1F52629321A69F0A0067BC45 /* TaskClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629221A69F0A0067BC45 /* TaskClasses.swift */; };
+		1F52629A21A79FF70067BC45 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629921A79FF70067BC45 /* SettingViewController.swift */; };
 		1F7318CA21A20DC900851BD4 /* HexColorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7318C921A20DC900851BD4 /* HexColorClass.swift */; };
 		1F73190821A3934100851BD4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73190721A3934100851BD4 /* NotesTableViewController.swift */; };
 		1F79797A218FE051004E56EA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F797979218FE051004E56EA /* EditViewController.swift */; };
 		1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797B21907A61004E56EA /* MyTableViewCell.swift */; };
 		1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797D21907EF4004E56EA /* CustomButton.swift */; };
+		1F8CA59F21A7EF1600D4CF34 /* plannedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */; };
 		1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17421218BFEF9004316F3 /* AppDelegate.swift */; };
 		1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17423218BFEF9004316F3 /* AddressesViewController.swift */; };
 		1FA17427218BFEF9004316F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA17425218BFEF9004316F3 /* Main.storyboard */; };
@@ -63,11 +65,13 @@
 		1F52628E21A586FC0067BC45 /* TopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPageViewController.swift; sourceTree = "<group>"; };
 		1F52629021A67D070067BC45 /* Progressive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressive.swift; sourceTree = "<group>"; };
 		1F52629221A69F0A0067BC45 /* TaskClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskClasses.swift; sourceTree = "<group>"; };
+		1F52629921A79FF70067BC45 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1F7318C921A20DC900851BD4 /* HexColorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorClass.swift; sourceTree = "<group>"; };
 		1F73190721A3934100851BD4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		1F797979218FE051004E56EA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		1F79797B21907A61004E56EA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		1F79797D21907EF4004E56EA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plannedDate.swift; sourceTree = "<group>"; };
 		1FA1741E218BFEF9004316F3 /* HikkosiChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikkosiChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA17421218BFEF9004316F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FA17423218BFEF9004316F3 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +123,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F52629421A6B7520067BC45 /* 転居時作業リスト */ = {
+		1F52629421A6B7520067BC45 /* 転出時作業リスト */ = {
 			isa = PBXGroup;
 			children = (
 				1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */,
@@ -128,12 +132,13 @@
 				1F29177D219AC4EF001A3C9A /* AddListViewController.swift */,
 				1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */,
 			);
-			path = "転居時作業リスト";
+			path = "転出時作業リスト";
 			sourceTree = "<group>";
 		};
 		1F52629521A6B78F0067BC45 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */,
 				1F52629021A67D070067BC45 /* Progressive.swift */,
 				1F79797B21907A61004E56EA /* MyTableViewCell.swift */,
 				1F79797D21907EF4004E56EA /* CustomButton.swift */,
@@ -148,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				1F52628E21A586FC0067BC45 /* TopPageViewController.swift */,
+				1F52629921A79FF70067BC45 /* SettingViewController.swift */,
 			);
 			path = TopPage;
 			sourceTree = "<group>";
@@ -197,7 +203,7 @@
 				1F52629721A6B8430067BC45 /* 住所変更 */,
 				1F52629621A6B7F50067BC45 /* TopPage */,
 				1F52629521A6B78F0067BC45 /* MyClasses */,
-				1F52629421A6B7520067BC45 /* 転居時作業リスト */,
+				1F52629421A6B7520067BC45 /* 転出時作業リスト */,
 				1FA17421218BFEF9004316F3 /* AppDelegate.swift */,
 				1FA17425218BFEF9004316F3 /* Main.storyboard */,
 				1F291781219B0501001A3C9A /* TableViewCell.swift */,
@@ -482,7 +488,9 @@
 				1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */,
 				1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */,
 				1F291786219BBC99001A3C9A /* DeletableList.swift in Sources */,
+				1F8CA59F21A7EF1600D4CF34 /* plannedDate.swift in Sources */,
 				1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */,
+				1F52629A21A79FF70067BC45 /* SettingViewController.swift in Sources */,
 				1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */,
 				1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */,
 				1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */,

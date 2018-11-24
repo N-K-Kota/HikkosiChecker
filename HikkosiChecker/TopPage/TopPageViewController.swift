@@ -11,6 +11,7 @@ var checkedObj:CheckedObj?
 var uncheckedObj:UncheckedObj?
 var progressive:Progressive?
 class TopPageViewController: UIViewController {
+    @IBOutlet weak var plannedStack: UIStackView!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var plannedDateLabel: UILabel!
@@ -18,35 +19,50 @@ class TopPageViewController: UIViewController {
     @IBOutlet weak var perProgressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progImageView: UIImageView!
+    @IBOutlet weak var settingStack: UIStackView!
+    @IBOutlet weak var progressStack: UIStackView!
     var progressVal:Int?
+    var plannedDate = PlannedDate()
     override func viewDidLoad() {
         super.viewDidLoad()
             progressive = Progressive(0.0)
             progressive!.read()
             progressView.setProgress(progressive!.ratio, animated: false)
             perProgressLabel.text = "\(progressView.progress*100)%"
+            plannedDate.readDate()
+            plannedStack.backgroundColor = .blue
+            leftDatesStack.backgroundColor  = .red
+            progressStack.backgroundColor = .yellow
         // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var leftDatesStack: UIStackView!
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let x = progressive!.ratio * Float(progressView.frame.width)
         let transform = CGAffineTransform(translationX: CGFloat(x)-progImageView.frame.width/2, y: 0)
         progImageView.transform = transform
+        let parentW = self.view.frame.width
+        plannedStack.frame = CGRect(x: (parentW-plannedStack.frame.width)/2, y: 50, width: 300, height:100 )
+        leftDatesStack.frame = CGRect(x: (parentW-leftDatesStack.frame.width)/2, y: plannedStack.frame.maxY+50, width: 250, height: 80)
+        progressStack.frame = CGRect(x: (parentW-progressStack.frame.width)/2, y: leftDatesStack.frame.maxY+100, width: 300, height: 120)
+        settingStack.frame = CGRect(x: (parentW-settingStack.frame.width)/2, y: progressStack.frame.maxY+10, width: 60, height: 100)
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("appear")
+        plannedDateLabel.text = plannedDate.toString()
+        leftDateLabel.text = plannedDate.leftDates()
         progressView.setProgress(progressive!.ratio, animated: true)
         perProgressLabel.text = "\(progressView.progress*100)%"
     }
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "tosetting"){
+            let vc = segue.destination as! SettingViewController
+            vc.defaultDate = plannedDate.date
+        }
     }
-    */
 
 }
