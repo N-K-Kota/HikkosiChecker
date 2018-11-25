@@ -135,29 +135,29 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
         let defview =  mycell.backgroundView
-       UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
+        let transform = CGAffineTransform(rotationAngle: CGFloat(M_PI)/4)
+       UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
-                sender.setImage(UIImage(named:"orangeCar"), for: .normal)
-                sender.imageView!.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                    mycell.backgroundView = UIView(frame: CGRect(x: 0, y:sender.imageView!.center.y , width:sender.imageView!.center.x , height: 10))
-                mycell.backgroundView?.backgroundColor = UIColor.brown
+                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
+                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/2)
+                mycell.layer.opacity = 0.75
             })
             UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.1, animations: {
-               sender.imageView!.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                mycell.backgroundView = UIView(frame: CGRect(x: 0, y:sender.imageView!.center.y , width:sender.imageView!.center.x , height: 10))
-                mycell.backgroundView?.backgroundColor = UIColor.brown
+               
+                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
+                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
+                mycell.layer.opacity = 0.5
             })
             UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.1, animations: {
-                sender.imageView!.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                mycell.backgroundView = UIView(frame: CGRect(x: 0, y:sender.imageView!.center.y , width:sender.imageView!.center.x , height: 10))
-                mycell.backgroundView?.backgroundColor = UIColor.brown
                 
+                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
+                mycell.layer.opacity = 0.25
+                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
             })
-            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.1, animations: {
-                sender.imageView!.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-               
-                mycell.backgroundView = UIView(frame: CGRect(x: 0, y:sender.imageView!.center.y , width:sender.imageView!.center.x , height: 10))
-                mycell.backgroundView?.backgroundColor = UIColor.yellow
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
+                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
+                mycell.layer.opacity = 0
+                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
             })
         }, completion: {(bool:Bool) in
                        sender.setImage(UIImage(named: "spacerect"), for: .normal)
