@@ -131,13 +131,27 @@ Au光
         })
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+        /*let realmURLs = [
+            realmURL,
+            realmURL.appendingPathExtension("lock"),
+            realmURL.appendingPathExtension("note"),
+            realmURL.appendingPathExtension("management")
+        ]
+        for URL in realmURLs {
+            do {
+                try FileManager.default.removeItem(at: URL)
+            } catch {
+                // handle error
+            }
+        }
+         UserDefaults.standard.removeObject(forKey: "Flag")*/
+        print(realmURL)
         let realm = try! Realm()
         if(UserDefaults.standard.object(forKey: "Flag") != nil){
             checkedObj = realm.objects(CheckedObj.self).first!
             uncheckedObj = realm.objects(UncheckedObj.self).first!
         }else{
-            print("noflag")
             UserDefaults.standard.set(true, forKey: "Flag")
             uncheckedObj = UncheckedObj(value: [initData()])
             let section1 = Sectionobj(value: [nil,"1ヶ月前まで"])
@@ -153,8 +167,8 @@ Au光
             let mySection = Sectionobj()
             let myTask = Task()
             try! realm.write{
-                realm.add(myTask)
-                realm.add(mySection)
+                /*realm.add(myTask)
+                realm.add(mySection)*/
                 realm.add(checkedObj!)
                 realm.add(uncheckedObj!)
             }

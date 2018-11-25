@@ -11,13 +11,13 @@ import UIKit
 
 struct PlannedDate{
     var date:Date?
-    let key = "DateKey"
+    static let key = "DateKey"
     mutating func readDate(){
-        self.date = UserDefaults.standard.object(forKey: key) as? Date
+        self.date = UserDefaults.standard.object(forKey: PlannedDate.key) as? Date
     }
     func setDate(){
         if(date != nil){
-           UserDefaults.standard.set(self.date, forKey: key)
+           UserDefaults.standard.set(self.date, forKey: PlannedDate.key)
         }
     }
     func toString()->String{

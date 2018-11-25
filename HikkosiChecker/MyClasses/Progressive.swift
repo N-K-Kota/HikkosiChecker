@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 class Progressive{              //progressViewのデータ格納と、UserDeaultsからの保存、読み込みするクラス
     var ratio:Float = 0.0
-    let key = "Ratio"
+    static let key = "Ratio"
     init(_ ratio:Float){
         self.ratio = ratio
     }
     func save(){
-        UserDefaults.standard.set(ratio, forKey: key)
+        UserDefaults.standard.set(ratio, forKey: Progressive.key)
     }
     func read(){
-        if let r = UserDefaults.standard.object(forKey: key){
+        if let r = UserDefaults.standard.object(forKey: Progressive.key){
             ratio = r as! Float
         }
     }

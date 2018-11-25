@@ -519,6 +519,9 @@
                                     <constraint firstAttribute="height" constant="41" id="nk5-q6-G36"/>
                                 </constraints>
                                 <state key="normal" title="初期化"/>
+                                <connections>
+                                    <action selector="resetAppFunc:" destination="uEk-SU-9m6" eventType="touchUpInside" id="thg-Yp-lm0"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="Gfz-r0-YiC">
                                 <rect key="frame" x="127" y="182" width="121.5" height="60"/>
@@ -595,7 +598,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwK-PB-mbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2514" y="632"/>
+            <point key="canvasLocation" x="-2398" y="631"/>
         </scene>
         <!--Item-->
         <scene sceneID="Q29-99-ksQ">

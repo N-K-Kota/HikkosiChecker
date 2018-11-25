@@ -123,6 +123,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     @objc func clickAction(_ sender: UIButton) {   //リストをクリックした時のアクション
         let sender = sender as! CustomButton
+        sender.isEnabled = false
         let path = sender.index
         let task = uncheckedObj!.sectionobjList[path.section].taskList[path.row]  //チェックされたTaskを取り出す
         try! realm.write{

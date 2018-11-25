@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 class SettingViewController: UIViewController {
     @IBOutlet weak var dateLabel:UILabel?
     @IBOutlet weak var datePicker:UIDatePicker?
@@ -20,6 +20,7 @@ class SettingViewController: UIViewController {
     }
     var defaultDate:Date?
     let formatter = DateFormatter()
+    let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
             datePicker!.datePickerMode = .date
@@ -35,6 +36,15 @@ class SettingViewController: UIViewController {
         dateLabel!.text = formatter.string(from: sender.date)
     }
     
+    @IBAction func resetAppFunc(_ sender: UIButton) {
+        let standard = UserDefaults.standard
+        standard.removeObject(forKey: PlannedDate.key)
+        standard.removeObject(forKey: Progressive.key)
+        standard.removeObject(forKey: "Flag")
+        try! realm.write{
+            realm.deleteAll()
+        }
+    }
     /*
     // MARK: - Navigation
 
