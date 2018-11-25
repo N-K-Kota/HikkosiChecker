@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Kota Nakamura. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 import RealmSwift
 class DeleteMoveoutListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -15,7 +15,7 @@ class DeleteMoveoutListViewController: UIViewController,UITableViewDelegate,UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "deletablecell", for: indexPath) as! MyTableViewCell
-        cell.label.text = deletableList[indexPath.row].task
+        cell.label.text = deletableList[indexPath.row].task.task
         let btn = CustomButton()
         btn.index = indexPath
         btn.setImage(UIImage(named:"spacerect"), for: .normal)
@@ -111,4 +111,4 @@ class DeleteMoveoutListViewController: UIViewController,UITableViewDelegate,UITa
     }
     */
 
-}
+}*/

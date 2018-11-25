@@ -22,6 +22,7 @@
 		1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797B21907A61004E56EA /* MyTableViewCell.swift */; };
 		1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797D21907EF4004E56EA /* CustomButton.swift */; };
 		1F8CA59F21A7EF1600D4CF34 /* plannedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */; };
+		1F8CA5A121A9798400D4CF34 /* DeleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CA5A021A9798400D4CF34 /* DeleteTableViewController.swift */; };
 		1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17421218BFEF9004316F3 /* AppDelegate.swift */; };
 		1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17423218BFEF9004316F3 /* AddressesViewController.swift */; };
 		1FA17427218BFEF9004316F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA17425218BFEF9004316F3 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 		1F79797B21907A61004E56EA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		1F79797D21907EF4004E56EA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plannedDate.swift; sourceTree = "<group>"; };
+		1F8CA5A021A9798400D4CF34 /* DeleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewController.swift; sourceTree = "<group>"; };
 		1FA1741E218BFEF9004316F3 /* HikkosiChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikkosiChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA17421218BFEF9004316F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FA17423218BFEF9004316F3 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				1F797979218FE051004E56EA /* EditViewController.swift */,
 				1F29177D219AC4EF001A3C9A /* AddListViewController.swift */,
 				1F291783219B09D2001A3C9A /* DeleteMoveoutListViewController.swift */,
+				1F8CA5A021A9798400D4CF34 /* DeleteTableViewController.swift */,
 			);
 			path = "転出時作業リスト";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 		1F52629521A6B78F0067BC45 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */,
 				1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */,
 				1F52629021A67D070067BC45 /* Progressive.swift */,
 				1F79797B21907A61004E56EA /* MyTableViewCell.swift */,
@@ -207,7 +211,6 @@
 				1FA17421218BFEF9004316F3 /* AppDelegate.swift */,
 				1FA17425218BFEF9004316F3 /* Main.storyboard */,
 				1F291781219B0501001A3C9A /* TableViewCell.swift */,
-				1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */,
 				1FA17428218BFEFD004316F3 /* Assets.xcassets */,
 				1FA1742A218BFEFD004316F3 /* LaunchScreen.storyboard */,
 				1FA1742D218BFEFD004316F3 /* Info.plist */,
@@ -484,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8CA5A121A9798400D4CF34 /* DeleteTableViewController.swift in Sources */,
 				1F291784219B09D2001A3C9A /* DeleteMoveoutListViewController.swift in Sources */,
 				1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */,
 				1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */,

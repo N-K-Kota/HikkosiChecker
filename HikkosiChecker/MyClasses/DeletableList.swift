@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 struct DeletableList{   //削除可能なタスクを表す
-    var task:String   //タスクのタイトル
+    var task:Task   //タスクのタイトル
     var index:IndexPath  //タスクの格納場所
     var flag:Bool  //チェックされていなければture、チェックされていればfalse
-    init(_ task:String,_ index:IndexPath,_ flag:Bool){
+    init(_ task:Task,_ index:IndexPath,_ flag:Bool){
         self.task = task
         self.index = index
         self.flag = flag

@@ -22,8 +22,9 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeleteMoveoutView") as! DeleteMoveoutListViewController
-        vc.modalPresentationStyle = .popover
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeleteTableView") as! DeleteTableViewController
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
         vc.reloadFunc = {
             self.tableView.reloadData()
         }
