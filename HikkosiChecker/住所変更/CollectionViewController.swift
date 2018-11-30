@@ -80,8 +80,10 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     }
     @objc func addListBtnFunc(_ sender:Any){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "textFieldView") as! TextFieldViewController
+        vc.reload = {()->Void in self.collectionView.reloadData()}
         vc.transitioningDelegate = self
         vc.modalPresentationStyle = .custom
+        vc.section = sectionID
         present(vc, animated: true, completion: nil)
     }
     override func viewDidLayoutSubviews() {

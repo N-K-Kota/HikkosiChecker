@@ -63,11 +63,12 @@
                         <outlet property="deleteBtn" destination="YId-Z1-JZI" id="bdm-d5-fBc"/>
                         <outlet property="tableView" destination="DYU-Xf-Hrn" id="4q4-u0-RAl"/>
                         <segue destination="7yw-4h-MXG" kind="show" identifier="toWeb" id="y0e-vp-T6J"/>
+                        <segue destination="9ZR-j3-TZV" kind="presentation" identifier="toCollection" id="Qcm-3F-kY8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1233" y="1396"/>
+            <point key="canvasLocation" x="-1170" y="1396"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="gCy-zn-Gh4">
@@ -154,7 +155,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JB-uy-a3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-348" y="1396"/>
+            <point key="canvasLocation" x="-316" y="1378"/>
+        </scene>
+        <!--Set URL View Controller-->
+        <scene sceneID="QJO-EL-ewq">
+            <objects>
+                <viewController storyboardIdentifier="setURLView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZVS-PF-2EA" customClass="SetURLViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xep-Zk-wPx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-My-M20">
+                                <rect key="frame" x="10" y="30" width="355" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-HY-sG1">
+                                        <rect key="frame" x="0.0" y="0.0" width="37" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3oh-2n-7zM">
+                                        <rect key="frame" x="37" y="0.0" width="318" height="80"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="UgE-Ar-ijX"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d2R-My-M20" firstAttribute="top" secondItem="Ob7-1R-OjO" secondAttribute="top" constant="10" id="hzq-a8-kLO"/>
+                            <constraint firstItem="Ob7-1R-OjO" firstAttribute="trailing" secondItem="d2R-My-M20" secondAttribute="trailing" constant="10" id="txp-Wj-uUg"/>
+                            <constraint firstItem="d2R-My-M20" firstAttribute="leading" secondItem="Ob7-1R-OjO" secondAttribute="leading" constant="10" id="utO-G8-XWk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ob7-1R-OjO"/>
+                    </view>
+                    <connections>
+                        <outlet property="urlTextField" destination="3oh-2n-7zM" id="U3p-sG-k95"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Yu-bt-x9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68" y="2069.4152923538231"/>
         </scene>
         <!--Item-->
         <scene sceneID="guO-ly-Y9k">
@@ -842,39 +888,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6o-Au-P2S">
-                                <rect key="frame" x="48" y="75" width="279" height="30"/>
+                                <rect key="frame" x="80" y="49" width="279" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epe-Ju-Qsd">
-                                <rect key="frame" x="48" y="46" width="70" height="21"/>
+                                <rect key="frame" x="2" y="49" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeu-PV-hm0">
-                                <rect key="frame" x="48" y="250" width="33" height="21"/>
+                                <rect key="frame" x="16" y="166" width="33" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CN8-yI-16e">
-                                <rect key="frame" x="48" y="279" width="279" height="30"/>
+                                <rect key="frame" x="80" y="157" width="279" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8U-RA-R1M">
-                                <rect key="frame" x="140" y="410" width="46" height="30"/>
+                                <rect key="frame" x="156" y="250" width="63" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" title="完了">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneBtn:" destination="qH2-cs-PEd" eventType="touchUpInside" id="DDr-rm-daV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

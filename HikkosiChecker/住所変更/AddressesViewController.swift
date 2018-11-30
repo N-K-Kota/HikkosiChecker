@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-class AddressesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class AddressesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIViewControllerTransitioningDelegate{
     @IBOutlet weak var tableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          if(section < 4){
@@ -57,6 +57,11 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             let webpage = segue.destination as! WebPageViewController
             webpage.url = u
             webpage.title = webT
+        }else if(segue.identifier == "toCollection"){
+            let vc = segue.destination as! CollectionViewController
+            vc.sectionID = sectionData.selectSection
+            vc.reload = {()->Void in self.tableView.reloadData()}
+            vc.mylist = mylist
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,6 +114,9 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }
         return cell
     }
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CustomPresentationViewController(presentedViewController:presented,presenting:presenting)
+    }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if(indexPath.section < 4){
             if(indexPath.row > 0){  //セルをクリックしたらURLのページへとぶ  unchecked
@@ -119,6 +127,14 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                     print("url=\(ur)")
                     print("webT=\(mylist!.sections[indexPath.section].section[indexPath.row-1].title)")
                     performSegue(withIdentifier: "toWeb", sender: nil)
+                }else{
+                    print("toSetURL")
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "setURLView") as! SetURLViewController
+                    vc.modalPresentationStyle = .custom //presentainControllerの設定
+                    vc.transitioningDelegate = self
+                    vc.addressData = mylist!.sections[indexPath.section].section[indexPath.row-1]
+                    present(vc, animated: true, completion: nil)
                 }
             }
         }else{
@@ -129,6 +145,13 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                     print("url=\(ur)")
                     print("webT=\(checkedList!.sections[indexPath.section-5].section[indexPath.row-1].title)")
                     performSegue(withIdentifier: "toWeb", sender: nil)
+                }else{
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "setURLView") as! SetURLViewController
+                    vc.modalPresentationStyle = .custom //presentainControllerの設定
+                    vc.transitioningDelegate = self
+                    vc.addressData = checkedList?.sections[indexPath.section-5].section[indexPath.row-1]
+                    print("toSetURL")
+                    present(vc, animated: true, completion: nil)
                 }
             }
         }
@@ -191,11 +214,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         }
         let sender = sender as! CustomButton
         sectionData.selectSection = sender.index.section
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "collectionView") as! CollectionViewController
-        vc.sectionID = sender.index.section
-        vc.reload = {()->Void in self.tableView.reloadData()}
-        vc.mylist = mylist
-        self.present(vc, animated: true, completion: nil)
+        performSegue(withIdentifier: "toCollection", sender: nil)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         if(checkedList!.watchable == false){

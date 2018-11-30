@@ -7,9 +7,27 @@
 //
 
 import UIKit
-
+import RealmSwift
 class TextFieldViewController: UIViewController,UITextFieldDelegate {
-
+    let realm = try! Realm()
+    var section:Int?
+    var reload = {()->Void in}
+    @IBAction func doneBtn(_ sender: Any) {
+        if(titleTextField.text != nil && titleTextField.text != ""){
+            let task = [titleTextField.text,urlTextField.text]
+            let address = Address()
+            address.title = task[0]!
+            if(urlTextField.text != ""){
+            address.url = urlTextField.text
+            }
+            address.id = allAddresses.resID()
+            try! realm.write{
+                allAddresses.resList(section!)!.append(address)
+            }
+            reload()
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     override func viewDidLoad() {
