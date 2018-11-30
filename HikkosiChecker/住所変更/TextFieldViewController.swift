@@ -8,14 +8,23 @@
 
 import UIKit
 
-class TextFieldViewController: UIViewController {
+class TextFieldViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var urlTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        urlTextField.delegate = self
+        titleTextField.delegate = self
         // Do any additional setup after loading the view.
     }
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     /*
     // MARK: - Navigation

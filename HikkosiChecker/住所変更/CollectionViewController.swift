@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-class CollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate {
+class CollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate {
     let identifier = "addresscollectionCell"
     var mylist:MyAddresses?
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,6 +26,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CustomCollectionViewCell
         if(dataList[indexPath.row].flag){
@@ -62,7 +63,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
         self.dismiss(animated: true, completion: nil)
         reload()
     }
-   let textField = UITextField()
+   let addListBtn = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
     self.collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
@@ -70,41 +71,30 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
            let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: self.view.frame.width/2-10, height: 50)
           collectionView.collectionViewLayout = flowLayout
-        textField.delegate = self
-        textField.clearButtonMode = .whileEditing
-        textField.returnKeyType = .done
-        textField.borderStyle = .roundedRect
-        self.view.addSubview(textField)
+        addListBtn.setTitle("新規作成", for: .normal)
+        addListBtn.layer.cornerRadius = 15
+        addListBtn.backgroundColor = UIColor(hex:"FDC23E" , alpha:1 )
+         self.view.addSubview(addListBtn)
+        addListBtn.addTarget(self, action: #selector(addListBtnFunc(_:)), for: .touchUpInside)
         // Do any additional setup after loading the view.
+    }
+    @objc func addListBtnFunc(_ sender:Any){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "textFieldView") as! TextFieldViewController
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        present(vc, animated: true, completion: nil)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let naviHeight = 44 + self.view.safeAreaInsets.bottom
-        textField.frame = CGRect(x: (self.view.frame.width-200)/2, y: naviHeight+10, width: 200, height: 60)
+        addListBtn.frame = CGRect(x:(self.view.frame.width-80)/2,y:self.view.frame.height-50,width:80,height:40)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(self.textField.isFirstResponder){
-            self.textField.resignFirstResponder()
-        }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        let address = Address()
-        if(textField.text != nil && textField.text != ""){
-            address.title = textField.text!
-            address.flag = true
-            address.url = ""
-            listBuf.append(dataList.count)
-        try! realm.write{
-            dataList.append(address)
-        }
-            self.collectionView.reloadData()
-        }
+    
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CustomPresentationViewController(presentedViewController:presented,presenting:presenting)
     }
     /*
+     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

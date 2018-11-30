@@ -48,7 +48,69 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }
          }
           self.tableView.reloadData()
-        }else if(indexPath.section < 4){
+        }
+        }
+    var u:String?
+    var webT:String?
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toWeb"){
+            let webpage = segue.destination as! WebPageViewController
+            webpage.url = u
+            webpage.title = webT
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCell(withIdentifier: "addresscell", for: indexPath) as! MyTableViewCell
+        cell.btn.index = indexPath
+                if(indexPath.section < 4){
+                if(indexPath.row == 0){
+                    cell.textLabel?.text = mylist!.sections[indexPath.section].title
+                    let acView = CustomButton()
+                    acView.setImage(UIImage(named: "plus"), for: .normal)
+                    acView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+                    acView.index = indexPath
+                    acView.addTarget(self, action: #selector(accesoryTap(_:)), for: .touchUpInside)
+                    cell.accessoryView = acView
+                    cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
+                }else{
+                    cell.btn.primaryKey = mylist!.sections[indexPath.section].section[indexPath.row-1].id
+                    cell.setData()
+                    cell.accessoryView = nil
+                    cell.accessoryType = .detailDisclosureButton
+                    cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
+                    cell.btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
+                    cell.label.text = mylist!.sections[indexPath.section].section[indexPath.row-1].title
+                }
+            }else if(indexPath.section > 4){
+                    if(indexPath.row == 0){
+                        cell.textLabel?.text = checkedList!.sections[indexPath.section-5].title
+                        cell.accessoryView = nil
+                        cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
+                    }else{
+                        cell.setData()
+                        cell.accessoryView = nil
+                        cell.btn.primaryKey = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].id
+                        cell.accessoryType = .detailDisclosureButton
+                        cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
+                        cell.btn.addTarget(self, action: #selector(clickCheckedBtn(_:)), for: .touchUpInside)
+                        cell.label.text = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].title
+                    }
+            }else{
+                    cell.accessoryView = nil
+                    cell.layer.cornerRadius = 10
+                    cell.accessoryType = .none
+                if(checkedList!.watchable){
+                     cell.backgroundColor = UIColor(hex: "00bfff", alpha: 0.7)
+                    cell.textLabel!.text = "チェックされたリストを非表示にする"
+                }else{
+                    cell.backgroundColor = UIColor(hex: "00bfff", alpha: 1)
+                    cell.textLabel!.text = "チェックされたリストを表示する"
+                }
+            }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if(indexPath.section < 4){
             if(indexPath.row > 0){  //セルをクリックしたらURLのページへとぶ  unchecked
                 if let ur = mylist!.sections[indexPath.section].section[indexPath.row-1].url{
                     self.u = ur
@@ -70,72 +132,11 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                 }
             }
         }
-        }
-    var u:String?
-    var webT:String?
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "toWeb"){
-            let webpage = segue.destination as! WebPageViewController
-            webpage.url = u
-            webpage.title = webT
-            print("inprepare:\(webT)")
-        }
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "addresscell", for: indexPath) as! MyTableViewCell
-        cell.btn.index = indexPath
-                if(indexPath.section < 4){
-                if(indexPath.row == 0){
-                    cell.textLabel?.text = mylist!.sections[indexPath.section].title
-                    let acView = CustomButton()
-                    acView.setImage(UIImage(named: "plus"), for: .normal)
-                    acView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-                    acView.index = indexPath
-                    acView.addTarget(self, action: #selector(accesoryTap(_:)), for: .touchUpInside)
-                    cell.accessoryView = acView
-                    cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
-                }else{
-                    cell.btn.primaryKey = mylist!.sections[indexPath.section].section[indexPath.row-1].id
-                    cell.setData()
-                    cell.accessoryView = nil
-                    cell.accessoryType = .disclosureIndicator
-                    cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
-                    cell.btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
-                    cell.label.text = mylist!.sections[indexPath.section].section[indexPath.row-1].title
-                }
-            }else if(indexPath.section > 4){
-                    if(indexPath.row == 0){
-                        cell.textLabel?.text = checkedList!.sections[indexPath.section-5].title
-                        cell.accessoryView = nil
-                        cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
-                    }else{
-                        cell.setData()
-                        cell.accessoryView = nil
-                        cell.btn.primaryKey = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].id
-                        cell.accessoryType = .disclosureIndicator
-                        cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
-                        cell.btn.addTarget(self, action: #selector(clickCheckedBtn(_:)), for: .touchUpInside)
-                        cell.label.text = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].title
-                    }
-            }else{
-                    cell.accessoryView = nil
-                    cell.layer.cornerRadius = 10
-                    cell.accessoryType = .none
-                if(checkedList!.watchable){
-                     cell.backgroundColor = UIColor(hex: "00bfff", alpha: 0.7)
-                    cell.textLabel!.text = "チェックされたリストを非表示にする"
-                }else{
-                    cell.backgroundColor = UIColor(hex: "00bfff", alpha: 1)
-                    cell.textLabel!.text = "チェックされたリストを表示する"
-                }
-            }
-        return cell
     }
     @objc func clickBtn(_ sender:Any){
         let sender = sender as! CustomButton
         let id = sender.primaryKey
         let s = sender.index.section
-        print("spaceSec:\(s)")
         var task:Address?
         var n = 0
         for i in mylist!.sections[s].section{//押されたセルのタスクを取得
@@ -160,7 +161,6 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     @objc func clickCheckedBtn(_ sender:Any){
         let sender = sender as! CustomButton
         let s = sender.index.section-5
-        print("clickeSec:\(s)")
         let id = sender.primaryKey
         var task:Address?
         var n = 0
@@ -189,11 +189,6 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
           deleteBtn.tintColor = UIColor(white: 1, alpha: 1)
           deleteBtn.title = "削除"
         }
-        /*let vc = self.storyboard?.instantiateViewController(withIdentifier: "addresscollectionView") as! AddressCollectionViewController
-        let sender = sender as! CustomButton
-        vc.sectionId = sender.index.section
-        vc.reload = {()->Void in self.tableView.reloadData()}
-        self.present(vc, animated: true, completion: nil)*/
         let sender = sender as! CustomButton
         sectionData.selectSection = sender.index.section
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "collectionView") as! CollectionViewController
