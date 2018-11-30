@@ -103,13 +103,11 @@ class DeleteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the cell.
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! MyTableViewCell
+        cell.setData()
         cell.label.text = deletableList[indexPath.row].task.task
-        let btn = CustomButton()
-        btn.index = indexPath
-        btn.setImage(UIImage(named:"spacerect"), for: .normal)
-        btn.addTarget(self, action: #selector(checkAction(_:)), for: .touchUpInside)
-        btn.frame = CGRect(x: 10, y: (cell.frame.height-btn.width)/2, width: btn.width, height: btn.height)
-        cell.addSubview(btn)
+        cell.btn.index = indexPath
+        cell.btn.setImage(UIImage(named:"spacerect"), for: .normal)
+        cell.btn.addTarget(self, action: #selector(checkAction(_:)), for: .touchUpInside)
         return cell
     }
     override func viewDidLayoutSubviews() {

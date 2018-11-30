@@ -11,11 +11,10 @@ import UIKit
 class MyTableViewCell: UITableViewCell {
     var indexPath:IndexPath?
     var label = UILabel()
+    var btn = CustomButton()
+        // Initialization code
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        label.frame = CGRect(x: 40, y: 0, width: self.frame.width - 60, height: self.frame.height)
-        self.addSubview(label)
     }
     override func prepareForReuse() {  //再利用時の描画をリセット
         super.prepareForReuse()
@@ -28,6 +27,14 @@ class MyTableViewCell: UITableViewCell {
             i.removeFromSuperview()
             }
         }
+        btn = CustomButton()
+    }
+    
+    func setData(){
+        label.frame = CGRect(x: 40, y: 0, width: self.frame.width - 60, height: self.frame.height)
+        btn.frame = CGRect(x: 5, y: (self.frame.height-btn.height)/2, width: btn.width, height: btn.height)
+        self.addSubview(label)
+        self.addSubview(btn)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

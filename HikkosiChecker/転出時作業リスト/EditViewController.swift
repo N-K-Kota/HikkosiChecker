@@ -86,25 +86,17 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editcell", for: indexPath) as! MyTableViewCell
         if(indexPath.section < 4){
+            cell.setData()
             cell.label.text = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task
-            let btn = CustomButton()
-            btn.setImage(UIImage(named: "spacerect"), for: .normal)
-            btn.index = indexPath
-            btn.width = 30.0
-            btn.height = 30.0
-            btn.frame = CGRect(x: 0, y: (cell.frame.height - btn.height)/2, width: btn.width, height: btn.height)
-            btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
-            cell.addSubview(btn)
+            cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
+            cell.btn.index = indexPath
+            cell.btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
         }else if(indexPath.section > 4){
+            cell.setData()
             cell.label.text = checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task
-            let btn = CustomButton()
-            btn.setImage(UIImage(named: "spacerect"), for: .normal)
-            btn.index = indexPath
-            btn.width = 30.0
-            btn.height = 30.0
-            btn.frame = CGRect(x: 0, y: (cell.frame.height - btn.height)/2, width: btn.width, height: btn.height)
-            btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
-            cell.addSubview(btn)
+            cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
+            cell.btn.index = indexPath
+            cell.btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
         }else{
             if(checkedObj!.watchable){
                 cell.textLabel!.text = "非表示にする"

@@ -124,13 +124,12 @@ Au光
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        var config = Realm.Configuration(schemaVersion: 2, migrationBlock: {
+        /*var config = Realm.Configuration(schemaVersion: 2, migrationBlock: {
             migration,oldSchemaVersion in
             if(oldSchemaVersion<2){
             }
         })
-        config.deleteRealmIfMigrationNeeded = true
-        Realm.Configuration.defaultConfiguration = config
+        Realm.Configuration.defaultConfiguration = config*/
         let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
         /*let realmURLs = [
             realmURL,
@@ -146,11 +145,13 @@ Au光
             }
         }
          UserDefaults.standard.removeObject(forKey: "Flag")*/
-        print(realmURL)
+         print(realmURL)
+        
         let realm = try! Realm()
         if(UserDefaults.standard.object(forKey: "Flag") != nil){
             checkedObj = realm.objects(CheckedObj.self).first!
             uncheckedObj = realm.objects(UncheckedObj.self).first!
+            allAddresses = realm.objects(AllAddresses.self).last!
         }else{
             UserDefaults.standard.set(true, forKey: "Flag")
             uncheckedObj = UncheckedObj(value: [initData()])
@@ -164,13 +165,11 @@ Au光
             sections.append(section3)
             sections.append(section4)
             checkedObj = CheckedObj(value: [sections])
-            let mySection = Sectionobj()
-            let myTask = Task()
+            allAddresses.initData()
             try! realm.write{
-                /*realm.add(myTask)
-                realm.add(mySection)*/
                 realm.add(checkedObj!)
                 realm.add(uncheckedObj!)
+                realm.add(allAddresses)
             }
         }
        

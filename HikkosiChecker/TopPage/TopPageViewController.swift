@@ -10,6 +10,7 @@ import UIKit
 var checkedObj:CheckedObj?
 var uncheckedObj:UncheckedObj?
 var progressive:Progressive?
+var allAddresses = AllAddresses()
 class TopPageViewController: UIViewController {
     @IBOutlet weak var plannedStack: UIStackView!
     @IBOutlet weak var listButton: UIButton!

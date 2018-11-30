@@ -71,31 +71,27 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moveoutcell", for: indexPath) as! MyTableViewCell
         if(indexPath.section < 4){
-            let btn = CustomButton()
-            btn.setImage(UIImage(named: "spacerect"), for: .normal)
-            btn.index = indexPath
-            btn.frame = CGRect(x:0,y:(cell.frame.height-btn.height)/2,width: btn.width,height: btn.height)
-            btn.addTarget(self, action: #selector(clickAction(_:)), for: .touchUpInside)
+            cell.setData()
+            cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
+            cell.btn.index = indexPath
+            cell.btn.addTarget(self, action: #selector(clickAction(_:)), for: .touchUpInside)
             cell.accessoryType = .detailButton
             cell.tintColor = UIColor.blue
             cell.preservesSuperviewLayoutMargins = false
             cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
             cell.label.text = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task
-            cell.addSubview(btn)
         }else if(indexPath.section > 4){//ここにチェックされたリストの描画をかく
-            let btn = CustomButton()
-            btn.setImage(UIImage(named: "checkFrame"), for: .normal)
-            btn.index = indexPath
-            btn.frame = CGRect(x: 0, y: (cell.frame.height-btn.height)/2, width: btn.width, height: btn.height)
-            btn.addTarget(self, action: #selector(clickCheckedbtn(_:)), for: .touchUpInside)
-            btn.alpha = 0.5
+            cell.setData()
+            cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
+            cell.btn.index = indexPath
+            cell.btn.addTarget(self, action: #selector(clickCheckedbtn(_:)), for: .touchUpInside)
+            cell.btn.alpha = 0.5
             cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
             cell.accessoryType = .detailButton
             cell.tintColor = .blue
             cell.label.text = checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task
             cell.preservesSuperviewLayoutMargins = false
             cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-            cell.addSubview(btn)
         }else{
             if(checkedObj!.watchable){
                 cell.textLabel?.text = "チェックしたリストを非表示にする"
@@ -135,7 +131,6 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
         let defview =  mycell.backgroundView
-        let transform = CGAffineTransform(rotationAngle: CGFloat(M_PI)/4)
        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
                 sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
