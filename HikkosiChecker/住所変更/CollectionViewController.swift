@@ -13,7 +13,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     var mylist:MyAddresses?
     @IBOutlet weak var collectionView: UICollectionView!
     var sectionID = 0
-    var listBuf = Array<Int>()
+    var listBuf = Array<Bool>()
     var dataList = List<Address>() //表示するリスト
     let realm = try! Realm()
     var reload = {()->Void in}
@@ -30,7 +30,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CustomCollectionViewCell
         if(dataList[indexPath.row].flag){
-            if(listBuf.index(of:indexPath.row) != nil){
+            if(listBuf[indexPath.row]){
                 cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
                 cell.btn.addTarget(self, action: #selector(clickcheckedCell(_:)), for: .touchUpInside)
             }else{
@@ -39,46 +39,54 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
             }
             cell.label.text = dataList[indexPath.row].title
             cell.btn.index = indexPath
+        }else{
+            
         }
         return cell
     }
     @objc func clickCellFunc(_ sender:Any){
            let sender = sender as! CustomButton
-           listBuf.append(sender.index.row)
+           listBuf[sender.index.row]=true
            self.collectionView.reloadItems(at: [sender.index])
     }
     @objc func clickcheckedCell(_ sender:Any){
         let send = sender as! CustomButton
-        let id = listBuf.index(of:send.index.row)
-        listBuf.remove(at: id!)
+        listBuf[send.index.row]=false
         self.collectionView.reloadItems(at: [send.index])
     }
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
+        var n = 0
         for i in listBuf{
+            if(i){
             try! realm.write{
-                dataList[i].flag = false
-                mylist!.sections[sectionID].section.append(dataList[i])
+                dataList[n].flag = false
+                mylist!.sections[sectionID].section.append(dataList[n])
             }
+            }
+            n += 1
         }
         self.dismiss(animated: true, completion: nil)
         reload()
     }
-   let addListBtn = UIButton()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    self.collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
-          dataList = allAddresses.resList(sectionID)!
-           let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: self.view.frame.width/2-10, height: 50)
-          collectionView.collectionViewLayout = flowLayout
-        addListBtn.setTitle("新規作成", for: .normal)
-        addListBtn.layer.cornerRadius = 15
-        addListBtn.backgroundColor = UIColor(hex:"FDC23E" , alpha:1 )
-         self.view.addSubview(addListBtn)
-        addListBtn.addTarget(self, action: #selector(addListBtnFunc(_:)), for: .touchUpInside)
-        // Do any additional setup after loading the view.
+    @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
+        var n = 0
+        for i in listBuf{
+            if(i){
+                try! realm.write{
+                    dataList.remove(at: n)
+                }
+                n -= 1
+            }
+            n += 1
+        }
+        listBuf = Array<Bool>()
+        for _ in 0..<dataList.count{
+            listBuf.append(false)
+        }
+        print(dataList)
+        self.collectionView.reloadData()
     }
-    @objc func addListBtnFunc(_ sender:Any){
+    @IBAction func createNewListBtn(_ sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "textFieldView") as! TextFieldViewController
         vc.reload = {()->Void in self.collectionView.reloadData()}
         vc.transitioningDelegate = self
@@ -86,9 +94,21 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
         vc.section = sectionID
         present(vc, animated: true, completion: nil)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    self.collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
+          dataList = allAddresses.resList(sectionID)!
+           let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: self.view.frame.width/2-10, height: 50)
+          collectionView.collectionViewLayout = flowLayout
+        for _ in 0..<dataList.count{
+            listBuf.append(false)
+        }
+        // Do any additional setup after loading the view.
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        addListBtn.frame = CGRect(x:(self.view.frame.width-80)/2,y:self.view.frame.height-50,width:80,height:40)
     }
     
     

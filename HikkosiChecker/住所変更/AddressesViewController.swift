@@ -178,6 +178,8 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         try! realm.write{                                    //チェックされてないリストから削除
         mylist!.sections[s].section.remove(at: n)
         }
+            progressive!.didAddressCount = checkedList!.taskCount()
+            progressive!.save()
         self.tableView.reloadData()        //Viewの更新
         }
     }
@@ -203,6 +205,8 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         try! realm.write{
             checkedList!.sections[s].section.remove(at: n)
         }
+            progressive!.didAddressCount = checkedList!.taskCount()
+            progressive!.save()
         self.tableView.reloadData()
         }
     }
@@ -273,9 +277,9 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     var mylist:MyAddresses?
     var checkedList:CheckedAddresses?
     var sectionData = SectionsData()
+    var mykey:MyKey?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mylist = realm.objects(MyAddresses.self).last
         checkedList = realm.objects(CheckedAddresses.self).last
         if(mylist == nil){
@@ -290,6 +294,9 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                 realm.add(checkedList!)
             }
         }
+        progressive!.didAddressCount = checkedList!.taskCount()
+        progressive!.allAddressCount = allAddresses.resAll()
+        progressive!.save()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

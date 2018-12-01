@@ -131,7 +131,7 @@ Au光
         })
         Realm.Configuration.defaultConfiguration = config*/
         let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
-        /*let realmURLs = [
+        let realmURLs = [
             realmURL,
             realmURL.appendingPathExtension("lock"),
             realmURL.appendingPathExtension("note"),
@@ -144,13 +144,14 @@ Au光
                 // handle error
             }
         }
-         UserDefaults.standard.removeObject(forKey: "Flag")*/
+         UserDefaults.standard.removeObject(forKey: "Flag")
          print(realmURL)
         
         let realm = try! Realm()
         if(UserDefaults.standard.object(forKey: "Flag") != nil){
             checkedObj = realm.objects(CheckedObj.self).first!
             uncheckedObj = realm.objects(UncheckedObj.self).first!
+            mykey = realm.objects(MyKey.self).last!
             allAddresses = realm.objects(AllAddresses.self).last!
         }else{
             UserDefaults.standard.set(true, forKey: "Flag")
@@ -165,8 +166,10 @@ Au光
             sections.append(section3)
             sections.append(section4)
             checkedObj = CheckedObj(value: [sections])
-            allAddresses.initData()
+            mykey = MyKey()
+            allAddresses.initData(mykey!)
             try! realm.write{
+                realm.add(mykey!)
                 realm.add(checkedObj!)
                 realm.add(uncheckedObj!)
                 realm.add(allAddresses)

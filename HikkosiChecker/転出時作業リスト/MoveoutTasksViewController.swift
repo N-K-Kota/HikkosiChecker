@@ -113,7 +113,8 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             uncheckedObj!.sectionobjList[path.section-5].taskList.append(task)
             checkedObj!.sectionobjList[path.section-5].taskList.remove(at: path.row)
         }
-        progressive!.ratio = RatioDatasource.returnRatio(uncheckedTaskCount:uncheckedObj!.taskCount(),checkedTaskCount:checkedObj!.taskCount())
+        progressive!.moveoutTasksCount = uncheckedObj!.taskCount()
+        progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
         progressive!.save()
         tableView.reloadData()
     }
@@ -124,9 +125,10 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         let task = uncheckedObj!.sectionobjList[path.section].taskList[path.row]  //チェックされたTaskを取り出す
         try! realm.write{
             checkedObj!.sectionobjList[path.section].taskList.append(task)
-             uncheckedObj!.sectionobjList[path.section].taskList.remove(at: path.row)  //アンチェックドリストから削除
+            uncheckedObj!.sectionobjList[path.section].taskList.remove(at: path.row)  //アンチェックドリストから削除
         }
-        progressive!.ratio = RatioDatasource.returnRatio(uncheckedTaskCount: uncheckedObj!.taskCount(),checkedTaskCount: checkedObj!.taskCount())
+        progressive!.moveoutTasksCount = uncheckedObj!.taskCount()
+        progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
         progressive!.save()
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
@@ -196,6 +198,9 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressive!.moveoutTasksCount = uncheckedObj!.taskCount()
+        progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
+        progressive!.save()
     }
     
     

@@ -20,9 +20,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImage2" translatesAutoresizingMaskIntoConstraints="NO" id="Orq-cf-UPO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-Xf-Hrn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-Xf-Hrn">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addresscell" id="Avu-KK-oUw" customClass="MyTableViewCell" customModule="HikkosiChecker" customModuleProvider="target">
@@ -43,7 +42,11 @@
                         <color key="backgroundColor" red="0.99215686270000003" green="0.76078431369999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Orq-cf-UPO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="27F-T9-qWa"/>
+                            <constraint firstItem="DYU-Xf-Hrn" firstAttribute="leading" secondItem="Orq-cf-UPO" secondAttribute="leading" id="4bX-KB-LsV"/>
                             <constraint firstItem="Orq-cf-UPO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="F13-G1-vaF"/>
+                            <constraint firstItem="DYU-Xf-Hrn" firstAttribute="trailing" secondItem="Orq-cf-UPO" secondAttribute="trailing" id="PKo-kh-EQn"/>
+                            <constraint firstItem="DYU-Xf-Hrn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TA7-rV-2zF"/>
+                            <constraint firstAttribute="bottom" secondItem="DYU-Xf-Hrn" secondAttribute="bottom" id="lj9-e2-mFw"/>
                             <constraint firstItem="Orq-cf-UPO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rf5-wb-HrV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Orq-cf-UPO" secondAttribute="bottom" id="xTm-yO-Oog"/>
                         </constraints>
@@ -91,11 +94,6 @@
                                                 <action selector="returnBtn:" destination="9ZR-j3-TZV" id="PRO-0C-tdn"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="追加" id="hW4-1G-EV8">
-                                            <connections>
-                                                <action selector="doneButton:" destination="9ZR-j3-TZV" id="qU0-o3-3iT"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -103,7 +101,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="19B-4i-3oU">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WpO-D2-jFq">
                                             <size key="itemSize" width="50" height="50"/>
@@ -126,13 +124,45 @@
                                             <outlet property="delegate" destination="9ZR-j3-TZV" id="XtJ-xx-ZfI"/>
                                         </connections>
                                     </collectionView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="j3E-s0-06W">
+                                        <rect key="frame" x="0.0" y="553" width="375" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="0BO-6P-ND3"/>
+                                        </constraints>
+                                        <items>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="5uq-Ij-ypb"/>
+                                            <barButtonItem title="新規作成" id="Wfv-EO-Lpj">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="createNewListBtn:" destination="9ZR-j3-TZV" id="Ow9-6C-Lof"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="dWu-69-igG"/>
+                                            <barButtonItem title="追加" id="scc-UH-1OB">
+                                                <connections>
+                                                    <action selector="doneButton:" destination="9ZR-j3-TZV" id="svy-Ic-Ih8"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Gr3-gi-KWl"/>
+                                            <barButtonItem title="削除" id="FqP-uR-InK">
+                                                <connections>
+                                                    <action selector="deleteBtn:" destination="9ZR-j3-TZV" id="rZH-0d-u5V"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="tJy-RS-5El"/>
+                                        </items>
+                                        <color key="barTintColor" red="0.99215686270000003" green="0.76078431369999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </toolbar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="19B-4i-3oU" secondAttribute="bottom" constant="60" id="7ql-o5-Cjd"/>
-                                    <constraint firstItem="19B-4i-3oU" firstAttribute="leading" secondItem="4c8-hT-wA3" secondAttribute="leading" id="Vub-tE-mS6"/>
-                                    <constraint firstAttribute="trailing" secondItem="19B-4i-3oU" secondAttribute="trailing" id="lti-68-leO"/>
-                                    <constraint firstItem="19B-4i-3oU" firstAttribute="top" secondItem="4c8-hT-wA3" secondAttribute="top" id="rIQ-Qh-GnV"/>
+                                    <constraint firstAttribute="bottom" secondItem="j3E-s0-06W" secondAttribute="bottom" id="Fkr-fJ-aEe"/>
+                                    <constraint firstAttribute="trailing" secondItem="j3E-s0-06W" secondAttribute="trailing" id="IJV-fB-hDy"/>
+                                    <constraint firstItem="19B-4i-3oU" firstAttribute="top" secondItem="4c8-hT-wA3" secondAttribute="top" id="JV1-OO-TzK"/>
+                                    <constraint firstItem="19B-4i-3oU" firstAttribute="trailing" secondItem="j3E-s0-06W" secondAttribute="trailing" id="K0u-bN-TR9"/>
+                                    <constraint firstItem="19B-4i-3oU" firstAttribute="bottom" secondItem="j3E-s0-06W" secondAttribute="top" id="NKf-8X-K8q"/>
+                                    <constraint firstItem="j3E-s0-06W" firstAttribute="leading" secondItem="4c8-hT-wA3" secondAttribute="leading" id="PgS-Ns-u3i"/>
+                                    <constraint firstItem="19B-4i-3oU" firstAttribute="leading" secondItem="j3E-s0-06W" secondAttribute="leading" id="SCN-Se-zLL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -155,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JB-uy-a3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-316" y="1378"/>
+            <point key="canvasLocation" x="-316" y="1377.6611694152925"/>
         </scene>
         <!--Set URL View Controller-->
         <scene sceneID="QJO-EL-ewq">
@@ -218,7 +248,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5p-hj-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1169" y="543"/>
+            <point key="canvasLocation" x="-1050" y="601"/>
         </scene>
         <!--戻る-->
         <scene sceneID="kT7-kZ-eHU">
@@ -527,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qd4-bh-eez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-239" y="349"/>
+            <point key="canvasLocation" x="-161" y="329"/>
         </scene>
         <!--転居時リスト-->
         <scene sceneID="PsG-v7-dBI">

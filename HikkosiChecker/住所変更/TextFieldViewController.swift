@@ -20,10 +20,14 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
             if(urlTextField.text != ""){
             address.url = urlTextField.text
             }
-            address.id = allAddresses.resID()
             try! realm.write{
+                address.id = mykey!.createKey()
                 allAddresses.resList(section!)!.append(address)
             }
+            progressive!.allAddressCount = allAddresses.resAll()
+            progressive!.save()
+            let vc = self.presentingViewController as! CollectionViewController
+            vc.listBuf.append(false)
             reload()
             self.dismiss(animated: true, completion: nil)
         }

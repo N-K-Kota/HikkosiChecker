@@ -11,6 +11,7 @@ var checkedObj:CheckedObj?
 var uncheckedObj:UncheckedObj?
 var progressive:Progressive?
 var allAddresses = AllAddresses()
+var mykey:MyKey?
 class TopPageViewController: UIViewController {
     @IBOutlet weak var plannedStack: UIStackView!
     @IBOutlet weak var listButton: UIButton!
@@ -72,6 +73,7 @@ class TopPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         plannedDateLabel.text = plannedDate.toString()
         leftDateLabel.text = plannedDate.leftDates()
+        progressive!.setRatio()
         progressView.setProgress(progressive!.ratio, animated: true)
         perProgressLabel.text = "\(progressView.progress*100)%"
     }

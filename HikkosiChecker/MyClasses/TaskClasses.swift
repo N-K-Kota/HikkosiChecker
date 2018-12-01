@@ -55,7 +55,7 @@ class Task:Object{                       //タスクのオブジェクト
 
 struct RatioDatasource{                            //完了した作業の割合を返すだけ（現在は転出作業のみ)
    static func returnRatio(uncheckedTaskCount:
-        Int,checkedTaskCount:Int)->Float{
-        return Float(checkedTaskCount)/Float(uncheckedTaskCount+checkedTaskCount)
+    Int,checkedTaskCount:Int,adressTaskCount:Int,checkedAdressTask:Int)->Float{
+        return Float(checkedTaskCount+checkedAdressTask)/Float(uncheckedTaskCount+checkedTaskCount+adressTaskCount)
     }
 }
