@@ -39,6 +39,8 @@
 		1FF6D85921B12AFB0083087A /* PrimaryKeyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85821B12AFB0083087A /* PrimaryKeyClass.swift */; };
 		1FF6D85D21B2221F0083087A /* EditMoveinTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85C21B2221F0083087A /* EditMoveinTasksViewController.swift */; };
 		1FF6D85F21B2229D0083087A /* NotesMoveinTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85E21B2229D0083087A /* NotesMoveinTasksViewController.swift */; };
+		1FF6D86221B254560083087A /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D86121B254560083087A /* AttributedString.swift */; };
+		1FF6D86621B27D150083087A /* AddMoveinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D86521B27D150083087A /* AddMoveinListViewController.swift */; };
 		49954432FF5FD14DAB0CAD76 /* Pods_HikkosiCheckerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BCD3E79D1DD8AAF28BB36E /* Pods_HikkosiCheckerTests.framework */; };
 		7DE4FC35687BA45B2844F06B /* Pods_HikkosiCheckerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E982829313C9D5E6B66CBC7 /* Pods_HikkosiCheckerUITests.framework */; };
 		EAF907F579C7108917C14983 /* Pods_HikkosiChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF4B4AC8376E276AB5904D3 /* Pods_HikkosiChecker.framework */; };
@@ -103,6 +105,8 @@
 		1FF6D85821B12AFB0083087A /* PrimaryKeyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryKeyClass.swift; sourceTree = "<group>"; };
 		1FF6D85C21B2221F0083087A /* EditMoveinTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoveinTasksViewController.swift; sourceTree = "<group>"; };
 		1FF6D85E21B2229D0083087A /* NotesMoveinTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMoveinTasksViewController.swift; sourceTree = "<group>"; };
+		1FF6D86121B254560083087A /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttributedString.swift; path = "/Users/kotanakamura/Library/Autosave Information/HikkosiChecker/HikkosiChecker/MyClasses/AttributedString.swift"; sourceTree = "<absolute>"; };
+		1FF6D86521B27D150083087A /* AddMoveinListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoveinListViewController.swift; sourceTree = "<group>"; };
 		481F1104A599504341C68C0C /* Pods-HikkosiChecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiChecker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker.release.xcconfig"; sourceTree = "<group>"; };
 		62B943436A9A1975085D11E2 /* Pods-HikkosiCheckerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerTests/Pods-HikkosiCheckerTests.release.xcconfig"; sourceTree = "<group>"; };
 		87E6DFAF21E21D63BFD17980 /* Pods-HikkosiCheckerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerTests/Pods-HikkosiCheckerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		1F52629521A6B78F0067BC45 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				1FF6D86121B254560083087A /* AttributedString.swift */,
 				1F88550621AD917600CFB980 /* CustomCollectionViewCell.swift */,
 				1FF6D85821B12AFB0083087A /* PrimaryKeyClass.swift */,
 				1FB1410B21AB8FE700BAFD44 /* Addreeses.swift */,
@@ -193,6 +198,7 @@
 		1F52629821A6B85C0067BC45 /* 転入時作業リスト */ = {
 			isa = PBXGroup;
 			children = (
+				1FF6D86521B27D150083087A /* AddMoveinListViewController.swift */,
 				1FF6D85C21B2221F0083087A /* EditMoveinTasksViewController.swift */,
 				1FF6D85E21B2229D0083087A /* NotesMoveinTasksViewController.swift */,
 				1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */,
@@ -520,6 +526,8 @@
 				1F52629A21A79FF70067BC45 /* SettingViewController.swift in Sources */,
 				1F39E7E821AFAE7D0071BDC0 /* TextFieldViewController.swift in Sources */,
 				1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */,
+				1FF6D86621B27D150083087A /* AddMoveinListViewController.swift in Sources */,
+				1FF6D86221B254560083087A /* AttributedString.swift in Sources */,
 				1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */,
 				1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */,
 				1F88550521AD80EE00CFB980 /* CollectionViewController.swift in Sources */,

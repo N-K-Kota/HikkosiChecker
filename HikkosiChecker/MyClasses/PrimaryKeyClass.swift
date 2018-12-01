@@ -16,3 +16,10 @@ class MyKey:Object{
         return id
     }
 }
+class TaskKey:Object{
+    @objc dynamic var id = -1
+    func createKey()->Int{
+        id += 1
+        return id
+    }
+}

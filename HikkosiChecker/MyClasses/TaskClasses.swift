@@ -38,7 +38,8 @@ class MoveinList:Object{
     func taskCount()->Int{               //タスクの数を返す
         return taskList.count
     }
-    func dataInit(){
+    func dataInit(taskKey:TaskKey){
+        let realm = try! Realm()
         let datas = [   //[タイトル,ポイント,持ち物]
             ["免許の書き換え","お近くの警察署、運転免許更新センター、運転免許試験場で手続きができます。\n新しい住所を証明できるものがあれば手続きできますが、マイナンバーの通知カードではできないので注意が必要です。","・運転免許証\n・新しい住所を証明できる物（住民票、健康保険証、公的機関からの郵送物）"],
             ["インターネット回線の契約","",""],
@@ -51,6 +52,9 @@ class MoveinList:Object{
             task.task = i[0]
             task.point = i[1]
             task.requirement = i[2]
+            try! realm.write{
+            task.id = taskKey.createKey()
+            }
             taskList.append(task)
         }
     }
@@ -72,6 +76,10 @@ class Task:Object{                       //タスクのオブジェクト
     @objc dynamic var requirement:String = ""
     @objc dynamic var memo:String? = nil
     @objc dynamic var canRemove:Bool = false
+    @objc dynamic var id:Int = 0
+    override static func primaryKey()->String?{
+        return "id"
+    }
 }
 
 struct RatioDatasource{                            //完了した作業の割合を返すだけ（現在は転出作業のみ)

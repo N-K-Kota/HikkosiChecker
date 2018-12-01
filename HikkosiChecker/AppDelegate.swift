@@ -15,17 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func initData()->List<Sectionobj>{
+        let taskKey = TaskKey()
         let task1 = Task()
         task1.task = "持ち物の分類"
         task1.point = "引っ越しは不用品を処分する絶好の機会です。一年以上使っていないものは基本的に売るか捨てるかすることをお勧めします。"
-        
+        task1.id = taskKey.createKey()
         let task2 = Task()
         task2.task = "粗大ゴミの申し込み"
         task2.point = "市区町村によってゴミの出し方、処分費用は変わるので確認しましょう。\n粗大ゴミは月一回しか出せない市区町村も多いので早めに出せる日にちを確認することが必要です。\nクリーンセンターなどに持ち込みをすると費用が抑えられることもありますが、その場合も予約が必要です。"
+        task2.id = taskKey.createKey()
         let task3 = Task()
         task3.task = "ゴミ出し曜日の確認"
-        let task4 = Task(value:["住居の解約届","","",nil,false])
-        let task5 = Task(value:["引っ越し業者を決める","業者によって料金が大きく変わることがあるので複数の業者を比較しましょう。\n一括見積もりサイトを利用すると便利です。","",nil,false])
+        task3.id = taskKey.createKey()
+        let task4 = Task(value:["住居の解約届","","",nil,false,taskKey.createKey()])
+        let task5 = Task(value:["引っ越し業者を決める","業者によって料金が大きく変わることがあるので複数の業者を比較しましょう。\n一括見積もりサイトを利用すると便利です。","",nil,false,taskKey.createKey()])
         let task6 = Task(value:["引越し先の下見、採寸","""
 B1☆下見の際のポイント
 B2◎日当たり、湿度
@@ -56,7 +59,7 @@ B1☆採寸のポイント
 ""","""
 ・シャーペン(見取り図などに書き込めるもの)
 ・スマホ（メモ、カメラに使う）
-""",nil,false])
+""",nil,false,taskKey.createKey()])
         let task7 = Task(value:["家具などのの売却方法、業者を決める","""
 主な売却方法は三つあります。
 専門店に売却
@@ -66,7 +69,7 @@ B1☆採寸のポイント
 オークション、フリマで売却
 梱包、郵送、購入者との連絡など、手間がかかるが幅広く売却できる利点がある。
 トラブルが起こっても自己責任で対処する必要があり、時間に余裕を持って売却しなければならない。
-""","",nil,false])
+""","",nil,false,taskKey.createKey()])
         let task8 = Task(value:["インターネット回線の解約・移転申し込み","""
 インターネット回線の解約・移転申し込み
 インターネットの新規契約をするとキャッシュバックなど特典がつくことがありお得ですが、解約の際、違約金がかかる場合があったりプロバイダのメールアドレスが使えなくなることがあります。プロバイダが回線も提供していることが多いですがそうでない場合はプロバイダと回線業者、両方の契約が必要となります。
@@ -74,14 +77,14 @@ B1☆採寸のポイント
 Nuro光
 Au光
 コラボ光
-""","",nil,false])
-        let task9 = Task(value:["家具の売却","","",nil,false])
-        let task10 = Task(value:["使用頻度の低い荷物を梱包","","",nil,false])
-        let task11 = Task(value:["郵便の転送届け","","",nil,false])
-        let task12 = Task(value:["電気の解約","","",nil,false])
-        let task13 = Task(value:["ガスの解約","","",nil,false])
-        let task14 = Task(value:["水道の停止","","",nil,false])
-        let task15 = Task(value:["荷物の梱包、郵送","","",nil,false])
+""","",nil,false,taskKey.createKey()])
+        let task9 = Task(value:["家具の売却","","",nil,false,taskKey.createKey()])
+        let task10 = Task(value:["使用頻度の低い荷物を梱包","","",nil,false,taskKey.createKey()])
+        let task11 = Task(value:["郵便の転送届け","","",nil,false,taskKey.createKey()])
+        let task12 = Task(value:["電気の解約","","",nil,false,taskKey.createKey()])
+        let task13 = Task(value:["ガスの解約","","",nil,false,taskKey.createKey()])
+        let task14 = Task(value:["水道の停止","","",nil,false,taskKey.createKey()])
+        let task15 = Task(value:["荷物の梱包、郵送","","",nil,false,taskKey.createKey()])
         let task16 = Task(value:["役所での手続き(転出届・健康保険の資格喪失など)","""
 　　国民健康保険の場合は健康保険の資格喪失手続きが必要です
 　　社会保険の場合は会社に届ければOKです
@@ -90,8 +93,11 @@ Au光
  印鑑
  健康保険証
  
-""",nil,false])
-        
+""",nil,false,taskKey.createKey()])
+        let realm = try! Realm()
+        try! realm.write{
+            realm.add(taskKey)
+        }
         let section1 = List<Task>()
         section1.append(task1)
         section1.append(task2)

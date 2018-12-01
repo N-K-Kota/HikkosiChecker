@@ -12,37 +12,11 @@ class NotesTableViewController: UITableViewController {
     var task:Task?
     var points = NSMutableAttributedString()   //チェックポイント欄の文章が入る
     var requirements = NSMutableAttributedString()  //必要なもの欄の文章が入る
+    let attrClass = CustomAttrStr()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        let attrB2:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 4))]  //太字,中くらいの大きさの文字
-        let attrB1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 5))]  //太字、一番大きな文字
-        let attr = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 1)] //普通の文字
-        let pointStr = task!.point.components(separatedBy: "\n") //改行ごとに分けて装飾する
-        for i in pointStr{   //チェックポイント欄の文章を装飾する
-            if(String(i.prefix(2)) == "B1"){ //装飾文字の作成
-                points.append(NSAttributedString(string:String(i.suffix(i.count-2)), attributes:attrB1))
-                points.append(NSAttributedString(string: "\n"))
-            }else if(String(i.prefix(2)) == "B2"){
-                points.append(NSAttributedString(string: String(i.suffix(i.count-2)), attributes: attrB2))
-            }else{         //普通の文字
-                points.append(NSAttributedString(string: i,attributes:attr))
-            }
-             points.append(NSAttributedString(string: "\n"))
-        }
-        let requireStr = task!.requirement.components(separatedBy: "\n")
-        for i in requireStr{         //必要なもの欄の文章を装飾する
-            if(String(i.prefix(2)) == "B1"){ //装飾文字の作成
-                requirements.append(NSAttributedString(string:String(i.suffix(i.count-2)), attributes:attrB1))
-            }else if(String(i.prefix(2)) == "B2"){
-                requirements.append(NSAttributedString(string: String(i.suffix(i.count-2)), attributes: attrB2))
-            }else{         //普通の文字
-                requirements.append(NSAttributedString(string: i))
-            }
-            requirements.append(NSAttributedString(string: "\n"))
-        }
-        
+        points = attrClass.resAttrStr(task!.point)
+        requirements = attrClass.resAttrStr(task!.requirement)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -72,18 +46,9 @@ class NotesTableViewController: UITableViewController {
         headerView.backgroundColor = .clear
         let titleLabel = UILabel()
         if(section == 0){
-            let shadow = NSShadow()
-            shadow.shadowOffset = CGSize(width:1, height:1)
-            shadow.shadowBlurRadius = 4
-            shadow.shadowColor = UIColor(hex: "073D6A", alpha: 1)
-            let point = NSAttributedString(string: "☆チェックポイント", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hex: "0A60AA", alpha: 1),NSAttributedString.Key.shadow:shadow])
-            titleLabel.attributedText = point
+            titleLabel.attributedText = attrClass.titleForPoints
         }else if(section == 1){
-            let shadow = NSShadow()
-            shadow.shadowOffset = CGSize(width:1, height:1)
-            shadow.shadowColor = UIColor(hex: "073D6A", alpha: 1)
-            let requirement = NSAttributedString(string: "☆必要なもの", attributes:[NSAttributedString.Key.foregroundColor:UIColor(hex: "0A60AA", alpha: 1),NSAttributedString.Key.shadow:shadow])
-            titleLabel.attributedText = requirement
+            titleLabel.attributedText = attrClass.titleForRequires
         }
         titleLabel.frame = CGRect(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height)
         headerView.addSubview(titleLabel)

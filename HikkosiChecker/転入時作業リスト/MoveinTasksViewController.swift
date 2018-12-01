@@ -27,7 +27,6 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.setData()
             cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
             cell.label.text = moveinList!.taskList[indexPath.row].task
-            print(moveinList!.taskList[indexPath.row].task)
             cell.accessoryType = .detailButton
             cell.btn.addTarget(self, action: #selector(checkFunc(_:)), for: .touchDown)
         }else if(indexPath.section == 1){  //ボタン
@@ -45,6 +44,17 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         return cell
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toMoveinNotes"){
+            let vc = segue.destination as! NotesMoveinTasksViewController
+            vc.task = self.task
+        }else if(segue.identifier == "toMoveinEdit"){
+            let vc = segue.destination as! EditMoveinTasksViewController
+            vc.moveinList = moveinList
+            vc.reload = {()->Void in self.tableView.reloadData()}
+            vc.didmoveinList = didmoveinList
+        }
+    }
     @objc func checkFunc(_ sender:Any){
         let btn = sender as! CustomButton
         let task = moveinList!.taskList[btn.index.row]
@@ -52,7 +62,8 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             moveinList!.taskList.remove(at: btn.index.row)
             didmoveinList!.taskList.append(task)
         }
-        
+        progressive!.moveinTasksCount = moveinList!.taskList.count
+        progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
         let mycell = self.tableView.cellForRow(at: btn.index) as! MyTableViewCell
         let scale = UIScreen.main.scale
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
@@ -89,6 +100,8 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             didmoveinList!.taskList.remove(at: btn.index.row)
             moveinList!.taskList.append(task)
         }
+        progressive!.moveinTasksCount = moveinList!.taskList.count
+        progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
         self.tableView.reloadData()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -107,6 +120,11 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
     }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if(indexPath.section == 0){
+            self.task = moveinList!.taskList[indexPath.row]
+        }else{
+            self.task = didmoveinList!.taskList[indexPath.row]
+        }
         performSegue(withIdentifier: "toMoveinNotes", sender: nil)
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -118,20 +136,24 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
     var moveinList:MoveinList?
     var didmoveinList:DidMoveinList?
     let realm = try! Realm()
+    var task:Task?
+    var taskKey:TaskKey?
     override func viewDidLoad() {
         super.viewDidLoad()
+          taskKey = realm.objects(TaskKey.self).first!
           moveinList = realm.objects(MoveinList.self).last  //初期化
           didmoveinList = realm.objects(DidMoveinList.self).last
         if( moveinList == nil){ //オブジェクトがない場合
-            print("setObj")
              moveinList = MoveinList()
-             moveinList!.dataInit()
+            moveinList!.dataInit(taskKey:taskKey!)
              didmoveinList = DidMoveinList()
             try! realm.write{
                 realm.add(moveinList!)
                 realm.add(didmoveinList!)
             }
         }
+        progressive!.moveinTasksCount = moveinList!.taskList.count
+        progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
         // Do any additional setup after loading the view.
     }
     
