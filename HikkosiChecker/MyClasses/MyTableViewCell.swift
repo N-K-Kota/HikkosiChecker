@@ -21,7 +21,9 @@ class MyTableViewCell: UITableViewCell {
         label.text = ""
         self.textLabel?.text = ""
         self.layer.cornerRadius = 0.0
+        self.layer.opacity = 1
         self.backgroundColor = UIColor(white: 1, alpha: 1)
+        self.accessoryType = .none
         for i in self.subviews{
             if(type(of:i)==type(of:CustomButton())){
             i.removeFromSuperview()

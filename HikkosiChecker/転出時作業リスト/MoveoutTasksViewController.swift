@@ -132,7 +132,6 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         progressive!.save()
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
-        let defview =  mycell.backgroundView
        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
                 sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
@@ -157,9 +156,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
                 sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
             })
         }, completion: {(bool:Bool) in
-                       sender.setImage(UIImage(named: "spacerect"), for: .normal)
                        self.tableView.reloadData()
-                       mycell.backgroundView =  defview
         })
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //チェックされたリストの表示、非表示を切り替えるセルを押された時のアクション
