@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F29177E219AC4EF001A3C9A /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29177D219AC4EF001A3C9A /* AddListViewController.swift */; };
 		1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */; };
 		1F291786219BBC99001A3C9A /* DeletableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291785219BBC99001A3C9A /* DeletableList.swift */; };
 		1F39E7E821AFAE7D0071BDC0 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E7E721AFAE7D0071BDC0 /* TextFieldViewController.swift */; };
 		1F39E7EA21B0BFD10071BDC0 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */; };
+		1F4F8AD921B388CB005CE25C /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8AD821B388CB005CE25C /* AddressData.swift */; };
+		1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */; };
 		1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52628E21A586FC0067BC45 /* TopPageViewController.swift */; };
 		1F52629121A67D070067BC45 /* Progressive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629021A67D070067BC45 /* Progressive.swift */; };
 		1F52629321A69F0A0067BC45 /* TaskClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629221A69F0A0067BC45 /* TaskClasses.swift */; };
@@ -24,7 +25,6 @@
 		1F88550521AD80EE00CFB980 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88550421AD80EE00CFB980 /* CollectionViewController.swift */; };
 		1F88550721AD917600CFB980 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88550621AD917600CFB980 /* CustomCollectionViewCell.swift */; };
 		1F8CA59F21A7EF1600D4CF34 /* plannedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */; };
-		1F8CA5A121A9798400D4CF34 /* DeleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CA5A021A9798400D4CF34 /* DeleteTableViewController.swift */; };
 		1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17421218BFEF9004316F3 /* AppDelegate.swift */; };
 		1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17423218BFEF9004316F3 /* AddressesViewController.swift */; };
 		1FA17427218BFEF9004316F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA17425218BFEF9004316F3 /* Main.storyboard */; };
@@ -40,7 +40,6 @@
 		1FF6D85D21B2221F0083087A /* EditMoveinTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85C21B2221F0083087A /* EditMoveinTasksViewController.swift */; };
 		1FF6D85F21B2229D0083087A /* NotesMoveinTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85E21B2229D0083087A /* NotesMoveinTasksViewController.swift */; };
 		1FF6D86221B254560083087A /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D86121B254560083087A /* AttributedString.swift */; };
-		1FF6D86621B27D150083087A /* AddMoveinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D86521B27D150083087A /* AddMoveinListViewController.swift */; };
 		49954432FF5FD14DAB0CAD76 /* Pods_HikkosiCheckerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BCD3E79D1DD8AAF28BB36E /* Pods_HikkosiCheckerTests.framework */; };
 		7DE4FC35687BA45B2844F06B /* Pods_HikkosiCheckerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E982829313C9D5E6B66CBC7 /* Pods_HikkosiCheckerUITests.framework */; };
 		EAF907F579C7108917C14983 /* Pods_HikkosiChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBF4B4AC8376E276AB5904D3 /* Pods_HikkosiChecker.framework */; };
@@ -67,11 +66,12 @@
 		05BCD3E79D1DD8AAF28BB36E /* Pods_HikkosiCheckerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikkosiCheckerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1701ACCB9A5860206B941EBE /* Pods-HikkosiChecker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiChecker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker.debug.xcconfig"; sourceTree = "<group>"; };
 		1E982829313C9D5E6B66CBC7 /* Pods_HikkosiCheckerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikkosiCheckerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F29177D219AC4EF001A3C9A /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationViewController.swift; sourceTree = "<group>"; };
 		1F291785219BBC99001A3C9A /* DeletableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableList.swift; sourceTree = "<group>"; };
 		1F39E7E721AFAE7D0071BDC0 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
 		1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
+		1F4F8AD821B388CB005CE25C /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
+		1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPresentationController.swift; sourceTree = "<group>"; };
 		1F52628E21A586FC0067BC45 /* TopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPageViewController.swift; sourceTree = "<group>"; };
 		1F52629021A67D070067BC45 /* Progressive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressive.swift; sourceTree = "<group>"; };
 		1F52629221A69F0A0067BC45 /* TaskClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskClasses.swift; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 		1F88550421AD80EE00CFB980 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		1F88550621AD917600CFB980 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F8CA59E21A7EF1600D4CF34 /* plannedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plannedDate.swift; sourceTree = "<group>"; };
-		1F8CA5A021A9798400D4CF34 /* DeleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewController.swift; sourceTree = "<group>"; };
 		1FA1741E218BFEF9004316F3 /* HikkosiChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikkosiChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA17421218BFEF9004316F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FA17423218BFEF9004316F3 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +105,6 @@
 		1FF6D85C21B2221F0083087A /* EditMoveinTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoveinTasksViewController.swift; sourceTree = "<group>"; };
 		1FF6D85E21B2229D0083087A /* NotesMoveinTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMoveinTasksViewController.swift; sourceTree = "<group>"; };
 		1FF6D86121B254560083087A /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttributedString.swift; path = "/Users/kotanakamura/Library/Autosave Information/HikkosiChecker/HikkosiChecker/MyClasses/AttributedString.swift"; sourceTree = "<absolute>"; };
-		1FF6D86521B27D150083087A /* AddMoveinListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoveinListViewController.swift; sourceTree = "<group>"; };
 		481F1104A599504341C68C0C /* Pods-HikkosiChecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiChecker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiChecker/Pods-HikkosiChecker.release.xcconfig"; sourceTree = "<group>"; };
 		62B943436A9A1975085D11E2 /* Pods-HikkosiCheckerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerTests/Pods-HikkosiCheckerTests.release.xcconfig"; sourceTree = "<group>"; };
 		87E6DFAF21E21D63BFD17980 /* Pods-HikkosiCheckerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikkosiCheckerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikkosiCheckerTests/Pods-HikkosiCheckerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,8 +147,6 @@
 				1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */,
 				1F73190721A3934100851BD4 /* NotesTableViewController.swift */,
 				1F797979218FE051004E56EA /* EditViewController.swift */,
-				1F29177D219AC4EF001A3C9A /* AddListViewController.swift */,
-				1F8CA5A021A9798400D4CF34 /* DeleteTableViewController.swift */,
 			);
 			path = "転出時作業リスト";
 			sourceTree = "<group>";
@@ -158,6 +154,8 @@
 		1F52629521A6B78F0067BC45 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */,
+				1F4F8AD821B388CB005CE25C /* AddressData.swift */,
 				1FF6D86121B254560083087A /* AttributedString.swift */,
 				1F88550621AD917600CFB980 /* CustomCollectionViewCell.swift */,
 				1FF6D85821B12AFB0083087A /* PrimaryKeyClass.swift */,
@@ -198,7 +196,6 @@
 		1F52629821A6B85C0067BC45 /* 転入時作業リスト */ = {
 			isa = PBXGroup;
 			children = (
-				1FF6D86521B27D150083087A /* AddMoveinListViewController.swift */,
 				1FF6D85C21B2221F0083087A /* EditMoveinTasksViewController.swift */,
 				1FF6D85E21B2229D0083087A /* NotesMoveinTasksViewController.swift */,
 				1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */,
@@ -514,8 +511,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4F8AD921B388CB005CE25C /* AddressData.swift in Sources */,
 				1F39E7EA21B0BFD10071BDC0 /* WebPageViewController.swift in Sources */,
-				1F8CA5A121A9798400D4CF34 /* DeleteTableViewController.swift in Sources */,
+				1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */,
 				1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */,
 				1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */,
 				1FF6D85D21B2221F0083087A /* EditMoveinTasksViewController.swift in Sources */,
@@ -526,7 +524,6 @@
 				1F52629A21A79FF70067BC45 /* SettingViewController.swift in Sources */,
 				1F39E7E821AFAE7D0071BDC0 /* TextFieldViewController.swift in Sources */,
 				1FA17424218BFEF9004316F3 /* AddressesViewController.swift in Sources */,
-				1FF6D86621B27D150083087A /* AddMoveinListViewController.swift in Sources */,
 				1FF6D86221B254560083087A /* AttributedString.swift in Sources */,
 				1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */,
 				1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */,
@@ -537,7 +534,6 @@
 				1FB1410C21AB8FE700BAFD44 /* Addreeses.swift in Sources */,
 				1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */,
 				1F88550721AD917600CFB980 /* CustomCollectionViewCell.swift in Sources */,
-				1F29177E219AC4EF001A3C9A /* AddListViewController.swift in Sources */,
 				1FF6D85F21B2229D0083087A /* NotesMoveinTasksViewController.swift in Sources */,
 				1F52629121A67D070067BC45 /* Progressive.swift in Sources */,
 				1FF6D85921B12AFB0083087A /* PrimaryKeyClass.swift in Sources */,

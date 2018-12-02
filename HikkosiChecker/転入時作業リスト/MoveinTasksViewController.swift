@@ -20,6 +20,9 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
     }
     
+    @IBAction func toTopFunc(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moveincell", for: indexPath) as! MyTableViewCell
         cell.btn.index = indexPath
@@ -35,6 +38,8 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             }else{
                 cell.textLabel?.text = "チェック済みリストを表示する"
             }
+            cell.layer.cornerRadius = 15
+            cell.backgroundColor = UIColor(hex: "BFF4FF", alpha: 0.7)
         }else{    //チェックされた
             cell.setData()
             cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
@@ -64,6 +69,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         progressive!.moveinTasksCount = moveinList!.taskList.count
         progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
+        progressive!.save()
         let mycell = self.tableView.cellForRow(at: btn.index) as! MyTableViewCell
         let scale = UIScreen.main.scale
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
@@ -102,6 +108,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         progressive!.moveinTasksCount = moveinList!.taskList.count
         progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
+        progressive!.save()
         self.tableView.reloadData()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,6 +161,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         progressive!.moveinTasksCount = moveinList!.taskList.count
         progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
+        progressive!.save()
         // Do any additional setup after loading the view.
     }
     

@@ -28,8 +28,6 @@ class TopPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             progressive = Progressive(0.0)
-            progressive!.read()
-            progressView.setProgress(progressive!.ratio, animated: false)
             perProgressLabel.text = "\(progressView.progress*100)%"
             plannedDate.readDate()
            plannedStack.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +71,7 @@ class TopPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         plannedDateLabel.text = plannedDate.toString()
         leftDateLabel.text = plannedDate.leftDates()
+        progressive!.read()
         progressive!.setRatio()
         progressView.setProgress(progressive!.ratio, animated: true)
         perProgressLabel.text = "\(progressView.progress*100)%"

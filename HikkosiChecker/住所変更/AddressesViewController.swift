@@ -67,14 +67,14 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "addresscell", for: indexPath) as! MyTableViewCell
         cell.btn.index = indexPath
-                if(indexPath.section < 4){
-                if(indexPath.row == 0){
+                if(indexPath.section < 4){    //チェックしてないリスト
+                if(indexPath.row == 0){       //セクションヘッダーの代わり(追加ボタンがつく)
                     cell.textLabel?.text = mylist!.sections[indexPath.section].title
                     let acView = CustomButton()
                     acView.setImage(UIImage(named: "plus"), for: .normal)
                     acView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
                     acView.index = indexPath
-                    acView.addTarget(self, action: #selector(accesoryTap(_:)), for: .touchUpInside)
+                    acView.addTarget(self, action: #selector(plusTap(_:)), for: .touchUpInside)
                     cell.accessoryView = acView
                     cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
                 }else{
@@ -86,8 +86,8 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                     cell.btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
                     cell.label.text = mylist!.sections[indexPath.section].section[indexPath.row-1].title
                 }
-            }else if(indexPath.section > 4){
-                    if(indexPath.row == 0){
+            }else if(indexPath.section > 4){   //チェックしたリスト
+                    if(indexPath.row == 0){    //セクションヘッダーの代わり(チェックしたリストにはボタンがつかない)
                         cell.textLabel?.text = checkedList!.sections[indexPath.section-5].title
                         cell.accessoryView = nil
                         cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
@@ -120,15 +120,11 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if(indexPath.section < 4){
             if(indexPath.row > 0){  //セルをクリックしたらURLのページへとぶ  unchecked
-                if let ur = mylist!.sections[indexPath.section].section[indexPath.row-1].url{
+                if let ur = mylist!.sections[indexPath.section].section[indexPath.row-1].url{ //urlがnilの時はURL入力ページを表示する
                     self.u = ur
                     self.webT = mylist!.sections[indexPath.section].section[indexPath.row-1].title
-                    
-                    print("url=\(ur)")
-                    print("webT=\(mylist!.sections[indexPath.section].section[indexPath.row-1].title)")
                     performSegue(withIdentifier: "toWeb", sender: nil)
                 }else{
-                    print("toSetURL")
                     
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "setURLView") as! SetURLViewController
                     vc.modalPresentationStyle = .custom //presentainControllerの設定
@@ -142,15 +138,13 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                 if let ur = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].url{
                     self.u = ur
                     self.webT = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].title
-                    print("url=\(ur)")
-                    print("webT=\(checkedList!.sections[indexPath.section-5].section[indexPath.row-1].title)")
+                
                     performSegue(withIdentifier: "toWeb", sender: nil)
                 }else{
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "setURLView") as! SetURLViewController
                     vc.modalPresentationStyle = .custom //presentainControllerの設定
                     vc.transitioningDelegate = self
                     vc.addressData = checkedList?.sections[indexPath.section-5].section[indexPath.row-1]
-                    print("toSetURL")
                     present(vc, animated: true, completion: nil)
                 }
             }
@@ -210,7 +204,10 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         self.tableView.reloadData()
         }
     }
-    @objc func accesoryTap(_ sender:Any){
+    @IBAction func toTopFunc(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @objc func plusTap(_ sender:Any){
         if(tableView.isEditing == true){
           self.tableView.setEditing(false, animated: false)
           deleteBtn.tintColor = UIColor(white: 1, alpha: 1)
@@ -276,13 +273,13 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     var realm = try! Realm()
     var mylist:MyAddresses?
     var checkedList:CheckedAddresses?
-    var sectionData = SectionsData()
-    var mykey:MyKey?
+    var sectionData = SectionsData()   //選択されたセクションの保存、セクションの初期化をする構造体
+    var mykey:MyKey?    //primaryKeyを計算するクラス
     override func viewDidLoad() {
         super.viewDidLoad()
         mylist = realm.objects(MyAddresses.self).last
         checkedList = realm.objects(CheckedAddresses.self).last
-        if(mylist == nil){
+        if(mylist == nil){              //初めて読み込むとき
             mylist = sectionData.initData()
             try! realm.write{
                 realm.add(mylist!)
@@ -294,12 +291,14 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                 realm.add(checkedList!)
             }
         }
-        progressive!.didAddressCount = checkedList!.taskCount()
-        progressive!.allAddressCount = allAddresses.resAll()
-        progressive!.save()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        progressive!.didAddressCount = checkedList!.taskCount() //作業達成度を記録する
+        progressive!.allAddressCount =  mylist!.taskCount()+checkedList!.taskCount()
+        progressive!.save()
+    }
 }
 

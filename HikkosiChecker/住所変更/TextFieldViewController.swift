@@ -12,12 +12,15 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
     let realm = try! Realm()
     var section:Int?
     var reload = {()->Void in}
+    @IBAction func returnBtn(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func doneBtn(_ sender: Any) {
-        if(titleTextField.text != nil && titleTextField.text != ""){
+        if(titleTextField.text != nil && titleTextField.text != ""){ //空の時は何もしない
             let task = [titleTextField.text,urlTextField.text]
             let address = Address()
             address.title = task[0]!
-            if(urlTextField.text != ""){
+            if(urlTextField.text != ""){//空白を入れたくない
             address.url = urlTextField.text
             }
             try! realm.write{
@@ -27,7 +30,7 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
             progressive!.allAddressCount = allAddresses.resAll()
             progressive!.save()
             let vc = self.presentingViewController as! CollectionViewController
-            vc.listBuf.append(false)
+            vc.addressBuffer.buffer.append(false)
             reload()
             self.dismiss(animated: true, completion: nil)
         }

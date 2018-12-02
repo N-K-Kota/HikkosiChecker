@@ -37,13 +37,12 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func resetAppFunc(_ sender: UIButton) {
-        let standard = UserDefaults.standard
+        /*let standard = UserDefaults.standard
         standard.removeObject(forKey: PlannedDate.key)
-        standard.removeObject(forKey: Progressive.key)
         standard.removeObject(forKey: "Flag")
         try! realm.write{
             realm.deleteAll()
-        }
+        }*/
     }
     /*
     // MARK: - Navigation

@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-class Progressive{              //progressViewのデータ格納と、UserDeaultsからの保存、読み込みするクラス
+struct Progressive{              //progressViewのデータ格納と、UserDeaultsからの保存、読み込みするクラス
     var ratio:Float = 0.0
-    static let key = "Ratio"
     var moveoutTasksCount = 0
     var didmoveoutTasksCount = 0
     var didAddressCount = 0
@@ -21,14 +20,32 @@ class Progressive{              //progressViewのデータ格納と、UserDeault
         self.ratio = ratio
     }
     func save(){
-        UserDefaults.standard.set(ratio, forKey: Progressive.key)
+        UserDefaults.standard.set(moveoutTasksCount,forKey:"moveoutTasksCount")
+        UserDefaults.standard.set(didmoveoutTasksCount,forKey:"didmoveoutTasksCount")
+        UserDefaults.standard.set(didAddressCount, forKey: "didAddressCount")
+        UserDefaults.standard.set(allAddressCount, forKey: "allAddressCount")
+        UserDefaults.standard.set(moveinTasksCount, forKey: "moveinTasksCount")
+        UserDefaults.standard.set(didmoveinTasksCount, forKey: "didmoveinTasksCount")
     }
-    func read(){
-        if let r = UserDefaults.standard.object(forKey: Progressive.key){
-            ratio = r as! Float
+    mutating func read(){
+        if(UserDefaults.standard.object(forKey: "moveinTasksCount") != nil){
+        self.moveinTasksCount = UserDefaults.standard.object(forKey: "moveinTasksCount") as! Int
+        self.didmoveinTasksCount = UserDefaults.standard.object(forKey: "didmoveinTasksCount") as! Int
+        self.moveoutTasksCount = UserDefaults.standard.object(forKey:"moveoutTasksCount" ) as! Int
+        self.didmoveoutTasksCount = UserDefaults.standard.object(forKey:"didmoveoutTasksCount") as! Int
+        self.allAddressCount = UserDefaults.standard.object(forKey: "allAddressCount") as! Int
+        self.didAddressCount = UserDefaults.standard.object(forKey: "didAddressCount") as! Int
         }
     }
-    func setRatio(){
+    func resetKey(){
+        UserDefaults.standard.removeObject(forKey: "moveinTasksCount")
+        UserDefaults.standard.removeObject(forKey: "didmoveinTasksCount")
+        UserDefaults.standard.removeObject(forKey:"moveoutTasksCount" )
+        UserDefaults.standard.removeObject(forKey:"didmoveoutTasksCount")
+        UserDefaults.standard.removeObject(forKey: "allAddressCount")
+        UserDefaults.standard.removeObject(forKey: "didAddressCount")
+    }
+    mutating func setRatio(){
         if(moveoutTasksCount+didmoveoutTasksCount+moveinTasksCount+didmoveinTasksCount+allAddressCount == 0){
             ratio = 0
         }else{

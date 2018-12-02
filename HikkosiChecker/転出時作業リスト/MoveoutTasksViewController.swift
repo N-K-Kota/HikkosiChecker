@@ -98,7 +98,6 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             }else{
                 cell.textLabel?.text = "チェックしたリストを表示する"
             }
-            cell.accessoryType = .none
             cell.layer.cornerRadius = 15
             cell.backgroundColor = UIColor(hex: "BFF4FF", alpha: 0.7)
         }

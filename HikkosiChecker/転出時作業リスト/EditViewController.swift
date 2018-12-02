@@ -9,75 +9,80 @@
 import UIKit
 import RealmSwift
 
-class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIViewControllerTransitioningDelegate {
+class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     
-    @objc func addButton(_ sender: UIButton) {
-        let nvc = self.storyboard?.instantiateViewController(withIdentifier: "AddListViewController") as! AddListViewController
-        nvc.modalPresentationStyle = .custom
-        nvc.transitioningDelegate = self
-        nvc.reloadFunc = {
-            self.tableView.reloadData()
-        }
-        self.present(nvc,animated: true,completion: nil)
-    }
+    @IBOutlet weak var textField: UITextField!
     
-    @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DeleteTableView") as! DeleteTableViewController
-        vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = self
-        vc.reloadFunc = {
-            self.tableView.reloadData()
+    /*@IBAction func deleteBtn(_ sender: UIBarButtonItem) {
+        
+        for i in idList{
+            var f = false
+            label:for v in uncheckedObj!.sectionobjList{
+                
+                var n = 0
+                   for z in v.taskList{
+                    
+                       if(i == z.id){
+                        try! realm.write{
+                            v.taskList.remove(at: n)
+                        }
+                        f = true
+                        break label
+                      }
+                    n += 1
+                   }
+            }
+            if(!f){
+            loop:for v in checkedObj!.sectionobjList{
+                var n = 0
+                for z in v.taskList{
+                    
+                    if(i == z.id){
+                        try! realm.write{
+                            v.taskList.remove(at: n)
+                        }
+                        break loop
+                    }
+                    n += 1
+                }
+              }
+            }
         }
-        self.present(vc,animated: true,completion: nil)
-    }
-    @IBOutlet weak var toolBar: UIToolbar!
+        idList = Array<Int>()
+        self.tableView.reloadData()
+    }*/
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CustomPresentationViewController(presentedViewController:presented,presenting:presenting)
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section>4){
-            if(checkedObj!.watchable){  //チェックしたリストを表示
-                return checkedObj!.sectionobjList[section-5].taskList.count
-            }else{
-                
-            }
-        }else if(section<4){
-            return uncheckedObj!.sectionobjList[section].taskList.count
+        if(section>3){
+                return checkedObj!.sectionobjList[section-4].taskList.count
         }else{
-            return 1
+            return uncheckedObj!.sectionobjList[section].taskList.count
         }
-       return 0
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-            if(checkedObj!.watchable){
+           /* if(checkedObj!.watchable){
                 return checkedObj!.sectionobjList.count + uncheckedObj!.sectionobjList.count + 1
             }else{
                 return uncheckedObj!.sectionobjList.count + 1
-        }
+        }*/
+       return checkedObj!.sectionobjList.count + uncheckedObj!.sectionobjList.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section < 4){
             if(uncheckedObj!.sectionobjList[section].taskList.count > 0){
             return uncheckedObj!.sectionobjList[section].title
             }
-        }else if(section > 4){
-            if(checkedObj!.sectionobjList[section-5].taskList.count > 0){
-             return checkedObj!.sectionobjList[section-5].title
+        }else{
+            if(checkedObj!.sectionobjList[section-4].taskList.count > 0){
+             return checkedObj!.sectionobjList[section-4].title
             }
         }
             return ""
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section == 4){
-            try! realm.write{
-                checkedObj!.watchable = !checkedObj!.watchable
-            }
-            tableView.reloadData()
-        }
-    }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height:20 ))
         footerView.backgroundColor = UIColor.clear
@@ -85,62 +90,94 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editcell", for: indexPath) as! MyTableViewCell
-        if(indexPath.section < 4){
-            cell.setData()
-            cell.label.text = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task
-            cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
-            cell.btn.index = indexPath
-            cell.btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
-        }else if(indexPath.section > 4){
-            cell.setData()
-            cell.label.text = checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task
-            cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
-            cell.btn.index = indexPath
-            cell.btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
-        }else{
-            if(checkedObj!.watchable){
-                cell.textLabel!.text = "非表示にする"
+        var task = Task()
+            if(indexPath.section < 4){
+               task = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row]
             }else{
-                cell.textLabel!.text = "表示する"
+               task = checkedObj!.sectionobjList[indexPath.section-4].taskList[indexPath.row]
             }
-            cell.layer.cornerRadius = 15
-            cell.accessoryType = .none
-            cell.backgroundColor = UIColor(red: 251/255, green: 232/255, blue: 153/255, alpha: 1)
-        }
+            if(task.canRemove){
+                cell.setData()
+                cell.label.text = task.task
+                cell.btn.primaryKey = task.id
+                cell.btn.index = indexPath
+                cell.btn.addTarget(self, action: #selector(clickedAction(_:)), for: .touchUpInside)
+                cell.btn.setImage(UIImage(named:"deleteImg"), for: .normal)
+            }else{
+                cell.textLabel!.text = task.task
+            }
         return cell
     }
     @objc func clickedAction(_ sender:Any){
         let btn = sender as! CustomButton
-        if(btn.checkedFlag){
-            btn.setImage(UIImage(named: "spacerect"), for: .normal)
-            btn.checkedFlag = false
+        let index = btn.index
+       let id = btn.primaryKey
+        if(index.section < 4){
+            var n = 0
+            for i in uncheckedObj!.sectionobjList[index.section].taskList{
+                if(i.id == id){
+                    try! realm.write{
+                        uncheckedObj!.sectionobjList[index.section].taskList.remove(at: n)
+                    }
+                }
+                n += 1
+            }
+            
+            
         }else{
-            btn.setImage(UIImage(named: "checkFrame"), for: .normal)
-            btn.checkedFlag = true
+            var n = 0
+            for i in checkedObj!.sectionobjList[index.section].taskList{
+                if(i.id == id){
+                    try! realm.write{
+                        checkedObj!.sectionobjList[index.section].taskList.remove(at: n)
+                    }
+                }
+                n += 1
+            }
+        
         }
+        let cell = tableView.cellForRow(at: btn.index)
+        UIView.animate(withDuration: 0.5, animations: {
+            cell!.layer.opacity = 0
+            }, completion: {(bool:Bool) in
+                self.tableView.reloadData()
+        })
     }
-    var checkedIndexes = Array<IndexPath>()
-    var addedList:String?
     let realm = try! Realm()
+    var idList = Array<Int>()
+    var taskKey:TaskKey?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-         toolBar.frame = CGRect(x: 0, y: UIScreen.main.bounds.height-80, width: UIScreen.main.bounds.width, height: 80)
-        let addbtn = UIButton()
-        addbtn.frame = CGRect(x: (UIScreen.main.bounds.width-180)/2, y: (UIScreen.main.bounds.height-120), width: 180, height: 40)
-        addbtn.layer.cornerRadius = 15
-        addbtn.layer.shadowColor = UIColor.black.cgColor
-        addbtn.layer.shadowOpacity = 0.4
-        addbtn.layer.shadowOffset = CGSize(width: 3, height: 3)
-        addbtn.layer.shadowRadius = 12
-        addbtn.backgroundColor = UIColor(red: 147/255, green: 207/255, blue: 245/255, alpha: 1)
-        addbtn.setTitle("リストに追加", for: .normal)
-        addbtn.addTarget(self, action: #selector(addButton(_:)), for: .touchUpInside)
-        self.view.addSubview(addbtn)
+        textField.delegate = self
+        taskKey = realm.objects(TaskKey.self).first!
+        textField.returnKeyType = .done
+        textField.backgroundColor = UIColor(hex: "FDC23E", alpha: 0.7)
+        textField.attributedPlaceholder = NSAttributedString(string: "+ リストに追加", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
         // Do any additional setup after loading the view.
     }
     
-
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if(textField.text != nil && textField.text != ""){
+            let task = Task()
+            task.task = textField.text!
+            task.canRemove = true
+            try! realm.write{
+                task.id = taskKey!.createKey()
+                uncheckedObj!.sectionobjList.last!.taskList.append(task)
+            }
+            textField.text = nil
+            tableView.reloadData()
+            idList = Array<Int>()
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textField.resignFirstResponder()
+    }
     /*
     // MARK: - Navigation
 

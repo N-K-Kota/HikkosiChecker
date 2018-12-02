@@ -150,6 +150,12 @@ Au光
                 // handle error
             }
         }
+        UserDefaults.standard.removeObject(forKey: "moveinTasksCount")
+        UserDefaults.standard.removeObject(forKey: "didmoveinTasksCount")
+        UserDefaults.standard.removeObject(forKey:"moveoutTasksCount" )
+        UserDefaults.standard.removeObject(forKey:"didmoveoutTasksCount")
+        UserDefaults.standard.removeObject(forKey: "allAddressCount")
+        UserDefaults.standard.removeObject(forKey: "didAddressCount")
          UserDefaults.standard.removeObject(forKey: "Flag")
          print(realmURL)
         

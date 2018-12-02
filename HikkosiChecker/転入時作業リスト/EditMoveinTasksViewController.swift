@@ -16,32 +16,7 @@ class EditMoveinTasksViewController: UIViewController,UITableViewDelegate,UITabl
         self.dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var textField: UITextField!
-    @IBAction func delteBtnFunc(_ sender: UIBarButtonItem) {
-        for i in checkedIDList{
-            var n = 0
-            for z in moveinList!.taskList{ //チェックしてないリストから探す
-                if(z.id == i){
-                    try! realm.write{
-                        moveinList!.taskList.remove(at:n)
-                    }
-                    break
-                }
-                n += 1
-            }
-            n = 0
-            for z in didmoveinList!.taskList{ //チェック済みリストから探す
-                if(z.id == i){
-                    try! realm.write{
-                        didmoveinList!.taskList.remove(at:n)
-                    }
-                    break
-                }
-                n += 1
-            }
-        }
-        checkedIDList = Array<Int>()
-        tableView.reloadData()
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
             return moveinList!.taskList.count
@@ -52,48 +27,41 @@ class EditMoveinTasksViewController: UIViewController,UITableViewDelegate,UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editmoveinCell",for:indexPath) as! MyTableViewCell
+        var task:Task
         if(indexPath.section == 0){
-            if(moveinList!.taskList[indexPath.row].canRemove){//
-                cell.setData()
-                cell.label.text = moveinList!.taskList[indexPath.row].task
-                cell.btn.addTarget(self, action: #selector(clickFunc(_:)), for: .touchDown)
-                if(cell.btn.checkedFlag){
-                }else{
-                    cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
-                }
-                cell.btn.primaryKey = moveinList!.taskList[indexPath.row].id
-            }else{
-                cell.textLabel!.text = moveinList!.taskList[indexPath.row].task
-            }
-            
+            task = moveinList!.taskList[indexPath.row]
         }else{
-            if(didmoveinList!.taskList[indexPath.row].canRemove){//
-                cell.setData()
-                cell.label.text = didmoveinList!.taskList[indexPath.row].task
-                cell.btn.addTarget(self, action: #selector(clickFunc(_:)), for: .touchDown)
-                if(cell.btn.checkedFlag){
-                }else{
-                    cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
-                }
-                cell.btn.primaryKey = didmoveinList!.taskList[indexPath.row].id
-            }else{
-                cell.textLabel!.text = didmoveinList!.taskList[indexPath.row].task
-            }
+            task = didmoveinList!.taskList[indexPath.row]
+        }
+        if(task.canRemove){
+            cell.setData()
+            cell.label.text = task.task
+            cell.btn.index = indexPath
+            cell.btn.addTarget(self, action: #selector(clickFunc(_:)), for: .touchDown)
+            cell.btn.setImage(UIImage(named: "deleteImg"), for: .normal)
+        }else{
+            cell.textLabel!.text = task.task
         }
         return cell
     }
     @objc func clickFunc(_ sender:Any){
         let btn = sender as! CustomButton
-        if(btn.checkedFlag){
-            btn.checkedFlag = false
-            let x = checkedIDList.index(of:btn.primaryKey)
-            checkedIDList.remove(at: x!)
-            btn.setImage(UIImage(named: "spacerect"), for: .normal)
+        let index = btn.index
+        let cell = tableView.cellForRow(at: index)
+        if(index.section == 0){
+            try! realm.write {
+                moveinList!.taskList.remove(at: index.row)
+            }
         }else{
-            btn.checkedFlag = true
-            checkedIDList.append(btn.primaryKey)
-            btn.setImage(UIImage(named: "checkFrame"), for: .normal)
+            try! realm.write {
+                didmoveinList!.taskList.remove(at: index.row)
+            }
         }
+        UIView.animate(withDuration: 0.3, animations: {
+            cell!.layer.opacity = 0
+        }, completion:{ (bool:Bool) in
+            self.tableView.reloadData()
+        })
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 10))
@@ -103,9 +71,6 @@ class EditMoveinTasksViewController: UIViewController,UITableViewDelegate,UITabl
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
-    
-    var checkedIDList = Array<Int>()
     var moveinList:MoveinList?
     var didmoveinList:DidMoveinList?
     let realm = try! Realm()
@@ -117,6 +82,7 @@ class EditMoveinTasksViewController: UIViewController,UITableViewDelegate,UITabl
         textField.backgroundColor = UIColor(hex: "FDC23E", alpha: 0.7)
         textField.attributedPlaceholder = NSAttributedString(string: "+ リストに追加", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
         taskKey = realm.objects(TaskKey.self).first!
+        
         // Do any additional setup after loading the view.
     }
     
@@ -133,6 +99,7 @@ class EditMoveinTasksViewController: UIViewController,UITableViewDelegate,UITabl
                 task.id = taskKey!.createKey()
                 moveinList!.taskList.append(task)
             }
+            textField.text = nil
             self.tableView.reloadData()
         }
     }
