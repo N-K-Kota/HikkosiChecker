@@ -42,8 +42,8 @@ class CustomPresentationViewController: UIPresentationController {
         let containerBounds = containerView!.bounds
         let x = containerBounds.size.width
         let y = containerBounds.size.height
-        let rect = CGRect(origin: CGPoint(x: 0, y: y/2), size: CGSize(width:x , height: y/2))
-        rect.inset(by:UIEdgeInsets(top: y/2, left: 0, bottom: y, right: x))
+        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width:x , height: y/2))
+        rect.inset(by:UIEdgeInsets(top: 0, left: 0, bottom: y, right: x))
         return rect
     }
     

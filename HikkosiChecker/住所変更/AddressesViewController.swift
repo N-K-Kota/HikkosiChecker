@@ -66,7 +66,6 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "addresscell", for: indexPath) as! MyTableViewCell
-        cell.btn.index = indexPath
                 if(indexPath.section < 4){    //チェックしてないリスト
                 if(indexPath.row == 0){       //セクションヘッダーの代わり(追加ボタンがつく)
                     cell.textLabel?.text = mylist!.sections[indexPath.section].title
@@ -80,6 +79,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                 }else{
                     cell.btn.primaryKey = mylist!.sections[indexPath.section].section[indexPath.row-1].id
                     cell.setData()
+                    cell.btn.index = indexPath
                     cell.accessoryView = nil
                     cell.accessoryType = .detailDisclosureButton
                     cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
@@ -93,6 +93,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                         cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
                     }else{
                         cell.setData()
+                        cell.btn.index = indexPath
                         cell.accessoryView = nil
                         cell.btn.primaryKey = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].id
                         cell.accessoryType = .detailDisclosureButton
@@ -174,7 +175,11 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         }
             progressive!.didAddressCount = checkedList!.taskCount()
             progressive!.save()
-        self.tableView.reloadData()        //Viewの更新
+            let cell = self.tableView.cellForRow(at: sender.index)
+            UIView.animate(withDuration: 0.2, animations: {
+                cell?.layer.opacity = 0
+            }, completion: {(bool:Bool)-> Void in
+                self.tableView.reloadData()})
         }
     }
     @objc func clickCheckedBtn(_ sender:Any){

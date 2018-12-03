@@ -131,7 +131,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         progressive!.save()
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
         let scale = UIScreen.main.scale
-       UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
+       UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
                 sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
                 sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/2)
@@ -145,11 +145,6 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             })
             UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.1, animations: {
                 
-                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                mycell.layer.opacity = 0.25
-                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
                 sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
                 mycell.layer.opacity = 0
                 sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
