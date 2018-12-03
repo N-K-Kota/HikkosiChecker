@@ -27,8 +27,7 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
                 address.id = mykey!.createKey()
                 allAddresses.resList(section!)!.append(address)
             }
-            progressive!.allAddressCount = allAddresses.resAll()
-            progressive!.save()
+            
             let vc = self.presentingViewController as! CollectionViewController
             vc.addressBuffer.buffer.append(false)
             reload()

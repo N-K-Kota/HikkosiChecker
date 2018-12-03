@@ -30,6 +30,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CustomCollectionViewCell
+        cell.setup()
         if(dataList![indexPath.row].flag){
             if(addressBuffer.buffer[indexPath.row]){
                 cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
