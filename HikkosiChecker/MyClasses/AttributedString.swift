@@ -14,6 +14,7 @@ struct CustomAttrStr{
     let normalattr:[NSAttributedString.Key:Any] = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 1)]
     let titleForPoints:NSAttributedString
     let titleForRequires:NSAttributedString
+    let titleForMemo:NSAttributedString
     init(){
         let shadow = NSShadow()
         shadow.shadowOffset = CGSize(width:1, height:1)
@@ -21,6 +22,7 @@ struct CustomAttrStr{
         let attr:[NSAttributedString.Key:Any] = [NSAttributedString.Key.foregroundColor:UIColor(hex: "0A60AA", alpha: 1),NSAttributedString.Key.shadow:shadow]
         titleForPoints = NSAttributedString(string: "☆チェックポイント", attributes: attr)
         titleForRequires = NSAttributedString(string: "☆必要なもの", attributes: attr)
+        titleForMemo = NSAttributedString(string: "☆メモ", attributes:attr)
     }
     func resAttrStr(_ str:String)->NSMutableAttributedString{
         let attr = str.components(separatedBy:"\n")

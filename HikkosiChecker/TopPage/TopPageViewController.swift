@@ -30,11 +30,19 @@ class TopPageViewController: UIViewController {
             progressive = Progressive(0.0)
             perProgressLabel.text = "\(progressView.progress*100)%"
             plannedDate.readDate()
-           plannedStack.translatesAutoresizingMaskIntoConstraints = false
-           leftDatesStack.translatesAutoresizingMaskIntoConstraints = false
-           progressStack.translatesAutoresizingMaskIntoConstraints = false
-           settingStack.translatesAutoresizingMaskIntoConstraints = false
-        
+            plannedStack.translatesAutoresizingMaskIntoConstraints = false
+            leftDatesStack.translatesAutoresizingMaskIntoConstraints = false
+            progressStack.translatesAutoresizingMaskIntoConstraints = false
+            settingStack.translatesAutoresizingMaskIntoConstraints = false
+            listButton.backgroundColor = UIColor(hex: "FFC817", alpha: 1)
+            listButton.layer.cornerRadius = 40
+            listButton.tintColor = .white
+            listButton.layer.borderColor = UIColor(hex: "C4990C", alpha: 1).cgColor
+            listButton.layer.borderWidth = 2.0
+            settingButton.layer.cornerRadius = 2
+            settingButton.backgroundColor = UIColor(hex: "40AEF9", alpha: 1)
+            settingButton.layer.borderColor = UIColor(hex: "207DBD", alpha: 1).cgColor
+            settingButton.layer.borderWidth = 2.0
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var leftDatesStack: UIStackView!
@@ -43,11 +51,6 @@ class TopPageViewController: UIViewController {
         let x = progressive!.ratio * Float(progressView.frame.width)
         let transform = CGAffineTransform(translationX: CGFloat(x)-progImageView.frame.width/2, y: 0)
         progImageView.transform = transform
-        /*let parentW = self.view.frame.width
-        plannedStack.frame = CGRect(x: (parentW-plannedStack.frame.width)/2, y: 50, width: 300, height:100 )
-        leftDatesStack.frame = CGRect(x: (parentW-leftDatesStack.frame.width)/2, y: plannedStack.frame.maxY+50, width: 250, height: 80)
-        progressStack.frame = CGRect(x: (parentW-progressStack.frame.width)/2, y: leftDatesStack.frame.maxY+100, width: 300, height: 120)
-        settingStack.frame = CGRect(x: (parentW-settingStack.frame.width)/2, y: progressStack.frame.maxY+10, width: 60, height: 100)*/
         let allspace = UIScreen.main.bounds.height - (plannedStack.frame.height + leftDatesStack.frame.height + progressStack.frame.height + settingStack.frame.height)
         let plannedtop = allspace/5+20
         let ltop = allspace/5-20
@@ -64,6 +67,10 @@ class TopPageViewController: UIViewController {
         progressStack.topAnchor.constraint(equalTo: leftDatesStack.bottomAnchor, constant: progresstop).isActive = true
         progressStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width-progressStack.frame.width)/2).isActive = true
         //progressStack.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        listButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        listButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        settingStack.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        settingStack.heightAnchor.constraint(equalToConstant: 150).isActive = true
         settingStack.topAnchor.constraint(equalTo: progressStack.bottomAnchor, constant: stop).isActive = true
         settingStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width-settingStack.frame.width)/2).isActive = true
         //settingStack.widthAnchor.constraint(equalToConstant: 80)

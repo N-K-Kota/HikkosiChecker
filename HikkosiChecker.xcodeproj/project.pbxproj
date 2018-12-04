@@ -13,12 +13,14 @@
 		1F39E7EA21B0BFD10071BDC0 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */; };
 		1F4F8AD921B388CB005CE25C /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8AD821B388CB005CE25C /* AddressData.swift */; };
 		1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */; };
+		1F4F8B5921B608FB005CE25C /* NotesmoveoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */; };
+		1F4F8B5B21B61AC6005CE25C /* MemoPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8B5A21B61AC6005CE25C /* MemoPresentationController.swift */; };
+		1F4F8B5D21B61B76005CE25C /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8B5C21B61B76005CE25C /* MemoViewController.swift */; };
 		1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52628E21A586FC0067BC45 /* TopPageViewController.swift */; };
 		1F52629121A67D070067BC45 /* Progressive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629021A67D070067BC45 /* Progressive.swift */; };
 		1F52629321A69F0A0067BC45 /* TaskClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629221A69F0A0067BC45 /* TaskClasses.swift */; };
 		1F52629A21A79FF70067BC45 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52629921A79FF70067BC45 /* SettingViewController.swift */; };
 		1F7318CA21A20DC900851BD4 /* HexColorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7318C921A20DC900851BD4 /* HexColorClass.swift */; };
-		1F73190821A3934100851BD4 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73190721A3934100851BD4 /* NotesTableViewController.swift */; };
 		1F79797A218FE051004E56EA /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F797979218FE051004E56EA /* EditViewController.swift */; };
 		1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797B21907A61004E56EA /* MyTableViewCell.swift */; };
 		1F79797E21907EF4004E56EA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79797D21907EF4004E56EA /* CustomButton.swift */; };
@@ -72,12 +74,14 @@
 		1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		1F4F8AD821B388CB005CE25C /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
 		1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPresentationController.swift; sourceTree = "<group>"; };
+		1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesmoveoutViewController.swift; sourceTree = "<group>"; };
+		1F4F8B5A21B61AC6005CE25C /* MemoPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoPresentationController.swift; sourceTree = "<group>"; };
+		1F4F8B5C21B61B76005CE25C /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		1F52628E21A586FC0067BC45 /* TopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPageViewController.swift; sourceTree = "<group>"; };
 		1F52629021A67D070067BC45 /* Progressive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressive.swift; sourceTree = "<group>"; };
 		1F52629221A69F0A0067BC45 /* TaskClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskClasses.swift; sourceTree = "<group>"; };
 		1F52629921A79FF70067BC45 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1F7318C921A20DC900851BD4 /* HexColorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorClass.swift; sourceTree = "<group>"; };
-		1F73190721A3934100851BD4 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		1F797979218FE051004E56EA /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		1F79797B21907A61004E56EA /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		1F79797D21907EF4004E56EA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -145,7 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */,
-				1F73190721A3934100851BD4 /* NotesTableViewController.swift */,
+				1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */,
+				1F4F8B5C21B61B76005CE25C /* MemoViewController.swift */,
 				1F797979218FE051004E56EA /* EditViewController.swift */,
 			);
 			path = "転出時作業リスト";
@@ -154,6 +159,7 @@
 		1F52629521A6B78F0067BC45 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				1F4F8B5A21B61AC6005CE25C /* MemoPresentationController.swift */,
 				1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */,
 				1F4F8AD821B388CB005CE25C /* AddressData.swift */,
 				1FF6D86121B254560083087A /* AttributedString.swift */,
@@ -515,6 +521,7 @@
 				1F39E7EA21B0BFD10071BDC0 /* WebPageViewController.swift in Sources */,
 				1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */,
 				1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */,
+				1F4F8B5B21B61AC6005CE25C /* MemoPresentationController.swift in Sources */,
 				1F79797C21907A61004E56EA /* MyTableViewCell.swift in Sources */,
 				1FF6D85D21B2221F0083087A /* EditMoveinTasksViewController.swift in Sources */,
 				1F291786219BBC99001A3C9A /* DeletableList.swift in Sources */,
@@ -528,8 +535,9 @@
 				1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */,
 				1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */,
 				1F88550521AD80EE00CFB980 /* CollectionViewController.swift in Sources */,
-				1F73190821A3934100851BD4 /* NotesTableViewController.swift in Sources */,
+				1F4F8B5D21B61B76005CE25C /* MemoViewController.swift in Sources */,
 				1F52629321A69F0A0067BC45 /* TaskClasses.swift in Sources */,
+				1F4F8B5921B608FB005CE25C /* NotesmoveoutViewController.swift in Sources */,
 				1F7318CA21A20DC900851BD4 /* HexColorClass.swift in Sources */,
 				1FB1410C21AB8FE700BAFD44 /* Addreeses.swift in Sources */,
 				1FA17422218BFEF9004316F3 /* AppDelegate.swift in Sources */,

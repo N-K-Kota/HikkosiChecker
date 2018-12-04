@@ -12,11 +12,6 @@ import RealmSwift
 
 
 class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    /*func action(tag:Int) {
-        selectedBtn = tag
-      performSegue(withIdentifier: "tonext", sender: nil)
-    }*/
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          if(checkedObj!.watchable){                        //チェックされたリストの表示、非表示で場合わけ
@@ -170,7 +165,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "totable"){
-            let svc = segue.destination as! NotesTableViewController
+            let svc = segue.destination as! NotesmoveoutViewController
             svc.task = selectedTask
         }
     }

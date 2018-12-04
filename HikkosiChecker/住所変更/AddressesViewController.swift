@@ -230,11 +230,11 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         }
     }
     @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
-        switchdeleteBtnView()
-        tableView.setEditing(!tableView.isEditing, animated: false)
+        /*switchdeleteBtnView()
+        tableView.setEditing(!tableView.isEditing, animated: false)*/
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if(tableView.isEditing && indexPath.row != 0){
+        if(indexPath.row != 0){
             return true
         }else{
             return false
@@ -264,6 +264,35 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }
         }
         self.tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deletBtn = UITableViewRowAction(style: .default, title: "削除", handler: {_,_ in
+            var data:Address
+            if(indexPath.section < 4){
+                data = self.mylist!.sections[indexPath.section].section[indexPath.row-1]
+                try! self.realm.write{                                                    //mylistから削除
+                    self.mylist!.sections[indexPath.section].section.remove(at: indexPath.row-1)
+                }
+                let list = allAddresses.resList(indexPath.section) //allAddressesのフラグを変更
+                let id = list!.index(of: data)
+                try! self.realm.write{
+                    list![id!].flag = true
+                }
+            }else{
+                data = self.checkedList!.sections[indexPath.section-5].section[indexPath.row-1]
+                try! self.realm.write{          //checkedListから削除
+                    self.checkedList!.sections[indexPath.section-5].section.remove(at: indexPath.row-1)
+                }
+                let list = allAddresses.resList(indexPath.section-5)      //allAddressesのフラグを変更
+                let id = list!.index(of: data)
+                try! self.realm.write{
+                    list![id!].flag = true
+                }
+            }
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        })
+        deletBtn.backgroundColor = UIColor(hex: "53A9FF", alpha: 1)
+        return [deletBtn]
     }
     func switchdeleteBtnView(){
         if(tableView.isEditing){
