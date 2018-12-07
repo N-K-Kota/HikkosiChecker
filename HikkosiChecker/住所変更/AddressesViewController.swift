@@ -53,15 +53,15 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     var u:String?
     var webT:String?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "toWeb"){
-            let webpage = segue.destination as! WebPageViewController
-            webpage.url = u
-            webpage.title = webT
-        }else if(segue.identifier == "toCollection"){
+       if(segue.identifier == "toCollection"){
             let vc = segue.destination as! CollectionViewController
             vc.sectionID = sectionData.selectSection
             vc.reload = {()->Void in self.tableView.reloadData()}
             vc.mylist = mylist
+       }else if(segue.identifier == "toWeb"){
+            let vc = segue.destination as! WebPageViewController
+            vc.url = self.u
+            vc.pageTitle = webT
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,15 +116,20 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         return cell
     }
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CustomPresentationViewController(presentedViewController:presented,presenting:presenting)
+        return JumpPresentation(presentedViewController:presented,presenting:presenting)
     }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if(indexPath.section < 4){
-            if(indexPath.row > 0){  //セルをクリックしたらURLのページへとぶ  unchecked
+            if(indexPath.row > 0){  //セルをクリックしたらアサーションを表示する  unchecked
                 if let ur = mylist!.sections[indexPath.section].section[indexPath.row-1].url{ //urlがnilの時はURL入力ページを表示する
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "assertionView") as! assertionView
                     self.u = ur
                     self.webT = mylist!.sections[indexPath.section].section[indexPath.row-1].title
-                    performSegue(withIdentifier: "toWeb", sender: nil)
+                    vc.jump = {()-> () in self.performSegue(withIdentifier: "toWeb", sender: nil)}
+                    vc.url = ur
+                    vc.transitioningDelegate = self
+                    vc.modalPresentationStyle = .custom
+                    self.present(vc, animated: false, completion: nil)
                 }else{
                     
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "setURLView") as! SetURLViewController
@@ -137,10 +142,14 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         }else{
             if(indexPath.row > 0){ //セルをクリックしたらURLのページへとぶ  checked
                 if let ur = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].url{
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "assertionView") as! assertionView
                     self.u = ur
-                    self.webT = checkedList!.sections[indexPath.section-5].section[indexPath.row-1].title
-                
-                    performSegue(withIdentifier: "toWeb", sender: nil)
+                    self.webT = checkedList!.sections[indexPath.section].section[indexPath.row-1].title
+                    vc.url = ur
+                    vc.jump = {()-> () in self.performSegue(withIdentifier: "toWeb", sender: nil)}
+                    vc.transitioningDelegate = self
+                    vc.modalPresentationStyle = .custom
+                    self.present(vc, animated: false, completion: nil)
                 }else{
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "setURLView") as! SetURLViewController
                     vc.modalPresentationStyle = .custom //presentainControllerの設定

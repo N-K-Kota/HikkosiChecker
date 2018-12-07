@@ -74,7 +74,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.tintColor = UIColor.blue
             cell.preservesSuperviewLayoutMargins = false
             cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-            cell.label.text = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task
+            cell.label.attributedText = NSAttributedString(string: uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task, attributes: attr.normalattr)
         }else if(indexPath.section > 4){//ここにチェックされたリストの描画をかく
             cell.setData()
             cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
@@ -84,7 +84,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
             cell.accessoryType = .detailButton
             cell.tintColor = .blue
-            cell.label.text = checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task
+            cell.label.attributedText = NSAttributedString(string:checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task , attributes: attr.normalattr)
             cell.preservesSuperviewLayoutMargins = false
             cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         }else{
@@ -177,6 +177,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     
     let realm = try! Realm()
     var selectedTask:Task?
+    let attr = CustomAttrStr()
     @IBAction func toTopAction(_ sender: UIBarButtonItem) {  //TopPageへ戻るボタン
         self.dismiss(animated: true, completion: nil)
     }

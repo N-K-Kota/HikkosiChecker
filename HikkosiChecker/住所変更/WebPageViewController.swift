@@ -11,17 +11,27 @@ import WebKit
 class WebPageViewController: UIViewController,WKNavigationDelegate,WKUIDelegate{
     var url : String?
     var pageTitle: String?
+    var label = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
          webView.navigationDelegate = self
          webView.uiDelegate = self
-        if let u = url{
+        if let u = URL(string: url!){
             self.navigationItem.title = pageTitle
-            let request = URLRequest(url: URL(string: u)!)
+            let request = URLRequest(url: u)
             webView.load(request)
+        }else{
+            label.text = "URLが無効です"
+            label.textColor = UIColor(white: 0.5, alpha: 1)
+            label.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight(rawValue: 8))
+            label.frame = CGRect(x: (self.view.frame.width-160)/2, y: self.view.frame.height/2-20, width: 160, height: 40)
+            label.sizeToFit()
+            label.center = CGPoint(x:self.view.frame.width/2,y:self.view.frame.height/2)
+            self.view.addSubview(label)
         }
         // Do any additional setup after loading the view.
     }
+    
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

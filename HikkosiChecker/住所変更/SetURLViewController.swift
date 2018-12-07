@@ -15,6 +15,7 @@ class SetURLViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
              urlTextField.delegate = self
+        self.view.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -34,6 +34,10 @@ class TopPageViewController: UIViewController {
             leftDatesStack.translatesAutoresizingMaskIntoConstraints = false
             progressStack.translatesAutoresizingMaskIntoConstraints = false
             settingStack.translatesAutoresizingMaskIntoConstraints = false
+            plannedStack.backgroundColor = .blue
+            leftDatesStack.backgroundColor = .yellow
+            progressStack.backgroundColor = .red
+            settingStack.backgroundColor = .green
             listButton.backgroundColor = UIColor(hex: "FFC817", alpha: 1)
             listButton.layer.cornerRadius = 40
             listButton.tintColor = .white
@@ -51,29 +55,10 @@ class TopPageViewController: UIViewController {
         let x = progressive!.ratio * Float(progressView.frame.width)
         let transform = CGAffineTransform(translationX: CGFloat(x)-progImageView.frame.width/2, y: 0)
         progImageView.transform = transform
-        let allspace = UIScreen.main.bounds.height - (plannedStack.frame.height + leftDatesStack.frame.height + progressStack.frame.height + settingStack.frame.height)
-        let plannedtop = allspace/5+20
-        let ltop = allspace/5-20
-        let progresstop = allspace/5-10
-        let stop = allspace/5
-        
-        let stackX = (self.view.frame.width-plannedStack.frame.width)/2
-        plannedStack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: plannedtop).isActive = true
-        plannedStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:stackX).isActive = true
-        //plannedStack.widthAnchor.constraint(equalToConstant: plannedStack.frame.width).isActive = true
-        leftDatesStack.topAnchor.constraint(equalTo: plannedStack.bottomAnchor, constant: ltop).isActive = true
-        leftDatesStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width-leftDatesStack.frame.width)/2).isActive = true
-        //leftDatesStack.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        progressStack.topAnchor.constraint(equalTo: leftDatesStack.bottomAnchor, constant: progresstop).isActive = true
-        progressStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width-progressStack.frame.width)/2).isActive = true
-        //progressStack.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        listButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        listButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         settingStack.widthAnchor.constraint(equalToConstant: 80).isActive = true
         settingStack.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        settingStack.topAnchor.constraint(equalTo: progressStack.bottomAnchor, constant: stop).isActive = true
-        settingStack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width-settingStack.frame.width)/2).isActive = true
-        //settingStack.widthAnchor.constraint(equalToConstant: 80)
+        listButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        listButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
     override func viewWillAppear(_ animated: Bool) {
         plannedDateLabel.text = plannedDate.toString()
