@@ -9,10 +9,10 @@
 import UIKit
 import RealmSwift
 
-
-
 class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    
+    var checkedObj:CheckedObj?
+    var uncheckedObj:UncheckedObj?
+    var taskKey:TaskKey?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          if(checkedObj!.watchable){                        //チェックされたリストの表示、非表示で場合わけ
             if(section < 4){
@@ -167,6 +167,10 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         if(segue.identifier == "totable"){
             let svc = segue.destination as! NotesmoveoutViewController
             svc.task = selectedTask
+        }else if(segue.identifier == "toEditMoveout"){
+            let svc = segue.destination as! EditViewController
+            svc.uncheckedObj = self.uncheckedObj
+            svc.checkedObj = self.checkedObj
         }
     }
     
@@ -185,6 +189,21 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkedObj = realm.objects(CheckedObj.self).first
+        uncheckedObj = realm.objects(UncheckedObj.self).first
+        taskKey = realm.objects(TaskKey.self).first
+        if(uncheckedObj == nil){
+            taskKey = TaskKey()
+            uncheckedObj = UncheckedObj()
+            uncheckedObj!.initData(taskKey:taskKey!)
+            checkedObj = CheckedObj()
+            checkedObj!.initData()
+            try! realm.write{
+                realm.add(uncheckedObj!)
+                realm.add(checkedObj!)
+                realm.add(taskKey!)
+            }
+        }
         progressive!.moveoutTasksCount = uncheckedObj!.taskCount()
         progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
         progressive!.save()

@@ -25,7 +25,7 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
             }
             try! realm.write{
                 address.id = mykey!.createKey()
-                allAddresses.resList(section!)!.append(address)
+                allAddresses.sections[section!].section.append(address)
             }
             
             let vc = self.presentingViewController as! CollectionViewController

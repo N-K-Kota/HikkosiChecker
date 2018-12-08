@@ -7,8 +7,7 @@
 //
 
 import UIKit
-var checkedObj:CheckedObj?
-var uncheckedObj:UncheckedObj?
+
 var progressive:Progressive?
 var allAddresses = AllAddresses()
 var mykey:MyKey?

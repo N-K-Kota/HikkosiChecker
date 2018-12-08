@@ -8,16 +8,16 @@
 
 import UIKit
 import RealmSwift
+import Dispatch
 class CollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate {
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var deleteBtn: UIButton!
     let identifier = "addresscollectionCell"
     var dataList:List<Address>?
-    var mylist:MyAddresses?
+    var mylist:AddressView?
     @IBOutlet weak var collectionView: UICollectionView!
     var sectionID = 0
     let realm = try! Realm()
-    var reload = {()->Void in}
     @IBAction func returnBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -74,7 +74,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     override func viewDidLoad() {
         super.viewDidLoad()
     self.collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
-        dataList = allAddresses.resList(sectionID)!
+        dataList = allAddresses.sections[sectionID].section
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: self.view.frame.width/2-10, height: 50)
           collectionView.collectionViewLayout = flowLayout
@@ -96,15 +96,14 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
         var n = 0
         for i in addressBuffer.buffer{
             if(i){
-                try! realm.write{
-                    dataList![n].flag = false
-                    mylist!.sections[sectionID].section.append(dataList![n])
-                }
-            }
+                    try! self.realm.write{
+                        self.dataList![n].flag = false
+                    }
+               // mylist!.sections[sectionID].section.append(dataList![n])
+                 }
             n += 1
         }
-        self.dismiss(animated: true, completion: nil)
-        reload()
+            self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deleteFunc(_ sender: UIButton) {

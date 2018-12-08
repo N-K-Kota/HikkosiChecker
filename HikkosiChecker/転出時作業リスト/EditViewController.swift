@@ -10,47 +10,10 @@ import UIKit
 import RealmSwift
 
 class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
-    
+    var uncheckedObj:UncheckedObj?
+    var checkedObj:CheckedObj?
     @IBOutlet weak var textField: UITextField!
     
-    /*@IBAction func deleteBtn(_ sender: UIBarButtonItem) {
-        
-        for i in idList{
-            var f = false
-            label:for v in uncheckedObj!.sectionobjList{
-                
-                var n = 0
-                   for z in v.taskList{
-                    
-                       if(i == z.id){
-                        try! realm.write{
-                            v.taskList.remove(at: n)
-                        }
-                        f = true
-                        break label
-                      }
-                    n += 1
-                   }
-            }
-            if(!f){
-            loop:for v in checkedObj!.sectionobjList{
-                var n = 0
-                for z in v.taskList{
-                    
-                    if(i == z.id){
-                        try! realm.write{
-                            v.taskList.remove(at: n)
-                        }
-                        break loop
-                    }
-                    n += 1
-                }
-              }
-            }
-        }
-        idList = Array<Int>()
-        self.tableView.reloadData()
-    }*/
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -63,11 +26,7 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-           /* if(checkedObj!.watchable){
-                return checkedObj!.sectionobjList.count + uncheckedObj!.sectionobjList.count + 1
-            }else{
-                return uncheckedObj!.sectionobjList.count + 1
-        }*/
+        
        return checkedObj!.sectionobjList.count + uncheckedObj!.sectionobjList.count
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -144,7 +103,6 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         })
     }
     let realm = try! Realm()
-    var idList = Array<Int>()
     var taskKey:TaskKey?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -168,7 +126,6 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
             textField.text = nil
             tableView.reloadData()
-            idList = Array<Int>()
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

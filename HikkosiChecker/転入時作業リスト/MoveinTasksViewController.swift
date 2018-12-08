@@ -152,7 +152,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
           didmoveinList = realm.objects(DidMoveinList.self).last
         if( moveinList == nil){ //オブジェクトがない場合
              moveinList = MoveinList()
-            moveinList!.dataInit(taskKey:taskKey!)
+             moveinList!.dataInit(taskKey:taskKey!)
              didmoveinList = DidMoveinList()
             try! realm.write{
                 realm.add(moveinList!)
