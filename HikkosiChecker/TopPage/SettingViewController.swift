@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController,UIViewControllerTransitioningDelegate {
     @IBOutlet weak var dateLabel:UILabel?
     @IBOutlet weak var datePicker:UIDatePicker?
     
@@ -37,12 +37,15 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func resetAppFunc(_ sender: UIButton) {
-        /*let standard = UserDefaults.standard
-        standard.removeObject(forKey: PlannedDate.key)
-        standard.removeObject(forKey: "Flag")
-        try! realm.write{
-            realm.deleteAll()
-        }*/
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "resetView") as! ResetViewController
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        vc.modalTransitionStyle = .flipHorizontal
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func  presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return JumpPresentation(presentedViewController:presented,presenting:presenting)
     }
     /*
     // MARK: - Navigation

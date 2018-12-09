@@ -14,6 +14,7 @@
 		1F434BF621BA6C6B0054F5AB /* JumpPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF521BA6C6B0054F5AB /* JumpPresentation.swift */; };
 		1F434BF821BA6FBB0054F5AB /* assertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF721BA6FBB0054F5AB /* assertionView.swift */; };
 		1F434BFA21BA7EA60054F5AB /* DeleteAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF921BA7EA60054F5AB /* DeleteAddressViewController.swift */; };
+		1F434BFC21BC9DC20054F5AB /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BFB21BC9DC20054F5AB /* ResetViewController.swift */; };
 		1F4F8AD921B388CB005CE25C /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8AD821B388CB005CE25C /* AddressData.swift */; };
 		1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */; };
 		1F4F8B5921B608FB005CE25C /* NotesmoveoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */; };
@@ -78,6 +79,7 @@
 		1F434BF521BA6C6B0054F5AB /* JumpPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpPresentation.swift; sourceTree = "<group>"; };
 		1F434BF721BA6FBB0054F5AB /* assertionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assertionView.swift; sourceTree = "<group>"; };
 		1F434BF921BA7EA60054F5AB /* DeleteAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAddressViewController.swift; sourceTree = "<group>"; };
+		1F434BFB21BC9DC20054F5AB /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		1F4F8AD821B388CB005CE25C /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
 		1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPresentationController.swift; sourceTree = "<group>"; };
 		1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesmoveoutViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				1F52628E21A586FC0067BC45 /* TopPageViewController.swift */,
 				1F52629921A79FF70067BC45 /* SettingViewController.swift */,
+				1F434BFB21BC9DC20054F5AB /* ResetViewController.swift */,
 			);
 			path = TopPage;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				1FF6D86221B254560083087A /* AttributedString.swift in Sources */,
 				1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */,
 				1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */,
+				1F434BFC21BC9DC20054F5AB /* ResetViewController.swift in Sources */,
 				1F88550521AD80EE00CFB980 /* CollectionViewController.swift in Sources */,
 				1F4F8B5D21B61B76005CE25C /* MemoViewController.swift in Sources */,
 				1F52629321A69F0A0067BC45 /* TaskClasses.swift in Sources */,

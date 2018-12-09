@@ -74,7 +74,6 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     override func viewDidLoad() {
         super.viewDidLoad()
     self.collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
-        dataList = allAddresses.sections[sectionID].section
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: self.view.frame.width/2-10, height: 50)
           collectionView.collectionViewLayout = flowLayout
@@ -87,9 +86,6 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
         addressBuffer.buffer = listBuf
         
         // Do any additional setup after loading the view.
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
     }
     
     @IBAction func addFunc(_ sender: UIButton) {

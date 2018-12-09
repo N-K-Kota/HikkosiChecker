@@ -9,8 +9,6 @@
 import UIKit
 
 var progressive:Progressive?
-var allAddresses = AllAddresses()
-var mykey:MyKey?
 class TopPageViewController: UIViewController {
     @IBOutlet weak var plannedStack: UIStackView!
     @IBOutlet weak var listButton: UIButton!

@@ -1071,6 +1071,66 @@
             </objects>
             <point key="canvasLocation" x="-3138" y="-147"/>
         </scene>
+        <!--Reset View Controller-->
+        <scene sceneID="bmO-fM-Yy5">
+            <objects>
+                <viewController storyboardIdentifier="resetView" id="oqb-Zf-luy" customClass="ResetViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dEd-Xc-k5m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="118" translatesAutoresizingMaskIntoConstraints="NO" id="hJ5-Ic-cWn">
+                                <rect key="frame" x="67.5" y="233.5" width="240" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="データを全て初期化してよろしいですか？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj2-Fv-JBz">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="znM-sO-rpM">
+                                        <rect key="frame" x="0.0" y="163" width="240" height="37"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMt-cb-Qyl">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="37"/>
+                                                <state key="normal" title="はい">
+                                                    <color key="titleColor" red="0.47225416110000001" green="0.58024098260000001" blue="0.96863800290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="yesAction:" destination="oqb-Zf-luy" eventType="touchUpInside" id="8sm-uu-TLP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ht-eo-6nX">
+                                                <rect key="frame" x="120" y="0.0" width="120" height="37"/>
+                                                <state key="normal" title="いいえ">
+                                                    <color key="titleColor" red="0.47225416110000001" green="0.58024098260000001" blue="0.96863800290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="noAction:" destination="oqb-Zf-luy" eventType="touchUpInside" id="Pxg-x0-8zm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="FjP-4f-k57"/>
+                                    <constraint firstAttribute="width" constant="240" id="QHX-QN-DwP"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hJ5-Ic-cWn" firstAttribute="centerX" secondItem="dEd-Xc-k5m" secondAttribute="centerX" id="bYo-v2-exD"/>
+                            <constraint firstItem="hJ5-Ic-cWn" firstAttribute="centerY" secondItem="dEd-Xc-k5m" secondAttribute="centerY" id="w5f-6Q-5Vf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Goa-FF-p2U"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uT2-LI-DWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3370.4000000000001" y="600.44977511244383"/>
+        </scene>
         <!--Setting View Controller-->
         <scene sceneID="dd3-jr-blc">
             <objects>
@@ -1133,8 +1193,8 @@
                                     <action selector="datePicker:" destination="uEk-SU-9m6" eventType="valueChanged" id="Haf-Dv-2CH"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7V-ij-2Tw">
-                                <rect key="frame" x="164" y="491" width="46" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7V-ij-2Tw">
+                                <rect key="frame" x="164.5" y="491" width="46" height="40"/>
                                 <color key="backgroundColor" red="0.16296863559999999" green="0.17691212889999999" blue="0.7059246898" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="63C-gt-8zD"/>
@@ -1159,6 +1219,7 @@
                             <constraint firstItem="ig8-hl-KvO" firstAttribute="bottom" secondItem="0rs-T9-850" secondAttribute="bottom" id="nfe-2X-FuW"/>
                             <constraint firstItem="ig8-hl-KvO" firstAttribute="trailing" secondItem="0rs-T9-850" secondAttribute="trailing" id="tlf-s4-vYU"/>
                             <constraint firstItem="ig8-hl-KvO" firstAttribute="leading" secondItem="0rs-T9-850" secondAttribute="leading" id="x7p-EV-2rY"/>
+                            <constraint firstItem="s7V-ij-2Tw" firstAttribute="centerX" secondItem="Ded-Iu-wLS" secondAttribute="centerX" id="xeF-rb-hfs"/>
                             <constraint firstItem="beE-Ky-Ztq" firstAttribute="top" secondItem="Gfz-r0-YiC" secondAttribute="bottom" constant="60" id="ylA-Er-NXL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gTb-Yi-3Ls"/>

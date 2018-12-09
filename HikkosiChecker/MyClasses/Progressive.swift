@@ -45,6 +45,15 @@ struct Progressive{              //progressViewのデータ格納と、UserDeaul
         UserDefaults.standard.removeObject(forKey: "allAddressCount")
         UserDefaults.standard.removeObject(forKey: "didAddressCount")
     }
+    mutating func resetData(){
+        self.ratio = 0.0
+        self.moveoutTasksCount = 0
+        self.didmoveoutTasksCount = 0
+        self.didAddressCount = 0
+        self.allAddressCount = 0
+        self.moveinTasksCount = 0
+        self.didmoveinTasksCount = 0
+    }
     mutating func setRatio(){
         if(moveoutTasksCount+didmoveoutTasksCount+moveinTasksCount+didmoveinTasksCount+allAddressCount == 0){
             ratio = 0

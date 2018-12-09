@@ -58,6 +58,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             let vc = segue.destination as! CollectionViewController
             vc.sectionID = selectedID!
             vc.mylist = myList
+            vc.dataList = allAddresses!.sections[selectedID!].section
        }else if(segue.identifier == "toWeb"){
             let vc = segue.destination as! WebPageViewController
             vc.url = self.u
@@ -239,16 +240,28 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     var realm = try! Realm()
     var myList = AddressView()
     var checkedList = AddressView()
+    var allAddresses:AllAddresses?
     var mykey:MyKey?    //primaryKeyを計算するクラス
     override func viewDidLoad() {
         super.viewDidLoad()
+        allAddresses = realm.objects(AllAddresses.self).first
+        mykey = realm.objects(MyKey.self).first
+        if(allAddresses == nil){
+            mykey = MyKey()
+            allAddresses = AllAddresses()
+            allAddresses!.initData(mykey!)
+            try! realm.write{
+                realm.add(mykey!)
+                realm.add(allAddresses!)
+            }
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         myList.initData()
         checkedList.initData()
-        allAddresses.diplayDatas(myList: myList, checkedList: checkedList)
+        allAddresses!.diplayDatas(myList: myList, checkedList: checkedList)
         progressive!.didAddressCount = checkedList.taskCount() //作業達成度を記録する
         progressive!.allAddressCount =  myList.taskCount()+checkedList.taskCount()
         progressive!.save()

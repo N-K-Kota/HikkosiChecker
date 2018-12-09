@@ -42,4 +42,7 @@ struct PlannedDate{
             return "未定"
         }
     }
+    static func resetKey(){
+        UserDefaults.standard.removeObject(forKey: PlannedDate.key)
+    }
 }

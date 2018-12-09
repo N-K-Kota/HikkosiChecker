@@ -147,6 +147,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
     var taskKey:TaskKey?
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("startmovein")
           taskKey = realm.objects(TaskKey.self).first!
           moveinList = realm.objects(MoveinList.self).last  //初期化
           didmoveinList = realm.objects(DidMoveinList.self).last

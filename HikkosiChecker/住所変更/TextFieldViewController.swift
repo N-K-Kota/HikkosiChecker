@@ -11,6 +11,8 @@ import RealmSwift
 class TextFieldViewController: UIViewController,UITextFieldDelegate {
     let realm = try! Realm()
     var section:Int?
+    var allAddresses:AllAddresses?
+    var mykey:MyKey?
     var reload = {()->Void in}
     @IBAction func returnBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -25,7 +27,7 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
             }
             try! realm.write{
                 address.id = mykey!.createKey()
-                allAddresses.sections[section!].section.append(address)
+                allAddresses!.sections[section!].section.append(address)
             }
             
             let vc = self.presentingViewController as! CollectionViewController
@@ -40,6 +42,8 @@ class TextFieldViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         urlTextField.delegate = self
         titleTextField.delegate = self
+        allAddresses = realm.objects(AllAddresses.self).first!
+        mykey = realm.objects(MyKey.self).first!
         // Do any additional setup after loading the view.
     }
     func textFieldDidEndEditing(_ textField: UITextField) {

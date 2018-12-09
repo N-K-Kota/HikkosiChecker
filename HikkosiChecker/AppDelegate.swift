@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         Realm.Configuration.defaultConfiguration = config*/
         let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
-        let realmURLs = [
+        /*let realmURLs = [
             realmURL,
             realmURL.appendingPathExtension("lock"),
             realmURL.appendingPathExtension("note"),
@@ -43,23 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.removeObject(forKey:"didmoveoutTasksCount")
         UserDefaults.standard.removeObject(forKey: "allAddressCount")
         UserDefaults.standard.removeObject(forKey: "didAddressCount")
-         UserDefaults.standard.removeObject(forKey: "Flag")
+         UserDefaults.standard.removeObject(forKey: "Flag")*/
          print(realmURL)
-        
-        let realm = try! Realm()
-        if(UserDefaults.standard.object(forKey: "Flag") != nil){
-            mykey = realm.objects(MyKey.self).last!
-            allAddresses = realm.objects(AllAddresses.self).last!
-        }else{
-            UserDefaults.standard.set(true, forKey: "Flag")
-            mykey = MyKey()
-            allAddresses.initData(mykey!)
-            try! realm.write{
-                realm.add(mykey!)
-                realm.add(allAddresses)
-            }
-        }
-       
         // Override point for customization after application launch.
         return true
     }
