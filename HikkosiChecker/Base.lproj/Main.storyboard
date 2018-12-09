@@ -20,14 +20,14 @@
             <objects>
                 <viewController storyboardIdentifier="addressView" title="住所変更" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="AddressesViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImage2" translatesAutoresizingMaskIntoConstraints="NO" id="Orq-cf-UPO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-Xf-Hrn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addresscell" id="Avu-KK-oUw" customClass="MyTableViewCell" customModule="HikkosiChecker" customModuleProvider="target">
@@ -75,7 +75,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="DYU-Xf-Hrn" id="4q4-u0-RAl"/>
-                        <segue destination="7yw-4h-MXG" kind="show" identifier="toWeb" id="y0e-vp-T6J"/>
                         <segue destination="9ZR-j3-TZV" kind="presentation" identifier="toCollection" id="Qcm-3F-kY8"/>
                     </connections>
                 </viewController>
@@ -110,7 +109,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="削除" id="YqX-lJ-Etf">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="XoL-M5-BB7">
+                                        <barButtonItem key="rightBarButtonItem" title="完了" id="XoL-M5-BB7">
                                             <connections>
                                                 <action selector="returnBtn:" destination="284-Oq-wXH" id="Tgn-B9-raO"/>
                                             </connections>
@@ -192,7 +191,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4c8-hT-wA3">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="j3E-s0-06W">
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3E-s0-06W">
                                         <rect key="frame" x="0.0" y="553" width="375" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="0BO-6P-ND3"/>
@@ -308,19 +307,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-My-M20">
-                                <rect key="frame" x="10" y="30" width="355" height="80"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-My-M20">
+                                <rect key="frame" x="10" y="293.5" width="355" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" text="URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-HY-sG1">
-                                        <rect key="frame" x="0.0" y="0.0" width="37" height="80"/>
+                                        <rect key="frame" x="0.0" y="30" width="37" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3oh-2n-7zM">
-                                        <rect key="frame" x="37" y="0.0" width="318" height="80"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3oh-2n-7zM">
+                                        <rect key="frame" x="37" y="25" width="318" height="30"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
@@ -331,7 +330,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="d2R-My-M20" firstAttribute="top" secondItem="Ob7-1R-OjO" secondAttribute="top" constant="10" id="hzq-a8-kLO"/>
+                            <constraint firstItem="d2R-My-M20" firstAttribute="centerY" secondItem="xep-Zk-wPx" secondAttribute="centerY" id="TVr-CG-bVc"/>
                             <constraint firstItem="Ob7-1R-OjO" firstAttribute="trailing" secondItem="d2R-My-M20" secondAttribute="trailing" constant="10" id="txp-Wj-uUg"/>
                             <constraint firstItem="d2R-My-M20" firstAttribute="leading" secondItem="Ob7-1R-OjO" secondAttribute="leading" constant="10" id="utO-G8-XWk"/>
                         </constraints>
@@ -359,7 +358,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="url" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-2X-ryp">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.21410195916055463" green="0.47400717369042766" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="を表示してよろしいですか？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66j-7d-6zL">
@@ -405,12 +404,30 @@
                         <viewLayoutGuide key="safeArea" id="Gnj-2G-B0v"/>
                     </view>
                     <connections>
+                        <outlet property="expressLabel" destination="66j-7d-6zL" id="vqA-G5-sei"/>
+                        <outlet property="noBtn" destination="J19-h3-Qtv" id="aCN-5T-zrn"/>
                         <outlet property="urlLabel" destination="xjs-2X-ryp" id="48W-uC-8iK"/>
+                        <outlet property="yesBtn" destination="X6U-f7-nd1" id="EeC-og-4H4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1um-DD-LOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="649" y="2069"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vqz-rW-vn1">
+            <objects>
+                <viewController id="dp4-Pl-Qfk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ULV-rH-GuY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="76N-2k-Wj5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1s6-2p-Th6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1375" y="2486"/>
         </scene>
         <!--Item-->
         <scene sceneID="guO-ly-Y9k">
@@ -430,47 +447,12 @@
             </objects>
             <point key="canvasLocation" x="-1050" y="601"/>
         </scene>
-        <!--戻る-->
-        <scene sceneID="kT7-kZ-eHU">
-            <objects>
-                <viewController storyboardIdentifier="webView" id="7yw-4h-MXG" customClass="WebPageViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qng-Vc-5cZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLo-Y9-cMU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.99215686270000003" green="0.76078431369999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="BLo-Y9-cMU" firstAttribute="bottom" secondItem="cXt-hG-KJm" secondAttribute="bottom" id="9lu-rS-Iyh"/>
-                            <constraint firstAttribute="trailing" secondItem="BLo-Y9-cMU" secondAttribute="trailing" id="bi2-qU-kAI"/>
-                            <constraint firstItem="BLo-Y9-cMU" firstAttribute="leading" secondItem="qng-Vc-5cZ" secondAttribute="leading" id="gxW-kl-wMd"/>
-                            <constraint firstItem="BLo-Y9-cMU" firstAttribute="top" secondItem="cXt-hG-KJm" secondAttribute="top" id="i1N-zM-yIr"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="cXt-hG-KJm"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="戻る" id="TYN-87-s8h"/>
-                    <connections>
-                        <outlet property="webView" destination="BLo-Y9-cMU" id="VDY-4l-d9s"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fe5-BS-0q4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1234" y="2214"/>
-        </scene>
         <!--Notesmoveout View Controller-->
         <scene sceneID="nSF-wP-s4S">
             <objects>
                 <viewController id="uUA-IU-OqJ" customClass="NotesmoveoutViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ydi-bz-gaF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMb-dA-aqi">
@@ -786,7 +768,7 @@
             <objects>
                 <viewController id="Cp1-EY-Ox4" customClass="NotesMoveinTasksViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lin-ym-OGf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="svK-mc-VLT">
@@ -831,7 +813,7 @@
             <objects>
                 <viewController id="aBb-NL-1NW" customClass="MoveinTasksViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LbT-0w-lpR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="Aga-1E-G4P">
@@ -921,7 +903,7 @@
                     <navigationItem key="navigationItem" id="a57-DG-Ayq"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8h1-Uu-cdh">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8h1-Uu-cdh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1261,7 +1243,7 @@
             <objects>
                 <viewController id="AKq-eb-7b3" customClass="MoveoutTasksViewController" customModule="HikkosiChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2iP-2x-dDh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="fcW-A2-ikz">

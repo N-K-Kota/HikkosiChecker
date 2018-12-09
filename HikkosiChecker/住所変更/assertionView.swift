@@ -9,20 +9,40 @@
 import UIKit
 
 class assertionView: UIViewController {
+    @IBOutlet weak var expressLabel: UILabel!
     var url:String?
     @IBOutlet weak var urlLabel: UILabel!
-    var jump = {()->Void in }
     override func viewDidLoad() {
         super.viewDidLoad()
             urlLabel.text = url
+            self.view.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     
     @IBAction func yesAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        jump()
+        if let ur = NSURL(string: url!){
+        if(UIApplication.shared.canOpenURL(ur as URL)){
+            print("canopen")
+            self.dismiss(animated: true, completion: nil)
+            UIApplication.shared.open(ur as URL, options:[UIApplication.OpenExternalURLOptionsKey.universalLinksOnly:UIApplication.OpenExternalURLOptionsKey.universalLinksOnly] , completionHandler: nil)
+        }else{
+            yesBtn.isEnabled = false
+            yesBtn.layer.opacity = 0
+            expressLabel.text = "は無効なURLです"
+            expressLabel.textColor = .red
+            noBtn.setTitle("閉じる", for: .normal)
+        }
+        }else{
+            yesBtn.isEnabled = false
+            yesBtn.layer.opacity = 0
+            expressLabel.text = "は無効なURLです"
+            expressLabel.textColor = .red
+            noBtn.setTitle("閉じる", for: .normal)
+        }
     }
     
+    @IBOutlet weak var yesBtn: UIButton!
+    @IBOutlet weak var noBtn: UIButton!
     @IBAction func noAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

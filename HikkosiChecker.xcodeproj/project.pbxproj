@@ -10,7 +10,6 @@
 		1F291780219AC50D001A3C9A /* CustomPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */; };
 		1F291786219BBC99001A3C9A /* DeletableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291785219BBC99001A3C9A /* DeletableList.swift */; };
 		1F39E7E821AFAE7D0071BDC0 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E7E721AFAE7D0071BDC0 /* TextFieldViewController.swift */; };
-		1F39E7EA21B0BFD10071BDC0 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */; };
 		1F434BF621BA6C6B0054F5AB /* JumpPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF521BA6C6B0054F5AB /* JumpPresentation.swift */; };
 		1F434BF821BA6FBB0054F5AB /* assertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF721BA6FBB0054F5AB /* assertionView.swift */; };
 		1F434BFA21BA7EA60054F5AB /* DeleteAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF921BA7EA60054F5AB /* DeleteAddressViewController.swift */; };
@@ -77,7 +76,6 @@
 		1F29177F219AC50D001A3C9A /* CustomPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationViewController.swift; sourceTree = "<group>"; };
 		1F291785219BBC99001A3C9A /* DeletableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableList.swift; sourceTree = "<group>"; };
 		1F39E7E721AFAE7D0071BDC0 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
-		1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		1F434BF521BA6C6B0054F5AB /* JumpPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpPresentation.swift; sourceTree = "<group>"; };
 		1F434BF721BA6FBB0054F5AB /* assertionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assertionView.swift; sourceTree = "<group>"; };
 		1F434BF921BA7EA60054F5AB /* DeleteAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAddressViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				1F39E7E721AFAE7D0071BDC0 /* TextFieldViewController.swift */,
 				1FA17423218BFEF9004316F3 /* AddressesViewController.swift */,
 				1FF6D85621B109120083087A /* SetURLViewController.swift */,
-				1F39E7E921B0BFD10071BDC0 /* WebPageViewController.swift */,
 			);
 			path = "住所変更";
 			sourceTree = "<group>";
@@ -540,7 +537,6 @@
 				1F4F8AD921B388CB005CE25C /* AddressData.swift in Sources */,
 				1F434BF821BA6FBB0054F5AB /* assertionView.swift in Sources */,
 				1F434BFA21BA7EA60054F5AB /* DeleteAddressViewController.swift in Sources */,
-				1F39E7EA21B0BFD10071BDC0 /* WebPageViewController.swift in Sources */,
 				1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */,
 				1F52628F21A586FC0067BC45 /* TopPageViewController.swift in Sources */,
 				1F4F8B5B21B61AC6005CE25C /* MemoPresentationController.swift in Sources */,

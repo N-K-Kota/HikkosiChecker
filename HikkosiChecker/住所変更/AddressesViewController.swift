@@ -55,8 +55,6 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }
         }
         }
-    var u:String?
-    var webT:String?
     var selectedID:Int?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if(segue.identifier == "toCollection"){
@@ -64,10 +62,6 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             vc.sectionID = selectedID!
             vc.mylist = myList
             vc.dataList = allAddresses!.sections[selectedID!].section
-       }else if(segue.identifier == "toWeb"){
-            let vc = segue.destination as! WebPageViewController
-            vc.url = self.u
-            vc.pageTitle = webT
        }else if(segue.identifier == "toDelAddress"){
             let vc = segue.destination as! DeleteAddressViewController
             vc.checkedList = checkedList
@@ -141,9 +135,6 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             if(indexPath.row > 0){  //セルをクリックしたらアサーションを表示する  unchecked
                 if let ur = myList.sections[indexPath.section].section[indexPath.row-1].url{ //urlがnilの時はURL入力ページを表示する
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "assertionView") as! assertionView
-                    self.u = ur
-                    self.webT = myList.sections[indexPath.section].section[indexPath.row-1].title
-                    vc.jump = {()-> () in self.performSegue(withIdentifier: "toWeb", sender: nil)}
                     vc.url = ur
                     vc.transitioningDelegate = self
                     vc.modalPresentationStyle = .custom
@@ -161,10 +152,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             if(indexPath.row > 0){ //セルをクリックしたらURLのページへとぶ  checked
                 if let ur = checkedList.sections[indexPath.section-5].section[indexPath.row-1].url{
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "assertionView") as! assertionView
-                    self.u = ur
-                    self.webT = checkedList.sections[indexPath.section].section[indexPath.row-1].title
                     vc.url = ur
-                    vc.jump = {()-> () in self.performSegue(withIdentifier: "toWeb", sender: nil)}
                     vc.transitioningDelegate = self
                     vc.modalPresentationStyle = .custom
                     self.present(vc, animated: false, completion: nil)

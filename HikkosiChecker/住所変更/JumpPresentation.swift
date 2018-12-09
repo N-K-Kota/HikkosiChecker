@@ -42,7 +42,7 @@ class JumpPresentation: UIPresentationController {
         let containerBounds = containerView!.bounds
         let x = containerBounds.size.width
         let y = containerBounds.size.height
-        let rect = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width:x-20 , height: y/2))
+        let rect = CGRect(origin: CGPoint(x: 10, y: y/4), size: CGSize(width:x-20 , height: y/2))
         rect.inset(by:UIEdgeInsets(top: y/4, left: 10, bottom: y/4*3, right: x-10))
         return rect
     }
