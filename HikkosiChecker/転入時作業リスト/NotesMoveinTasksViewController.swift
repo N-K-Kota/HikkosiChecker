@@ -21,17 +21,7 @@ class NotesMoveinTasksViewController: UIViewController,UITableViewDelegate,UITab
         cell.layer.cornerRadius = 15
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor(hex: "03D7BE", alpha: 1).cgColor
-        if(indexPath.section == 0){
-            cell.textLabel?.attributedText = points
-        }else if(indexPath.section == 1){
-            cell.textLabel?.attributedText = requirements
-        }else{
-            if let m = task!.memo{
-            cell.textLabel?.attributedText = attrClass.resAttrStr(m)
-            }else{
-                cell.textLabel?.text = ""
-            }
-        }
+        cell.textLabel?.attributedText = dataList.dataList[indexPath.section].context
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -39,19 +29,13 @@ class NotesMoveinTasksViewController: UIViewController,UITableViewDelegate,UITab
         view.frame = CGRect(x:0 , y:0 , width: tableView.frame.width, height: 30)
         view.backgroundColor = .clear
         let label = UILabel()
-        if(section == 0){
-            label.attributedText = attrClass.titleForPoints
-        }else if(section == 1){
-            label.attributedText = attrClass.titleForRequires
-        }else{
-            label.attributedText = attrClass.titleForMemo
-        }
+        label.attributedText = dataList.dataList[section].title
         label.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         view.addSubview(label)
         return view
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return dataList.dataList.count
     }
      func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
@@ -59,24 +43,45 @@ class NotesMoveinTasksViewController: UIViewController,UITableViewDelegate,UITab
         return footer
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section == 2){
+        if(dataList.dataList.count-1 == indexPath.section){
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "memoView") as! MemoViewController
             vc.reload = {self.tableView.reloadData()}
             vc.task = task
+            vc.dataList = dataList
             vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = self
             self.present(vc, animated: true, completion: nil)
         }
     }
     var task:Task?
-    var points = NSMutableAttributedString()
-    var requirements = NSMutableAttributedString()
+    var dataList = NoteDataList()
     let attrClass = CustomAttrStr()
     let memoBtn = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
-        points = attrClass.resAttrStr(task!.point)
-        requirements = attrClass.resAttrStr(task!.requirement)
+        if let p = task!.point{
+            var notes = NotesData()
+            notes.title = attrClass.titleForPoints
+            notes.context = attrClass.resAttrStr(p)
+            dataList.dataList.append(notes)
+        }
+        if let r = task!.requirement{
+            var notes = NotesData()
+            notes.title = attrClass.titleForRequires
+            notes.context = attrClass.resAttrStr(r)
+            dataList.dataList.append(notes)
+        }
+        if let m = task!.memo{
+            var notes = NotesData()
+            notes.title = attrClass.titleForMemo
+            notes.context = attrClass.resAttrStr(m)
+            dataList.dataList.append(notes)
+        }else{
+            var notes = NotesData()
+            notes.title = attrClass.titleForMemo
+            notes.context = NSMutableAttributedString()
+            dataList.dataList.append(notes)
+        }
         memoBtn.setImage(UIImage(named:"pen"), for: .normal)
         memoBtn.addTarget(self, action: #selector(popMemo(_:)), for: .touchUpInside)
         self.view.addSubview(memoBtn)

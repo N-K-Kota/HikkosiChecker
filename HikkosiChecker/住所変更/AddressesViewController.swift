@@ -28,9 +28,9 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.row == 0){
             if(indexPath.section == 4){
-                return 30
+                return 40
             }else{
-            return 25
+            return 30
             }
         }else{
             return 50
@@ -48,6 +48,11 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }
          }
           self.tableView.reloadData()
+        }else if(indexPath.section < 4){
+            if(indexPath.row == 0){
+                selectedID = indexPath.section
+                performSegue(withIdentifier: "toCollection", sender: nil)
+            }
         }
         }
     var u:String?
@@ -91,6 +96,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                     cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
                     cell.btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
                     cell.label.text = myList.sections[indexPath.section].section[indexPath.row-1].title
+                    cell.label.textColor = UIColor(white: 0.2, alpha: 1)
                 }
             }else if(indexPath.section > 4){   //チェックしたリスト
                     if(indexPath.row == 0){    //セクションヘッダーの代わり(チェックしたリストにはボタンがつかない)
@@ -106,17 +112,23 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                         cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
                         cell.btn.addTarget(self, action: #selector(clickCheckedBtn(_:)), for: .touchUpInside)
                         cell.label.text = checkedList.sections[indexPath.section-5].section[indexPath.row-1].title
+                        cell.label.textColor = UIColor(white: 0.2, alpha: 1)
                     }
             }else{
-                    cell.accessoryView = nil
-                    cell.layer.cornerRadius = 10
-                    cell.accessoryType = .none
+                    cell.textLabel?.textAlignment = .center
+                    cell.textLabel?.textColor = .white
+                    cell.layer.cornerRadius = 20
+                    let gradientLayer = CAGradientLayer()
+                    gradientLayer.colors = [UIColor(hex: "8BE9F5", alpha: 0.6).cgColor,UIColor(hex: "02AAE3",alpha:0.9).cgColor]
+                    gradientLayer.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: cell.frame.height)
+                    cell.backgroundColor = .clear
+                    cell.layer.insertSublayer(gradientLayer, at: 0)
+                    cell.layer.borderWidth = 1
+                    cell.layer.borderColor = UIColor(hex: "006577", alpha: 0.5).cgColor
                     if(checkedList.watchable){
-                       cell.backgroundColor = UIColor(hex: "00bfff", alpha: 0.7)
-                       cell.textLabel!.text = "チェックされたリストを非表示にする"
+                       cell.textLabel!.text = "チェック済みリストを非表示にする"
                     }else{
-                       cell.backgroundColor = UIColor(hex: "00bfff", alpha: 1)
-                       cell.textLabel!.text = "チェックされたリストを表示する"
+                       cell.textLabel!.text = "チェック済みリストを表示する"
                    }
             }
         return cell
@@ -185,6 +197,8 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
              myList.sections[s].section.remove(at: n)
              checkedList.sections[s].section.append(task)
             let cell = self.tableView.cellForRow(at: sender.index)
+           progressive!.didAddressCount = checkedList.taskCount() //作業達成度を記録する
+           progressive!.save()
             UIView.animate(withDuration: 0.2, animations: {
                 cell?.layer.opacity = 0
             }, completion: {(bool:Bool)-> Void in
@@ -208,6 +222,8 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         }
         checkedList.sections[s].section.remove(at: n)
         myList.sections[s].section.append(task)
+        progressive!.didAddressCount = checkedList.taskCount() //作業達成度を記録する
+        progressive!.save()
         self.tableView.reloadData()
     }
     @IBAction func toTopFunc(_ sender: Any) {
@@ -228,13 +244,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier:"toDelAddress" , sender: nil)
     }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if(indexPath.row != 0){
-            return true
-        }else{
-            return false
-        }
-    }
+    
     
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
     var realm = try! Realm()

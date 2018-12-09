@@ -10,8 +10,8 @@ import UIKit
 
 class CustomButton: UIButton {
     var index:IndexPath = IndexPath()
-    var width:CGFloat = 30
-    var height:CGFloat = 30
+    var width:CGFloat = 44
+    var height:CGFloat = 44
     var checkedFlag = false
     var primaryKey = 0
     // Only override draw() if you perform custom drawing.

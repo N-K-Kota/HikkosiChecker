@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 class MemoViewController: UIViewController,UITextViewDelegate {
     var task:Task?
+    var dataList:NoteDataList?
     var reload = {()->Void in}
     let realm = try! Realm()
     @IBOutlet weak var textView: UITextView!
@@ -55,6 +56,11 @@ class MemoViewController: UIViewController,UITextViewDelegate {
         try! realm.write{
             task!.memo = textView.text
         }
+            if let list = dataList{
+             list.dataList[list.dataList.count-1].context = CustomAttrStr().resAttrStr(textView.text)
+            }else{
+                print("found dataList nil")
+            }
         }
         reload()
     }

@@ -18,6 +18,7 @@ class SettingViewController: UIViewController,UIViewControllerTransitioningDeleg
         vc.plannedDate.setDate()
         self.dismiss(animated: true, completion: nil)
     }
+    @IBOutlet weak var resetBtn: UIButton!
     var defaultDate:Date?
     let formatter = DateFormatter()
     let realm = try! Realm()
@@ -26,14 +27,15 @@ class SettingViewController: UIViewController,UIViewControllerTransitioningDeleg
             datePicker!.datePickerMode = .date
         datePicker!.setDate(defaultDate ?? Date(), animated: false)
             formatter.dateFormat = "yy-MM-dd"
-            dateLabel!.text = formatter.string(from:datePicker!.date)
+            dateLabel!.text = " \(formatter.string(from:datePicker!.date))"
+        resetBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yy-MM-dd"
-        dateLabel!.text = formatter.string(from: sender.date)
+        dateLabel!.text = " \(formatter.string(from: sender.date))"
     }
     
     @IBAction func resetAppFunc(_ sender: UIButton) {

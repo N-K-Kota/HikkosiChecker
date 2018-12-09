@@ -38,8 +38,16 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             }else{
                 cell.textLabel?.text = "チェック済みリストを表示する"
             }
-            cell.layer.cornerRadius = 15
-            cell.backgroundColor = UIColor(hex: "BFF4FF", alpha: 0.7)
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .white
+            cell.layer.cornerRadius = 20
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = [UIColor(hex: "8BE9F5", alpha: 0.6).cgColor,UIColor(hex: "02AAE3",alpha:0.9).cgColor]
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: cell.frame.height)
+            cell.backgroundColor = .clear
+            cell.layer.insertSublayer(gradientLayer, at: 0)
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor(hex: "006577", alpha: 0.5).cgColor
         }else{    //チェックされた
             cell.setData()
             cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
@@ -147,7 +155,6 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
     var taskKey:TaskKey?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("startmovein")
           taskKey = realm.objects(TaskKey.self).first!
           moveinList = realm.objects(MoveinList.self).last  //初期化
           didmoveinList = realm.objects(DidMoveinList.self).last

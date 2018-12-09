@@ -88,13 +88,21 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.preservesSuperviewLayoutMargins = false
             cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         }else{
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .white
+            cell.layer.cornerRadius = 20
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = [UIColor(hex: "8BE9F5", alpha: 0.6).cgColor,UIColor(hex: "02AAE3",alpha:0.9).cgColor]
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: cell.frame.height)
+            cell.backgroundColor = .clear
+            cell.layer.insertSublayer(gradientLayer, at: 0)
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor(hex: "006577", alpha: 0.5).cgColor
             if(checkedObj!.watchable){
-                cell.textLabel?.text = "チェックしたリストを非表示にする"
+                cell.textLabel?.text = "チェック済みリストを非表示にする"
             }else{
-                cell.textLabel?.text = "チェックしたリストを表示する"
+                cell.textLabel?.text = "チェック済みリストを表示する"
             }
-            cell.layer.cornerRadius = 15
-            cell.backgroundColor = UIColor(hex: "BFF4FF", alpha: 0.7)
         }
         return cell
     }

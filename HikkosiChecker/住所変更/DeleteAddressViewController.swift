@@ -27,6 +27,7 @@ class DeleteAddressViewController: UIViewController,UITableViewDataSource,UITabl
         cell.btn.index = indexPath
         cell.btn.addTarget(self, action: #selector(deleteFunc(_:)), for: .touchUpInside)
         cell.label.text = dataList.sections[indexPath.section].section[indexPath.row].title
+        cell.label.textColor = UIColor(white: 0.1, alpha: 1)
         cell.btn.setImage(UIImage(named: "deleteImg"), for: .normal)
         return cell
     }

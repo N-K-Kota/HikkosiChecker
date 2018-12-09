@@ -21,7 +21,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         btn = CustomButton()
         label = UILabel()
         label.frame = CGRect(x: 50, y: 0, width: self.frame.width-50, height: self.frame.height)
-        btn.frame = CGRect(x: 10, y: (self.frame.height-btn.height)/2, width: btn.width, height: btn.height)
+        btn.frame = CGRect(x: 0, y: (self.frame.height-btn.height)/2, width: btn.width, height: btn.height)
         for subview in self.contentView.subviews{
             subview.removeFromSuperview()
         }

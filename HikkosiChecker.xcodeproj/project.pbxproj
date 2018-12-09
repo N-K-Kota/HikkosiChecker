@@ -15,6 +15,9 @@
 		1F434BF821BA6FBB0054F5AB /* assertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF721BA6FBB0054F5AB /* assertionView.swift */; };
 		1F434BFA21BA7EA60054F5AB /* DeleteAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BF921BA7EA60054F5AB /* DeleteAddressViewController.swift */; };
 		1F434BFC21BC9DC20054F5AB /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F434BFB21BC9DC20054F5AB /* ResetViewController.swift */; };
+		1F434BFF21BCB9AB0054F5AB /* BistroSketch.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F434BFE21BCB9AB0054F5AB /* BistroSketch.ttf */; };
+		1F434C0121BCBC1C0054F5AB /* Dentra Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F434C0021BCBC1C0054F5AB /* Dentra Font.ttf */; };
+		1F434C0521BCF5750054F5AB /* YuMincho.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1F434C0421BCF5750054F5AB /* YuMincho.ttc */; };
 		1F4F8AD921B388CB005CE25C /* AddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8AD821B388CB005CE25C /* AddressData.swift */; };
 		1F4F8ADB21B3C213005CE25C /* TopPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */; };
 		1F4F8B5921B608FB005CE25C /* NotesmoveoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */; };
@@ -80,6 +83,9 @@
 		1F434BF721BA6FBB0054F5AB /* assertionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assertionView.swift; sourceTree = "<group>"; };
 		1F434BF921BA7EA60054F5AB /* DeleteAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAddressViewController.swift; sourceTree = "<group>"; };
 		1F434BFB21BC9DC20054F5AB /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
+		1F434BFE21BCB9AB0054F5AB /* BistroSketch.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BistroSketch.ttf; path = ../../../../Downloads/BistroSketch.ttf; sourceTree = "<group>"; };
+		1F434C0021BCBC1C0054F5AB /* Dentra Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dentra Font.ttf"; sourceTree = "<group>"; };
+		1F434C0421BCF5750054F5AB /* YuMincho.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = YuMincho.ttc; sourceTree = "<group>"; };
 		1F4F8AD821B388CB005CE25C /* AddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressData.swift; sourceTree = "<group>"; };
 		1F4F8ADA21B3C212005CE25C /* TopPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPresentationController.swift; sourceTree = "<group>"; };
 		1F4F8B5821B608FB005CE25C /* NotesmoveoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesmoveoutViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +259,9 @@
 				1F52629421A6B7520067BC45 /* 転出時作業リスト */,
 				1FA17421218BFEF9004316F3 /* AppDelegate.swift */,
 				1FA17425218BFEF9004316F3 /* Main.storyboard */,
+				1F434C0021BCBC1C0054F5AB /* Dentra Font.ttf */,
+				1F434BFE21BCB9AB0054F5AB /* BistroSketch.ttf */,
+				1F434C0421BCF5750054F5AB /* YuMincho.ttc */,
 				1FA17428218BFEFD004316F3 /* Assets.xcassets */,
 				1FA1742A218BFEFD004316F3 /* LaunchScreen.storyboard */,
 				1FA1742D218BFEFD004316F3 /* Info.plist */,
@@ -410,6 +419,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA1742C218BFEFD004316F3 /* LaunchScreen.storyboard in Resources */,
+				1F434C0121BCBC1C0054F5AB /* Dentra Font.ttf in Resources */,
+				1F434BFF21BCB9AB0054F5AB /* BistroSketch.ttf in Resources */,
+				1F434C0521BCF5750054F5AB /* YuMincho.ttc in Resources */,
 				1FA17429218BFEFD004316F3 /* Assets.xcassets in Resources */,
 				1FA17427218BFEF9004316F3 /* Main.storyboard in Resources */,
 			);

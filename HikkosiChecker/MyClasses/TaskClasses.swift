@@ -32,7 +32,7 @@ class UncheckedObj:Object{                //チェックされていないリス
         let task3 = Task()
         task3.task = "ゴミ出し曜日の確認"
         task3.id = taskKey.createKey()
-        let task4 = Task(value:["住居の解約届","","",nil,false,taskKey.createKey()])
+        let task4 = Task(value:["住居の解約届",nil,nil,nil,false,taskKey.createKey()])
         let task5 = Task(value:["引っ越し業者を決める","業者によって料金が大きく変わることがあるので複数の業者を比較しましょう。\n一括見積もりサイトを利用すると便利です。","",nil,false,taskKey.createKey()])
         let task6 = Task(value:["引越し先の下見、採寸","""
 B1☆下見の際のポイント
@@ -104,8 +104,8 @@ Nuro光
 Au光
 コラボ光
 ""","",nil,false,taskKey.createKey()])
-        let task9 = Task(value:["家具の売却","","",nil,false,taskKey.createKey()])
-        let task10 = Task(value:["使用頻度の低い荷物を梱包","","",nil,false,taskKey.createKey()])
+        let task9 = Task(value:["家具の売却",nil,nil,nil,false,taskKey.createKey()])
+        let task10 = Task(value:["使用頻度の低い荷物を梱包",nil,nil,nil,false,taskKey.createKey()])
         let task11 = Task(value:["郵便の転送届け","","",nil,false,taskKey.createKey()])
         let task12 = Task(value:["電気の解約","","",nil,false,taskKey.createKey()])
         let task13 = Task(value:["ガスの解約","","",nil,false,taskKey.createKey()])
@@ -189,14 +189,14 @@ class MoveinList:Object{
         let realm = try! Realm()
         let datas = [   //[タイトル,ポイント,持ち物]
             ["免許の書き換え","お近くの警察署、運転免許更新センター、運転免許試験場で手続きができます。\n新しい住所を証明できるものがあれば手続きできますが、マイナンバーの通知カードではできないので注意が必要です。","・運転免許証\n・新しい住所を証明できる物（住民票、健康保険証、公的機関からの郵送物）"],
-            ["インターネット回線の契約","",""],
+            ["インターネット回線の契約",nil,nil],
             ["転入届けなどの手続き","原則転入後１４日以内に市役所で手続きをすることとなっているので早めに手続きをすませましょう。\n","・転出証明証\n・マイナンバーカード、通知カード\n・運転免許証（ない場合は本人が確認できるもの）\n・印鑑\n・国民年金手帳（厚生年金に加入していない場合)"],
             ["電気、ガス、水道の契約","電力自由化によって自分にあったプランを選べるようになりました。\nお住いのマンションの契約状況によっては選べない場合もありますが、基本的には契約先を選べるので検討することをお勧めします。",""],
             ["日用品を購入","日常生活に必要なものは忘れずに購入するか準備しておくようにしましょう","・ティッシュペーパー\n・トイレットペーパー\n・歯ブラシ\n・洗濯用洗剤\n・タオル類\n・石鹸、シャンプー"]
         ]
         for i in datas{
             let task = Task()
-            task.task = i[0]
+            task.task = i[0]!
             task.point = i[1]
             task.requirement = i[2]
             try! realm.write{
@@ -219,12 +219,23 @@ class Sectionobj:Object{                 //セクションのオブジェクト
 }
 class Task:Object{                       //タスクのオブジェクト
     @objc dynamic var task:String  = ""
-    @objc dynamic var point:String = ""
-    @objc dynamic var requirement:String = ""
+    @objc dynamic var point:String?
+    @objc dynamic var requirement:String?
     @objc dynamic var memo:String? = nil
     @objc dynamic var canRemove:Bool = false
     @objc dynamic var id:Int = 0
     override static func primaryKey()->String?{
         return "id"
+    }
+}
+
+struct NotesData{
+    var title:NSAttributedString?
+    var context:NSMutableAttributedString?
+}
+class NoteDataList{
+    var dataList:Array<NotesData>
+    init(){
+        dataList = Array<NotesData>()
     }
 }
