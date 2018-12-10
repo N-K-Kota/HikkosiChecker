@@ -8,7 +8,12 @@
 
 import UIKit
 import RealmSwift
-class SettingViewController: UIViewController,UIViewControllerTransitioningDelegate {
+class SettingViewController: UIViewController,UIViewControllerTransitioningDelegate{
+   
+   
+   
+    
+    
     @IBOutlet weak var dateLabel:UILabel?
     @IBOutlet weak var datePicker:UIDatePicker?
     

@@ -9,10 +9,11 @@
 import UIKit
 import RealmSwift
 
-class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var checkedObj:CheckedObj?
     var uncheckedObj:UncheckedObj?
     var taskKey:TaskKey?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          if(checkedObj!.watchable){                        //チェックされたリストの表示、非表示で場合わけ
             if(section < 4){
@@ -215,6 +216,20 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         progressive!.moveoutTasksCount = uncheckedObj!.taskCount()
         progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
         progressive!.save()
+        let leftGesture = UISwipeGestureRecognizer()
+        leftGesture.direction = .left
+        leftGesture.addTarget(self, action: #selector(swipeLeft))
+        self.view.addGestureRecognizer(leftGesture)
+        let rightGesture = UISwipeGestureRecognizer()
+        rightGesture.direction = .right
+        rightGesture.addTarget(self, action: #selector(swipeRight))
+        self.view.addGestureRecognizer(rightGesture)
+    }
+    @objc func swipeLeft(){
+        self.tabBarController?.selectedIndex = 1
+    }
+    @objc func swipeRight(){
+        self.tabBarController?.selectedIndex = 2
     }
     
     

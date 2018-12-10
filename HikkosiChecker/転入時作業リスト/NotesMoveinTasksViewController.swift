@@ -85,7 +85,14 @@ class NotesMoveinTasksViewController: UIViewController,UITableViewDelegate,UITab
         memoBtn.setImage(UIImage(named:"pen"), for: .normal)
         memoBtn.addTarget(self, action: #selector(popMemo(_:)), for: .touchUpInside)
         self.view.addSubview(memoBtn)
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = .right
+        swipe.addTarget(self, action: #selector(rightGesture))
+        self.view.addGestureRecognizer(swipe)
         // Do any additional setup after loading the view.
+    }
+    @objc func rightGesture(){
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func popMemo(_ sender:Any){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "memoView") as! MemoViewController

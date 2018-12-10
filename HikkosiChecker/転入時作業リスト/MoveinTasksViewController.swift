@@ -170,10 +170,23 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         progressive!.moveinTasksCount = moveinList!.taskList.count
         progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
         progressive!.save()
+        let leftgesture = UISwipeGestureRecognizer()
+        leftgesture.direction = .left
+        leftgesture.addTarget(self, action: #selector(swipeLeft))
+        let rightgesture = UISwipeGestureRecognizer()
+        rightgesture.direction = .right
+        rightgesture.addTarget(self,action:#selector(swipeRight))
+        self.view.addGestureRecognizer(leftgesture)
+        self.view.addGestureRecognizer(rightgesture)
         // Do any additional setup after loading the view.
     }
     
-
+    @objc func swipeLeft(){
+        self.tabBarController?.selectedIndex = 0
+    }
+    @objc func swipeRight(){
+        self.tabBarController?.selectedIndex = 1
+    }
     /*
     // MARK: - Navigation
 

@@ -39,7 +39,9 @@ class MemoViewController: UIViewController,UITextViewDelegate {
         closeBtn.layer.borderWidth = 1
         closeBtn.layer.cornerRadius = 10
         closeBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         titleLabel.frame = CGRect(x: 10, y: 10, width: 100, height: 40)

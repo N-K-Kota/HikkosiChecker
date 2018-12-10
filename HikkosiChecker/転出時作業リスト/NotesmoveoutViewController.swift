@@ -55,9 +55,15 @@ class NotesmoveoutViewController: UIViewController,UITableViewDelegate,UITableVi
         memoBtn.setImage(UIImage(named: "pen"), for: .normal)
         memoBtn.addTarget(self, action: #selector(popMemo(_:)), for: .touchUpInside)
         self.view.addSubview(memoBtn)
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = .right
+        swipe.addTarget(self, action: #selector(rightGesture))
+        self.view.addGestureRecognizer(swipe)
         // Do any additional setup after loading the view.
     }
-    
+    @objc func rightGesture(){
+        self.navigationController?.popViewController(animated: true)
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         memoBtn.frame = CGRect(x: self.tableView.frame.width-50, y: self.view.frame.height-90, width: 30, height: 30)

@@ -31,9 +31,10 @@ class UncheckedObj:Object{                //チェックされていないリス
         task2.id = taskKey.createKey()
         let task3 = Task()
         task3.task = "ゴミ出し曜日の確認"
+        task3.point = "自治体によってゴミの出せる曜日は決まっていますので、出せる日が少ないものは早めに確認をしておくといいでしょう"
         task3.id = taskKey.createKey()
-        let task4 = Task(value:["住居の解約届",nil,nil,nil,false,taskKey.createKey()])
-        let task5 = Task(value:["引っ越し業者を決める","業者によって料金が大きく変わることがあるので複数の業者を比較しましょう。\n一括見積もりサイトを利用すると便利です。","",nil,false,taskKey.createKey()])
+        let task4 = Task(value:["住居の解約届","だいたい２週間前までには届けないといけないことが多いです。\n届けるのが遅れると余計な家賃がかかってしまうこともあります。",nil,nil,false,taskKey.createKey()])
+        let task5 = Task(value:["引っ越し業者を決める","業者によって料金が大きく変わることがあるので複数の業者を比較しましょう。\n一括見積もりサイトを利用すると便利です。",nil,nil,false,taskKey.createKey()])
         let task6 = Task(value:["引越し先の下見、採寸","""
 B1☆下見の際のポイント
 
@@ -90,7 +91,7 @@ B2リサイクルショップに売却
 B2オークション、フリマで売却
 梱包、郵送、購入者との連絡など、手間がかかるが幅広いものを取引できる利点がある
 トラブルが起こっても自己責任で対処する必要があり、時間に余裕を持って売却しなければならない。
-""","",nil,false,taskKey.createKey()])
+""",nil,nil,false,taskKey.createKey()])
         let task8 = Task(value:["インターネット回線の解約・移転申し込み","""
 基本的には新規契約をした方がキャッシュバックなどの特典がつきお得です。しかし、解約の際、違約金がかかる場合があったりプロバイダのメールアドレスが使えなくなることがあります。
 
@@ -103,14 +104,14 @@ B2オークション、フリマで売却
 Nuro光
 Au光
 コラボ光
-""","",nil,false,taskKey.createKey()])
+""",nil,nil,false,taskKey.createKey()])
         let task9 = Task(value:["家具の売却",nil,nil,nil,false,taskKey.createKey()])
         let task10 = Task(value:["使用頻度の低い荷物を梱包",nil,nil,nil,false,taskKey.createKey()])
-        let task11 = Task(value:["郵便の転送届け","","",nil,false,taskKey.createKey()])
-        let task12 = Task(value:["電気の解約","","",nil,false,taskKey.createKey()])
-        let task13 = Task(value:["ガスの解約","","",nil,false,taskKey.createKey()])
-        let task14 = Task(value:["水道の停止","","",nil,false,taskKey.createKey()])
-        let task15 = Task(value:["荷物の梱包、郵送","","",nil,false,taskKey.createKey()])
+        let task11 = Task(value:["郵便の転送届け","郵便局か、Webサイトで手続きができます","B2Webサイトでの手続き\n・携帯電話\n\nB2郵便局での手続き\n・本人確認書類\n・旧住所が確認できるもの(運転免許証、住民票、公的機関からの郵送物)",nil,false,taskKey.createKey()])
+        let task12 = Task(value:["電気の解約",nil,nil,nil,false,taskKey.createKey()])
+        let task13 = Task(value:["ガスの解約",nil,nil,nil,false,taskKey.createKey()])
+        let task14 = Task(value:["水道の停止",nil,nil,nil,false,taskKey.createKey()])
+        let task15 = Task(value:["荷物の梱包、郵送","引っ越し業者を使わない場合はゆうパックなどの郵送サービスを利用すると安くすみます",nil,nil,false,taskKey.createKey()])
         let task16 = Task(value:["役所での手続き(転出届・健康保険の資格喪失など)","""
 　　国民健康保険の場合は健康保険の資格喪失手続きが必要です
 　　社会保険の場合は会社に届ければOKです
@@ -121,6 +122,7 @@ Au光
  健康保険証
  
 """,nil,false,taskKey.createKey()])
+        let task17 = Task(value: ["洗濯機、冷蔵庫の水抜き","B2洗濯機の水抜き手順\n\n1.洗濯機用の蛇口を閉めてしばらく洗濯機を回す\n2.給水ホースを外す\n3.脱水モードにして回す\n4.排水ホースを外す\n\n\nB2冷蔵庫の水抜き手順\n\n1.引っ越し前日までに冷蔵庫のコンセントを抜いておく\n2.水受けトレイに溜まった水を捨てる",nil,nil,false,taskKey.createKey()])
         let realm = try! Realm()
         try! realm.write{
             realm.add(taskKey)
@@ -144,6 +146,7 @@ Au光
         section3.append(task14)
         section3.append(task15)
         section3.append(task16)
+        section3.append(task17)
         let s1 = Sectionobj(value:[section1,"1ヶ月前まで"])
         let s2 = Sectionobj(value:[section2,"１週間前まで"])
         let s3 = Sectionobj(value:[section3,"当日まで"])
@@ -189,9 +192,9 @@ class MoveinList:Object{
         let realm = try! Realm()
         let datas = [   //[タイトル,ポイント,持ち物]
             ["免許の書き換え","お近くの警察署、運転免許更新センター、運転免許試験場で手続きができます。\n新しい住所を証明できるものがあれば手続きできますが、マイナンバーの通知カードではできないので注意が必要です。","・運転免許証\n・新しい住所を証明できる物（住民票、健康保険証、公的機関からの郵送物）"],
-            ["インターネット回線の契約",nil,nil],
+            ["インターネット回線の開通作業",nil,nil],
             ["転入届けなどの手続き","原則転入後１４日以内に市役所で手続きをすることとなっているので早めに手続きをすませましょう。\n","・転出証明証\n・マイナンバーカード、通知カード\n・運転免許証（ない場合は本人が確認できるもの）\n・印鑑\n・国民年金手帳（厚生年金に加入していない場合)"],
-            ["電気、ガス、水道の契約","電力自由化によって自分にあったプランを選べるようになりました。\nお住いのマンションの契約状況によっては選べない場合もありますが、基本的には契約先を選べるので検討することをお勧めします。",""],
+            ["電気、ガス、水道の契約","電力自由化によって自分にあったプランを選べるようになりました。\nお住いのマンションの契約状況によっては選べない場合もありますが、基本的には契約先を選べるので検討することをお勧めします。",nil],
             ["日用品を購入","日常生活に必要なものは忘れずに購入するか準備しておくようにしましょう","・ティッシュペーパー\n・トイレットペーパー\n・歯ブラシ\n・洗濯用洗剤\n・タオル類\n・石鹸、シャンプー"]
         ]
         for i in datas{

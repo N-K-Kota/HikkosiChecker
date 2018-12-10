@@ -253,9 +253,22 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                 realm.add(allAddresses!)
             }
         }
+        let leftGesture = UISwipeGestureRecognizer()
+        leftGesture.direction = .left
+        leftGesture.addTarget(self, action: #selector(swipeLeft))
+        self.view.addGestureRecognizer(leftGesture)
+        let rightGesture = UISwipeGestureRecognizer()
+        rightGesture.direction = .right
+        rightGesture.addTarget(self, action: #selector(swipeRight))
+        self.view.addGestureRecognizer(rightGesture)
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    @objc func swipeLeft(){
+        self.tabBarController?.selectedIndex = 2
+    }
+    @objc func swipeRight(){
+        self.tabBarController?.selectedIndex = 0
+    }
     override func viewWillAppear(_ animated: Bool) {
         myList.initData()
         checkedList.initData()

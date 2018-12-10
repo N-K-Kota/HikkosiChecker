@@ -40,7 +40,7 @@ class TopPageViewController: UIViewController {
             listButton.tintColor = .white
             listButton.layer.borderColor = UIColor(hex: "C4990C", alpha: 1).cgColor
             listButton.layer.borderWidth = 2.0
-            settingButton.layer.cornerRadius = 2
+            settingButton.layer.cornerRadius = 5
             settingButton.backgroundColor = UIColor(hex: "40AEF9", alpha: 1)
             settingButton.layer.borderColor = UIColor(hex: "207DBD", alpha: 1).cgColor
             settingButton.layer.borderWidth = 2.0
