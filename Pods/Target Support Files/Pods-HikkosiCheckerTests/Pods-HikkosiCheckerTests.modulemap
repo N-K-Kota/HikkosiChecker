@@ -1,0 +1,6 @@
+framework module Pods_HikkosiCheckerTests {
+  umbrella header "Pods-HikkosiCheckerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
