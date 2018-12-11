@@ -10,8 +10,8 @@ import UIKit
 import RealmSwift
 class MemoViewController: UIViewController,UITextViewDelegate {
     var task:Task?
-    var dataList:NoteDataList?
-    var reload = {()->Void in}
+    var dataList:NoteDataList? //前の画面のテキスト情報への参照を持っている
+    var reload = {()->Void in} //reloadData()が入ってるクロージャ
     let realm = try! Realm()
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -22,7 +22,7 @@ class MemoViewController: UIViewController,UITextViewDelegate {
         // Do any additional setup after loading the view.
         textView.textAlignment = .left
         textView.returnKeyType = .done
-        textView.font = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight(rawValue: 10))
+        textView.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(rawValue: 10))
         textView.textColor = UIColor(white: 0.5, alpha: 1)
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor(white: 0.3, alpha: 1).cgColor
@@ -55,14 +55,15 @@ class MemoViewController: UIViewController,UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         self.dismiss(animated: true, completion: nil)
         if(textView.text != nil){
-        try! realm.write{
+        try! realm.write{        //テキストを保存
             task!.memo = textView.text
         }
-            if let list = dataList{
-             list.dataList[list.dataList.count-1].context = CustomAttrStr().resAttrStr(textView.text)
-            }else{
-                print("found dataList nil")
-            }
+        if let list = dataList{  //テキストをメモに反映させる
+            
+            list.dataList[list.dataList.count-1].context = NSMutableAttributedString(string: textView.text, attributes: CustomAttrStr().normalattr)
+        }else{
+            print("found dataList nil")
+        }
         }
         reload()
     }

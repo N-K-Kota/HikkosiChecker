@@ -232,13 +232,4 @@ class Task:Object{                       //タスクのオブジェクト
     }
 }
 
-struct NotesData{
-    var title:NSAttributedString?
-    var context:NSMutableAttributedString?
-}
-class NoteDataList{
-    var dataList:Array<NotesData>
-    init(){
-        dataList = Array<NotesData>()
-    }
-}
+

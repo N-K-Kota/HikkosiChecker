@@ -41,6 +41,7 @@
 		1FA17442218BFEFD004316F3 /* HikkosiCheckerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17441218BFEFD004316F3 /* HikkosiCheckerUITests.swift */; };
 		1FA17450218C00B9004316F3 /* MoveoutTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */; };
 		1FA17452218C00C6004316F3 /* MoveinTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */; };
+		1FAA74B621BF83EE00AAA419 /* NoteDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA74B521BF83EE00AAA419 /* NoteDataList.swift */; };
 		1FB1410C21AB8FE700BAFD44 /* Addreeses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1410B21AB8FE700BAFD44 /* Addreeses.swift */; };
 		1FF6D85721B109120083087A /* SetURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85621B109120083087A /* SetURLViewController.swift */; };
 		1FF6D85921B12AFB0083087A /* PrimaryKeyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6D85821B12AFB0083087A /* PrimaryKeyClass.swift */; };
@@ -113,6 +114,7 @@
 		1FA17443218BFEFE004316F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FA1744F218C00B9004316F3 /* MoveoutTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveoutTasksViewController.swift; sourceTree = "<group>"; };
 		1FA17451218C00C6004316F3 /* MoveinTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveinTasksViewController.swift; sourceTree = "<group>"; };
+		1FAA74B521BF83EE00AAA419 /* NoteDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataList.swift; sourceTree = "<group>"; };
 		1FB1410B21AB8FE700BAFD44 /* Addreeses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Addreeses.swift; sourceTree = "<group>"; };
 		1FF6D85621B109120083087A /* SetURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetURLViewController.swift; sourceTree = "<group>"; };
 		1FF6D85821B12AFB0083087A /* PrimaryKeyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryKeyClass.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				1F79797B21907A61004E56EA /* MyTableViewCell.swift */,
 				1F79797D21907EF4004E56EA /* CustomButton.swift */,
 				1F52629221A69F0A0067BC45 /* TaskClasses.swift */,
+				1FAA74B521BF83EE00AAA419 /* NoteDataList.swift */,
 				1F291785219BBC99001A3C9A /* DeletableList.swift */,
 				1F7318C921A20DC900851BD4 /* HexColorClass.swift */,
 			);
@@ -557,6 +560,7 @@
 				1F88550521AD80EE00CFB980 /* CollectionViewController.swift in Sources */,
 				1F4F8B5D21B61B76005CE25C /* MemoViewController.swift in Sources */,
 				1F52629321A69F0A0067BC45 /* TaskClasses.swift in Sources */,
+				1FAA74B621BF83EE00AAA419 /* NoteDataList.swift in Sources */,
 				1F4F8B5921B608FB005CE25C /* NotesmoveoutViewController.swift in Sources */,
 				1F7318CA21A20DC900851BD4 /* HexColorClass.swift in Sources */,
 				1FB1410C21AB8FE700BAFD44 /* Addreeses.swift in Sources */,
