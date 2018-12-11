@@ -29,6 +29,7 @@ class SettingViewController: UIViewController,UIViewControllerTransitioningDeleg
     let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
+             datePicker!.minimumDate = Date()
             datePicker!.datePickerMode = .date
         datePicker!.setDate(defaultDate ?? Date(), animated: false)
             formatter.dateFormat = "yy-MM-dd"

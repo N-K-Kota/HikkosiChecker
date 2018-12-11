@@ -52,7 +52,7 @@ class AllAddresses:Object{
         }
         let banklist = [["楽天銀行","https://www.rakuten-bank.co.jp/"],["三菱UFJ銀行","http://direct.bk.mufg.jp/"],["三井住友銀行","https://www.smbc.co.jp/"],["新生銀行","https://www.shinseibank.com/"],["ジャパンネット銀行","https://www.japannetbank.co.jp/"],["GMOあおぞらネット","https://gmo-aozora.com/"],["イオン銀行","https://www.aeonbank.co.jp/"],["大和ネクスト銀行","https://www.bank-daiwa.co.jp/"],["オリックス銀行","https://www.orixbank.co.jp/?id=31022909999"],["じぶん銀行","https://www.jibunbank.co.jp/"],["スルガ銀行","https://www.surugabank.co.jp/surugabank/index.html"]]
         let shoplist = [["Amazon","https://www.amazon.co.jp/"],["楽天ショップ","https://www.rakuten.co.jp/"],["Yahooショップ","https://shopping.yahoo.co.jp/"]]
-        let cardlist = [["楽天カード","https://www.rakuten-card.co.jp/e-navi/"],["ヤフーカード","https://card.yahoo.co.jp/"],["エポスカード","https://www.eposcard.co.jp/index.html"],["ライフカード","http://www.lifecard.co.jp/"],["アメリカンエクスプレス","https://www.americanexpress.com/japan/"]]
+        let cardlist = [["楽天カード","https://www.rakuten-card.co.jp/e-navi/"],["ヤフーカード","https://card.yahoo.co.jp/"],["エポスカード","https://www.eposcard.co.jp/index.html"],["ライフカード","http://www.lifecard.co.jp/"],["アメリカンエクスプレス","https://www.americanexpress.com/japan/"],["オリコカード","https://www.orico.co.jp/"],["イオンカード","http://www.aeon.co.jp/creditcard/"]]
         for i in banklist{
             let b = Address()
             b.title = i[0]

@@ -73,10 +73,8 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.btn.addTarget(self, action: #selector(clickAction(_:)), for: .touchUpInside)
             cell.accessoryType = .detailButton
             cell.tintColor = UIColor.blue
-            cell.preservesSuperviewLayoutMargins = false
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-            cell.label.attributedText = NSAttributedString(string: uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task, attributes: attr.normalattr)
-        }else if(indexPath.section > 4){//ここにチェックされたリストの描画をかく
+            cell.label.text =  uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task
+          }else if(indexPath.section > 4){//ここにチェックされたリストの描画をかく
             cell.setData()
             cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
             cell.btn.index = indexPath
@@ -85,9 +83,8 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
             cell.accessoryType = .detailButton
             cell.tintColor = .blue
-            cell.label.attributedText = NSAttributedString(string:checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task , attributes: attr.normalattr)
-            cell.preservesSuperviewLayoutMargins = false
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+            cell.label.text = checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task
+            cell.label.alpha = 0.6
         }else{
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.textColor = .white
@@ -123,8 +120,8 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     @objc func clickAction(_ sender: UIButton) {   //リストをクリックした時のアクション
         let sender = sender as! CustomButton
-        sender.isEnabled = false
         let path = sender.index
+        sender.isEnabled = false
         let task = uncheckedObj!.sectionobjList[path.section].taskList[path.row]  //チェックされたTaskを取り出す
         try! realm.write{
             checkedObj!.sectionobjList[path.section].taskList.append(task)
@@ -134,27 +131,10 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
         progressive!.save()
         let mycell = tableView.cellForRow(at: path) as! MyTableViewCell
-        let scale = UIScreen.main.scale
-       UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
-                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/2)
-                mycell.layer.opacity = 0.75
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.1, animations: {
-               
-                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
-                mycell.layer.opacity = 0.5
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.1, animations: {
-                
-                sender.imageView?.center.x += (self.tableView.frame.width-sender.imageView!.frame.width)/4*scale
-                mycell.layer.opacity = 0
-                sender.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
-            })
-        }, completion: {(bool:Bool) in
-                       self.tableView.reloadData()
+        UIView.animate(withDuration: 0.3, animations: {
+            mycell.alpha = 0
+        }, completion: {(bool:Bool)->Void in
+            self.tableView.reloadData()
         })
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //チェックされたリストの表示、非表示を切り替えるセルを押された時のアクション

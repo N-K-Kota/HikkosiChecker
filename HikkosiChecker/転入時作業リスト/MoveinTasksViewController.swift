@@ -54,6 +54,10 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.label.text = didmoveinList!.taskList[indexPath.row].task
             cell.accessoryType = .detailButton
             cell.btn.addTarget(self, action: #selector(uncheckFunc(_:)), for: .touchDown)
+            cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
+            cell.btn.layer.opacity = 0.6
+            cell.label.layer.opacity = 0.6
+            cell.label.backgroundColor = UIColor(white: 1, alpha: 0)
         }
         return cell
     }
@@ -79,33 +83,12 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
         progressive!.didmoveinTasksCount = didmoveinList!.taskList.count
         progressive!.save()
         let mycell = self.tableView.cellForRow(at: btn.index) as! MyTableViewCell
-        let scale = UIScreen.main.scale
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState], animations: {  //アニメーションの描画
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
-                btn.imageView?.center.x += (self.tableView.frame.width-btn.imageView!.frame.width)/4*scale
-                btn.imageView!.transform = CGAffineTransform(rotationAngle: .pi/2)
-                mycell.layer.opacity = 0.75
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.1, animations: {
-                
-                btn.imageView?.center.x += (self.tableView.frame.width-btn.imageView!.frame.width)/4*scale
-                btn.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
-                mycell.layer.opacity = 0.5
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.1, animations: {
-                
-                btn.imageView?.center.x += (self.tableView.frame.width-btn.imageView!.frame.width)/4*scale
-                mycell.layer.opacity = 0.25
-                btn.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
-                btn.imageView?.center.x += (self.tableView.frame.width-btn.imageView!.frame.width)/4*scale
-                mycell.layer.opacity = 0
-                btn.imageView!.transform = CGAffineTransform(rotationAngle: .pi/6)
-            })
-        }, completion: {(bool:Bool) in
+        UIView.animate(withDuration: 0.3, animations: {
+            mycell.alpha = 0
+        }, completion: {(bool:Bool)->Void in
             self.tableView.reloadData()
         })
+
     }
     @objc func uncheckFunc(_ sender:Any){
         let btn = sender as! CustomButton

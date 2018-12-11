@@ -31,6 +31,9 @@ class EditMoveinTasksViewController: UIViewController,UITableViewDelegate,UITabl
         if(indexPath.section == 0){
             task = moveinList!.taskList[indexPath.row]
         }else{
+            cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
+            cell.btn.layer.opacity = 0.6
+            cell.label.layer.opacity = 0.6
             task = didmoveinList!.taskList[indexPath.row]
         }
         if(task.canRemove){

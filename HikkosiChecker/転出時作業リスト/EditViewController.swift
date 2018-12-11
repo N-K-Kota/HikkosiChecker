@@ -29,19 +29,34 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
        return checkedObj!.sectionobjList.count + uncheckedObj!.sectionobjList.count
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        let title = UILabel()
+        header.addSubview(title)
+        header.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 28)
+        title.frame = CGRect(x: 16, y:0, width: header.frame.width-10, height: 28)
         if(section < 4){
             if(uncheckedObj!.sectionobjList[section].taskList.count > 0){
-            return uncheckedObj!.sectionobjList[section].title
+                title.text =  uncheckedObj!.sectionobjList[section].title
+                title.font = UIFont.boldSystemFont(ofSize: 17)
+                header.backgroundColor = UIColor(hex: "E9E9E9")
+            }else{
+                header.layer.opacity = 0
             }
         }else{
             if(checkedObj!.sectionobjList[section-4].taskList.count > 0){
-             return checkedObj!.sectionobjList[section-4].title
+                title.text = checkedObj!.sectionobjList[section-4].title
+                title.font = UIFont.boldSystemFont(ofSize: 17)
+                header.backgroundColor = UIColor(hex: "E9E9E9", alpha: 0.6)
+                title.layer.opacity = 0.6
+            }else{
+                header.layer.opacity = 0
             }
         }
-            return ""
+        return header
     }
-    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height:20 ))
         footerView.backgroundColor = UIColor.clear
@@ -53,7 +68,11 @@ class EditViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             if(indexPath.section < 4){
                task = uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row]
             }else{
+               cell.textLabel?.layer.opacity = 0.6
+                cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
                task = checkedObj!.sectionobjList[indexPath.section-4].taskList[indexPath.row]
+                cell.btn.layer.opacity = 0.6
+                cell.label.layer.opacity = 0.6
             }
             if(task.canRemove){
                 cell.setData()

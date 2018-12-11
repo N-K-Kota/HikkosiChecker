@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         Realm.Configuration.defaultConfiguration = config*/
-        /*let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
         let realmURLs = [
             realmURL,
             realmURL.appendingPathExtension("lock"),
@@ -44,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.removeObject(forKey: "allAddressCount")
         UserDefaults.standard.removeObject(forKey: "didAddressCount")
          UserDefaults.standard.removeObject(forKey: "Flag")
-         print(realmURL)*/
+         UserDefaults.standard.removeObject(forKey: PlannedDate.key)
+         print(realmURL)
         // Override point for customization after application launch.
         return true
     }

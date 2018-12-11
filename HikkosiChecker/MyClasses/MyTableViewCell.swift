@@ -22,8 +22,11 @@ class MyTableViewCell: UITableViewCell {
         self.textLabel?.text = ""
         self.textLabel?.textColor = .black
         self.textLabel?.textAlignment = .left
+        self.textLabel?.alpha = 1
         self.layer.cornerRadius = 0.0
         self.layer.opacity = 1
+        btn.layer.opacity = 1
+        label.layer.opacity = 1
         self.layer.borderWidth = 0
         self.backgroundColor = UIColor(white: 1, alpha: 1)
         self.accessoryType = .none

@@ -30,7 +30,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             if(indexPath.section == 4){
                 return 40
             }else{
-            return 30
+            return 28
             }
         }else{
             return 50
@@ -71,7 +71,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "addresscell", for: indexPath) as! MyTableViewCell
         
-                if(indexPath.section < 4){    //チェックしてないリスト
+            if(indexPath.section < 4){    //チェックしてないリスト
                 if(indexPath.row == 0){       //セクションヘッダーの代わり(追加ボタンがつく)
                     cell.textLabel?.text = myList.sections[indexPath.section].title
                     let acView = CustomButton()
@@ -80,7 +80,9 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                     acView.index = indexPath
                     acView.addTarget(self, action: #selector(plusTap(_:)), for: .touchUpInside)
                     cell.accessoryView = acView
-                    cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
+                    cell.backgroundColor = UIColor(hex: "E9E9E9")
+                    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+                    cell.textLabel?.textColor = UIColor(white: 0.2, alpha: 1)
                 }else{
                     cell.btn.primaryKey = myList.sections[indexPath.section].section[indexPath.row-1].id
                     cell.setData()
@@ -96,7 +98,10 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                     if(indexPath.row == 0){    //セクションヘッダーの代わり(チェックしたリストにはボタンがつかない)
                         cell.textLabel?.text = checkedList.sections[indexPath.section-5].title
                         cell.accessoryView = nil
-                        cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
+                        cell.backgroundColor = UIColor(hex: "E9E9E9",alpha:0.6)
+                        cell.textLabel?.alpha = 0.6
+                        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+                        cell.textLabel?.textColor = UIColor(white: 0.2, alpha: 1)
                     }else{
                         cell.setData()
                         cell.btn.index = indexPath
@@ -107,6 +112,10 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
                         cell.btn.addTarget(self, action: #selector(clickCheckedBtn(_:)), for: .touchUpInside)
                         cell.label.text = checkedList.sections[indexPath.section-5].section[indexPath.row-1].title
                         cell.label.textColor = UIColor(white: 0.2, alpha: 1)
+                        cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
+                        cell.btn.layer.opacity = 0.6
+                        cell.label.layer.opacity = 0.6
+                        cell.label.backgroundColor = UIColor(white: 1, alpha: 0)
                     }
             }else{
                     cell.textLabel?.textAlignment = .center
