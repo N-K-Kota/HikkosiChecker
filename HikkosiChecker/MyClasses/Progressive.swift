@@ -28,7 +28,7 @@ struct Progressive{              //progressViewのデータ格納と、UserDeaul
         UserDefaults.standard.set(didmoveinTasksCount, forKey: "didmoveinTasksCount")
     }
     mutating func read(){
-        if(UserDefaults.standard.object(forKey: "moveinTasksCount") != nil){
+        if(UserDefaults.standard.object(forKey: "moveinTasksCount") != nil){ //データがなくてもnilを代入したくない
         self.moveinTasksCount = UserDefaults.standard.object(forKey: "moveinTasksCount") as! Int
         self.didmoveinTasksCount = UserDefaults.standard.object(forKey: "didmoveinTasksCount") as! Int
         self.moveoutTasksCount = UserDefaults.standard.object(forKey:"moveoutTasksCount" ) as! Int

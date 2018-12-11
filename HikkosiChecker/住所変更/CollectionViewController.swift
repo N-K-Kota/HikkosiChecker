@@ -31,7 +31,7 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CustomCollectionViewCell
         cell.setup()
-        if(dataList![indexPath.row].flag){
+        if(dataList![indexPath.row].flag){  //falseならセルを空白にする
             if(addressBuffer.buffer[indexPath.row]){
                 cell.btn.setImage(UIImage(named: "checkFrame"), for: .normal)
                 cell.btn.addTarget(self, action: #selector(clickcheckedCell(_:)), for: .touchUpInside)
@@ -48,20 +48,20 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
            let btn = sender as! CustomButton
            addressBuffer.addbuf(btn.index.row)
            self.collectionView.reloadItems(at: [btn.index])
-           addBtn.layer.opacity = 1
+           addBtn.layer.opacity = 1                        //追加、削除ボタンを表示
            deleteBtn.layer.opacity = 1
     }
     @objc func clickcheckedCell(_ sender:Any){
         let btn = sender as! CustomButton
         addressBuffer.subbuf(btn.index.row)
         self.collectionView.reloadItems(at: [btn.index])
-        if(!addressBuffer.checkStart){
+        if(!addressBuffer.checkStart){                    //チェックされていないときは追加、削除ボタンを非表示にする
             addBtn.layer.opacity = 0
             deleteBtn.layer.opacity = 0
         }
     }
    
-    @IBAction func createNewListBtn(_ sender: UIBarButtonItem) {
+    @IBAction func createNewListBtn(_ sender: UIBarButtonItem) {  //新規作成
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "textFieldView") as! TextFieldViewController
         vc.reload = {()->Void in self.collectionView.reloadData()}
         vc.transitioningDelegate = self
@@ -113,7 +113,6 @@ class CollectionViewController: UIViewController,UICollectionViewDataSource,UICo
             }
             n += 1
         }
-        print("deleted")
         addressBuffer.setBuffer(dataList!.count)
         self.collectionView.reloadData()
     }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-struct AddressBufer{
+struct AddressBufer{           //住所変更ディレクトリのCollectionViewControllerでチェックされたリストを保存するのに使う
     var buffer = Array<Bool>()
     var checkStart = false
     mutating func  setBuffer(_ datacount:Int){

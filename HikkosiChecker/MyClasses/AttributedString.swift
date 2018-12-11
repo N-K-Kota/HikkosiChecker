@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-struct CustomAttrStr{
-    let customattr1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 4)),NSAttributedString.Key.foregroundColor:UIColor(white:0.3,alpha:1)]
-    let customattr2:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 5)),NSAttributedString.Key.foregroundColor:UIColor(white:0.3,alpha:1)]
-    let normalattr:[NSAttributedString.Key:Any] = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 0.9)]
+struct CustomAttrStr{        //装飾文字列を扱うクラス
+    let customattr1:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 5)),NSAttributedString.Key.foregroundColor:UIColor(white:0.3,alpha:1)]   //一番大きい
+    let customattr2:[NSAttributedString.Key:Any] = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 4)),NSAttributedString.Key.foregroundColor:UIColor(white:0.3,alpha:1)] //２番目に大きい
+    let normalattr:[NSAttributedString.Key:Any] = [NSAttributedString.Key.foregroundColor:UIColor(white: 0.2, alpha: 0.9)]  //普通
     let titleForPoints:NSAttributedString
     let titleForRequires:NSAttributedString
     let titleForMemo:NSAttributedString

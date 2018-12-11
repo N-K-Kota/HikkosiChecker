@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import UIKit
 
-class Address:Object{
+class Address:Object{          //住所変更リストのデータ 
     @objc dynamic var title = ""
     @objc dynamic var url:String?
     @objc dynamic var flag = true  //trueなら追加リストへ、falseなら住所変更リストへ表示される
@@ -19,6 +19,10 @@ class Address:Object{
     override static func primaryKey()->String?{
         return "id"
     }
+}
+class AddressSection:Object{
+    var section = List<Address>()
+    @objc dynamic var title = ""
 }
 class AllAddresses:Object{
     var sections = List<AddressSection>()
@@ -77,7 +81,7 @@ class AllAddresses:Object{
         }
     }
 }
-class AddressView:Object{
+class AddressView:Object{          //表示用クラス
     var sections = List<AddressSection>()
     var watchable = false
     func initData(){
@@ -97,7 +101,4 @@ class AddressView:Object{
         return n
     }
 }
-class AddressSection:Object{
-    var section = List<Address>()
-    @objc dynamic var title = ""
-}
+

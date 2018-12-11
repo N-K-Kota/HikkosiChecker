@@ -9,14 +9,14 @@
 import Foundation
 import RealmSwift
 
-class MyKey:Object{
+class MyKey:Object{      //Addresses型のprimaryKeyを保存
     @objc dynamic var id = -1
     func createKey()->Int{
         id += 1
         return id
     }
 }
-class TaskKey:Object{
+class TaskKey:Object{     //Task型のprimaryKeyを保存
     @objc dynamic var id = -1
     func createKey()->Int{
         id += 1

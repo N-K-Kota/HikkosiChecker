@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct PlannedDate{
+struct PlannedDate{    //引っ越し予定日の保存、残り日数の計算、型変換などをする
     var date:Date?
     static let key = "DateKey"
     mutating func readDate(){

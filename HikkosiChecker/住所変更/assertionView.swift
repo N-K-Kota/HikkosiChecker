@@ -22,7 +22,6 @@ class assertionView: UIViewController {
     @IBAction func yesAction(_ sender: UIButton) {
         if let ur = NSURL(string: url!){
         if(UIApplication.shared.canOpenURL(ur as URL)){
-            print("canopen")
             self.dismiss(animated: true, completion: nil)
             UIApplication.shared.open(ur as URL, options:[UIApplication.OpenExternalURLOptionsKey.universalLinksOnly:UIApplication.OpenExternalURLOptionsKey.universalLinksOnly] , completionHandler: nil)
         }else{

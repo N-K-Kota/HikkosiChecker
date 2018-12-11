@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JumpPresentation: UIPresentationController {
+class JumpPresentation: UIPresentationController {  //画面中央に高さ半分のViewを表示する
     var overlay:UIView!
     override func presentationTransitionWillBegin(){
         let containerView = self.containerView!

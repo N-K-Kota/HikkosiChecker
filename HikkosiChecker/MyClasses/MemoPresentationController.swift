@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemoPresentationController: UIPresentationController {
+class MemoPresentationController: UIPresentationController {  //メモに書き込む時の遷移
     var overlay:UIView!
     override func presentationTransitionWillBegin(){
         let containerView = self.containerView!

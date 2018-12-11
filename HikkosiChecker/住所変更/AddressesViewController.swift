@@ -175,7 +175,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }
         }
     }
-    @objc func clickBtn(_ sender:Any){
+    @objc func clickBtn(_ sender:Any){          //空のチェックボックスをクリックした時
         let sender = sender as! CustomButton
         let id = sender.primaryKey
         let s = sender.index.section
@@ -201,7 +201,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             }, completion: {(bool:Bool)-> Void in
                 self.tableView.reloadData()})
     }
-    @objc func clickCheckedBtn(_ sender:Any){
+    @objc func clickCheckedBtn(_ sender:Any){      //チェック済みのボックスをクリックした時
         let sender = sender as! CustomButton
         let s = sender.index.section-5
         let id = sender.primaryKey
@@ -238,7 +238,7 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
             return myList.sections.count + checkedList.sections.count + 1
         }
     }
-    @IBAction func deleteBtn(_ sender: UIBarButtonItem) {
+    @IBAction func deleteBtn(_ sender: UIBarButtonItem) {    //削除モードへ
         self.performSegue(withIdentifier:"toDelAddress" , sender: nil)
     }
     
@@ -279,10 +279,10 @@ class AddressesViewController: UIViewController,UITableViewDataSource,UITableVie
         self.tabBarController?.selectedIndex = 0
     }
     override func viewWillAppear(_ animated: Bool) {
-        myList.initData()
+        myList.initData()           //表示用データの初期化
         checkedList.initData()
-        allAddresses!.diplayDatas(myList: myList, checkedList: checkedList)
-        progressive!.didAddressCount = checkedList.taskCount() //作業達成度を記録する
+        allAddresses!.diplayDatas(myList: myList, checkedList: checkedList) //表示用データに入力
+        progressive!.didAddressCount = checkedList.taskCount()             //作業達成度を記録する
         progressive!.allAddressCount =  myList.taskCount()+checkedList.taskCount()
         progressive!.save()
         tableView.reloadData()

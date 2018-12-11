@@ -181,7 +181,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
         checkedObj = realm.objects(CheckedObj.self).first
         uncheckedObj = realm.objects(UncheckedObj.self).first
         taskKey = realm.objects(TaskKey.self).first
-        if(uncheckedObj == nil){
+        if(uncheckedObj == nil){  //初期化されている場合
             taskKey = TaskKey()
             uncheckedObj = UncheckedObj()
             uncheckedObj!.initData(taskKey:taskKey!)
@@ -193,10 +193,10 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
                 realm.add(taskKey!)
             }
         }
-        progressive!.moveoutTasksCount = uncheckedObj!.taskCount()
+        progressive!.moveoutTasksCount = uncheckedObj!.taskCount()    //進捗率を計算するためのデータ入力
         progressive!.didmoveoutTasksCount = checkedObj!.taskCount()
         progressive!.save()
-        let leftGesture = UISwipeGestureRecognizer()
+        let leftGesture = UISwipeGestureRecognizer()                //Swipeでタブの切り替え
         leftGesture.direction = .left
         leftGesture.addTarget(self, action: #selector(swipeLeft))
         self.view.addGestureRecognizer(leftGesture)
