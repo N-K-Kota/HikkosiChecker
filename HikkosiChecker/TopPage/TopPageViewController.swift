@@ -10,6 +10,7 @@ import UIKit
 
 var progressive:Progressive?
 class TopPageViewController: UIViewController {
+    @IBOutlet weak var wrapStackView: UIStackView!
     @IBOutlet weak var plannedStack: UIStackView!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
@@ -31,10 +32,7 @@ class TopPageViewController: UIViewController {
             leftDatesStack.translatesAutoresizingMaskIntoConstraints = false
             progressStack.translatesAutoresizingMaskIntoConstraints = false
             settingStack.translatesAutoresizingMaskIntoConstraints = false
-            plannedStack.backgroundColor = .blue
-            leftDatesStack.backgroundColor = .yellow
-            progressStack.backgroundColor = .red
-            settingStack.backgroundColor = .green
+        wrapStackView.translatesAutoresizingMaskIntoConstraints = false
             listButton.backgroundColor = UIColor(hex: "FFC817", alpha: 1)
             listButton.layer.cornerRadius = 40
             listButton.tintColor = .white
@@ -49,14 +47,28 @@ class TopPageViewController: UIViewController {
     @IBOutlet weak var leftDatesStack: UIStackView!
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let guide = self.view.layoutMarginsGuide
+        let safe = self.view.safeAreaInsets
         let x = progressive!.ratio * Float(progressView.frame.width)
         let transform = CGAffineTransform(translationX: CGFloat(x)-progImageView.frame.width/2, y: 0)
         progImageView.transform = transform
+        if(self.traitCollection.userInterfaceIdiom == .pad){
+            wrapStackView.topAnchor.constraint(equalTo:guide.topAnchor , constant: 100).isActive = true
+            wrapStackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 80).isActive=true
+            wrapStackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -80).isActive=true
+            wrapStackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -100).isActive = true
+        }else{
+            wrapStackView.topAnchor.constraint(equalTo:guide.topAnchor , constant: 20+safe.top).isActive = true
+            wrapStackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20+safe.left).isActive=true
+            wrapStackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -20-safe.right).isActive=true
+            wrapStackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -20-safe.bottom).isActive = true
+        }
         settingStack.widthAnchor.constraint(equalToConstant: 80).isActive = true
         settingStack.heightAnchor.constraint(equalToConstant: 150).isActive = true
         listButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         listButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
     }
+        
     override func viewWillAppear(_ animated: Bool) {
         plannedDateLabel.text = plannedDate.toString()
         leftDateLabel.text = plannedDate.leftDates()

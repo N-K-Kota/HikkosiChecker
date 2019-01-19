@@ -45,6 +45,7 @@ class MyTableViewCell: UITableViewCell {
     }
     
     func setData(){
+        
         label.frame = CGRect(x: 50, y: 0, width: self.frame.width - 60, height: self.frame.height)
         btn.frame = CGRect(x: 0, y: (self.frame.height-btn.height)/2, width: btn.width, height: btn.height)
         self.addSubview(label)

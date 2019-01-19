@@ -23,7 +23,7 @@ class UncheckedObj:Object{                //チェックされていないリス
     func initData(taskKey:TaskKey){
         let task1 = Task()
         task1.task = "持ち物の分類"
-        task1.point = "引っ越しは不用品を処分する絶好の機会です。一年以上使っていないものは基本的に売るか捨てるかすることをお勧めします。"
+        task1.point = "引っ越しを機に不用品を処分するのもいいでしょう。\n売却する場合には、オンラインサービスを使う、リサイクルショップに持ち込む、専門店に持ち込む、などの手段があります。\n"
         task1.id = taskKey.createKey()
         let task2 = Task()
         task2.task = "粗大ゴミの申し込み"
@@ -31,7 +31,7 @@ class UncheckedObj:Object{                //チェックされていないリス
         task2.id = taskKey.createKey()
         let task3 = Task()
         task3.task = "ゴミ出し曜日の確認"
-        task3.point = "自治体によってゴミの出せる曜日は決まっていますので、出せる日が少ないものは早めに確認をしておくといいでしょう"
+        task3.point = "自治体によってゴミの出せる曜日は決まっていますので、出し忘れのないように確認をしておきましょう。"
         task3.id = taskKey.createKey()
         let task4 = Task(value:["住居の解約届","だいたい２週間前までには届けないといけないことが多いです。\n届けるのが遅れると余計な家賃がかかってしまうこともあります。",nil,nil,false,taskKey.createKey()])
         let task5 = Task(value:["引っ越し業者を決める","業者によって料金が大きく変わることがあるので複数の業者を比較しましょう。\n一括見積もりサイトを利用すると便利です。",nil,nil,false,taskKey.createKey()])

@@ -72,7 +72,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.btn.index = indexPath
             cell.btn.addTarget(self, action: #selector(clickAction(_:)), for: .touchUpInside)
             cell.accessoryType = .detailButton
-            cell.tintColor = UIColor.blue
+            cell.tintColor =  UIColor(hex: "3a85ff")
             cell.label.text =  uncheckedObj!.sectionobjList[indexPath.section].taskList[indexPath.row].task
           }else if(indexPath.section > 4){//ここにチェックされたリストの描画をかく
             cell.setData()
@@ -82,7 +82,7 @@ class MoveoutTasksViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.btn.alpha = 0.5
             cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
             cell.accessoryType = .detailButton
-            cell.tintColor = .blue
+            cell.tintColor =  UIColor(hex: "3a85ff")
             cell.label.text = checkedObj!.sectionobjList[indexPath.section-5].taskList[indexPath.row].task
             cell.label.alpha = 0.6
         }else{

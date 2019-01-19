@@ -430,7 +430,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5p-hj-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1050" y="601"/>
+            <point key="canvasLocation" x="-1049" y="549"/>
         </scene>
         <!--Notesmoveout View Controller-->
         <scene sceneID="nSF-wP-s4S">
@@ -913,13 +913,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6JY-gS-JAb">
-                                <rect key="frame" x="20" y="40" width="335" height="607"/>
+                            <stackView opaque="NO" contentMode="center" fixedFrame="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="6JY-gS-JAb">
+                                <rect key="frame" x="87" y="72" width="200" height="513.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Iat-a5-Gro">
-                                        <rect key="frame" x="103.5" y="0.0" width="128" height="84"/>
+                                        <rect key="frame" x="36" y="0.0" width="128" height="84"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="予定日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-Ru-k2F">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="予定日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-Ru-k2F">
                                                 <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -941,8 +942,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="center" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ttp-Cc-Bcr">
-                                        <rect key="frame" x="106.5" y="155" width="122" height="74"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ttp-Cc-Bcr">
+                                        <rect key="frame" x="39" y="108" width="122" height="74"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hit-q0-yn5">
                                                 <rect key="frame" x="0.0" y="0.0" width="33" height="19.5"/>
@@ -964,8 +965,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-e0-q1R">
-                                        <rect key="frame" x="67.5" y="300.5" width="200" height="143.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-e0-q1R">
+                                        <rect key="frame" x="0.0" y="206" width="200" height="191.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="達成度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgt-oc-wXB">
                                                 <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
@@ -988,12 +989,12 @@
                                                 <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </progressView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="fDH-vt-xxG">
-                                                <rect key="frame" x="0.0" y="96.5" width="81" height="47"/>
+                                                <rect key="frame" x="0.0" y="96.5" width="163" height="95"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="peW-Ay-Soe">
-                                        <rect key="frame" x="138" y="515" width="59" height="92"/>
+                                        <rect key="frame" x="70.5" y="421.5" width="59" height="92"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-QK-UYp">
                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="42"/>
@@ -1025,12 +1026,6 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6JY-gS-JAb" firstAttribute="leading" secondItem="js3-Zc-Gme" secondAttribute="leading" constant="20" id="NYN-6U-29j"/>
-                            <constraint firstItem="js3-Zc-Gme" firstAttribute="trailing" secondItem="6JY-gS-JAb" secondAttribute="trailing" constant="20" id="OBp-zP-WUf"/>
-                            <constraint firstItem="6JY-gS-JAb" firstAttribute="top" secondItem="js3-Zc-Gme" secondAttribute="top" constant="20" id="epy-WP-3Ba"/>
-                            <constraint firstItem="js3-Zc-Gme" firstAttribute="bottom" secondItem="6JY-gS-JAb" secondAttribute="bottom" constant="20" id="ruU-2O-gqR"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="js3-Zc-Gme"/>
                     </view>
                     <connections>
@@ -1045,11 +1040,12 @@
                         <outlet property="progressView" destination="Ujn-Mb-BDH" id="EsM-48-SxT"/>
                         <outlet property="settingButton" destination="wFu-MJ-Jab" id="uvw-s4-lTh"/>
                         <outlet property="settingStack" destination="peW-Ay-Soe" id="hZa-MA-6Zx"/>
+                        <outlet property="wrapStackView" destination="6JY-gS-JAb" id="Djv-3f-4WJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3S-rD-mrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3138" y="-147"/>
+            <point key="canvasLocation" x="-3138.4000000000001" y="-147.07646176911544"/>
         </scene>
         <!--Reset View Controller-->
         <scene sceneID="bmO-fM-Yy5">
@@ -1195,7 +1191,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7V-ij-2Tw">
-                                        <rect key="frame" x="137.5" y="478" width="80" height="45"/>
+                                        <rect key="frame" x="97.5" y="433" width="160" height="90"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="YuMin-Demibold" family="YuMincho" pointSize="20"/>
                                         <state key="normal" title="初期化" backgroundImage="resetImg"/>
@@ -1406,16 +1402,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backImage2" width="800" height="1200"/>
-        <image name="backgroundImage" width="640" height="960"/>
-        <image name="car" width="81" height="47"/>
-        <image name="deleteImg" width="31" height="31"/>
-        <image name="house" width="30" height="30"/>
-        <image name="orangeCar" width="33" height="23"/>
-        <image name="plus" width="34" height="34"/>
-        <image name="resetImg" width="80" height="45"/>
-        <image name="save" width="41" height="50"/>
-        <image name="spacerect" width="30" height="30"/>
+        <image name="backImage2" width="288" height="432"/>
+        <image name="backgroundImage" width="1280" height="1920"/>
+        <image name="car" width="163" height="95"/>
+        <image name="deleteImg" width="62" height="62"/>
+        <image name="house" width="60" height="61"/>
+        <image name="orangeCar" width="66" height="47"/>
+        <image name="plus" width="68" height="68"/>
+        <image name="resetImg" width="160" height="90"/>
+        <image name="save" width="83" height="100"/>
+        <image name="spacerect" width="60" height="60"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

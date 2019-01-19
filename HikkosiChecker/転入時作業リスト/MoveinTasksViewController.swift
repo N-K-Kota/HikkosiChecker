@@ -31,6 +31,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.btn.setImage(UIImage(named: "spacerect"), for: .normal)
             cell.label.text = moveinList!.taskList[indexPath.row].task
             cell.accessoryType = .detailButton
+            cell.tintColor =  UIColor(hex: "3a85ff")
             cell.btn.addTarget(self, action: #selector(checkFunc(_:)), for: .touchDown)
         }else if(indexPath.section == 1){  //ボタン
             if(didmoveinList!.watchable){
@@ -57,6 +58,7 @@ class MoveinTasksViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
             cell.btn.layer.opacity = 0.6
             cell.label.layer.opacity = 0.6
+            cell.tintColor =  UIColor(hex: "3a85ff")
             cell.label.backgroundColor = UIColor(white: 1, alpha: 0)
         }
         return cell
